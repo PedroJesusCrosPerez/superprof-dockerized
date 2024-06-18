@@ -1,0 +1,26 @@
+<!-- templates/layout.html -->
+<!DOCTYPE html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title th:replace="~{::title}">Página principal</title>
+
+    <!--CSS-->
+    <link rel="stylesheet" href="@{/css/mycss.css}">
+
+    <!--JS-->
+    <script src="@{/js/myjs.js}"></script>
+</head>
+
+<body>
+
+<header th:replace="fragments/header :: header"></header>
+
+<main th:replace="~{::main}"></main>
+
+<footer th:replace="fragments/footer :: footer"></footer>
+
+</body>
+</html>

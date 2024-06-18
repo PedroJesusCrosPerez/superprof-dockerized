@@ -1,0 +1,3367 @@
+<!DOCTYPE html ><!--"http://www.thymeleaf.org/dtd/xhtml1-strict-thymeleaf-spring4-4.dtd">-->
+<html lang="es" xmlns:th="http://www.thymeleaf.org"> <!-- xmlns:sec="http://www.w3.org/1999/xhtml">-->
+<head th:replace="layout/base::layout(~{::title}, ~{::fragment_css}, ~{::fragment_js}, ~{::main})">
+    <th:block th:fragment="fragment_css">
+        <link rel="stylesheet" th:href="@{/css/template/teacher_dashboard.css}">
+    </th:block>
+
+    <th:block th:fragment="fragment_js">
+<!--        <script th:src="@{/js/template/teacher_dashboard.js}"></script>-->
+    </th:block>
+
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width,initial-scale=1">
+        <link rel="apple-touch-icon" href="//cdn.superprof.com/style/images/favicon/s_rose_76.png">
+        <link rel="apple-touch-icon" sizes="76x76" href="//cdn.superprof.com/style/images/favicon/s_rose_76.png">
+        <link rel="apple-touch-icon" sizes="120x120" href="//cdn.superprof.com/style/images/favicon/s_rose_120.png">
+        <link rel="apple-touch-icon" sizes="152x152" href="//cdn.superprof.com/style/images/favicon/s_rose_152.png">
+        <link rel="apple-touch-icon" sizes="180x180" href="//cdn.superprof.com/style/images/favicon/s_rose_180.png">
+        <link rel="icon" sizes="192x192" href="//cdn.superprof.com/style/images/favicon/s_rose_192.png">
+        <link rel="shortcut icon" sizes="76x76" type="image/x-icon"
+              href="//cdn.superprof.com/style/images/favicon/s_rose_76.ico">
+        <link rel="mask-icon" href="//cdn.superprof.com/style/images/favicon/s_rose.svg" color="#FF5A5F">
+        <meta name="viewport"
+              content="width=device-width,height=device-height,initial-scale=1,maximum-scale=1,user-scalable=0">
+        <meta name="msapplication-TileColor" content="#ffffff">
+        <meta name="theme-color" content="#ffffff">
+        <title>Panel de control - Superprof</title>
+
+        <style>
+            body:before,
+            body:after {
+                display: none;
+            }
+
+            body.loading {
+                background-color: #f7f7f7;
+                margin: 0;
+                padding: 0;
+                width: 100vw;
+                height: 100vh;
+            }
+
+            body.loading:before {
+                content: "";
+                display: block;
+                position: absolute;
+                width: 10vw;
+                height: 10vw;
+                top: 50%;
+                left: 50%;
+                border: 10px solid;
+                border-color: #fa6484 transparent #fa6484 transparent;
+                border-radius: 100%;
+                -webkit-animation: rotating 2s linear infinite;
+            }
+
+            body.loading:after {
+                content: "Superprof";
+                display: inline-block;
+                position: absolute;
+                top: 50%;
+                left: 50%;
+                transform: translateX(-50%) translateY(-50%);
+                text-transform: uppercase;
+                color: #fa6484;
+                -webkit-animation: blinking 2s linear infinite;
+                font-weight: bold;
+                font-family: sans-serif;
+            }
+
+            @-webkit-keyframes rotating {
+                from {
+                    -webkit-transform: translateX(-50%) translateY(-50%) rotate(0deg);
+                }
+
+                to {
+                    -webkit-transform: translateX(-50%) translateY(-50%) rotate(360deg);
+                }
+            }
+
+            @-webkit-keyframes blinking {
+                from {
+                    opacity: 0;
+                }
+
+                to {
+                    opacity: 1;
+                }
+            }
+        </style>
+        <!-- <script async="" src="https://connect.facebook.net/en_US/fbevents.js"></script> -->
+        <!-- <script type="text/javascript" async="" src="https://www.googletagmanager.com/gtag/destination?id=AW-622831331&amp;l=dataLayer&amp;cx=c"></script> -->
+        <!-- <script type="text/javascript" async="" src="https://bat.bing.com/bat.js"></script> -->
+        <!-- <script type="text/javascript" async="" src="https://www.googletagmanager.com/gtag/js?id=G-6VB06V4P2V&amp;l=dataLayer&amp;cx=c"></script> -->
+        <!-- <script type="text/javascript" async="" src="https://www.googletagmanager.com/gtag/js?id=G-E53RLWETK7&amp;l=dataLayer&amp;cx=c"></script> -->
+        <script type="module" src="https://cdn.srv.whereby.com/embed/v1.js"></script>
+        <link href="//c.superprof.com/static/css/Modal.update.about_ad.d96ab128.css" rel="prefetch">
+        <link href="//c.superprof.com/static/css/Modal.update.about_you.4c540a47.css" rel="prefetch">
+        <link href="//c.superprof.com/static/css/Modal.update.degree.34f22a5e.css" rel="prefetch">
+        <link href="//c.superprof.com/static/css/Modal.update.level.b199bb61.css" rel="prefetch">
+        <link href="//c.superprof.com/static/css/Modal.update.place.f6bf70c5.css" rel="prefetch">
+        <link href="//c.superprof.com/static/css/Modal.update.price.ce46fb8c.css" rel="prefetch">
+        <link href="//c.superprof.com/static/css/Modal.update.subject.4e354d20.css" rel="prefetch">
+        <link href="//c.superprof.com/static/css/Modal.update.title.bc7b5b24.css" rel="prefetch">
+        <link href="//c.superprof.com/static/css/Modal.update.video.d9e79e3a.css" rel="prefetch">
+        <link href="//c.superprof.com/static/css/chunk-23393056.3f814276.css" rel="prefetch">
+        <link href="//c.superprof.com/static/css/chunk-28f314a6.a86654d0.css" rel="prefetch">
+        <link href="//c.superprof.com/static/css/chunk-2aa4dfea.4f3d4550.css" rel="prefetch">
+        <link href="//c.superprof.com/static/css/chunk-39781029.b14d7b1b.css" rel="prefetch">
+        <link href="//c.superprof.com/static/css/chunk-65624fdc.56c7f31f.css" rel="prefetch">
+        <link href="//c.superprof.com/static/css/chunk-7088eb34.436ba539.css" rel="prefetch">
+        <link href="//c.superprof.com/static/css/chunk-74b0c156.5fb29a9b.css" rel="prefetch">
+        <link href="//c.superprof.com/static/css/chunk-78653286.d314bd46.css" rel="prefetch">
+        <link href="//c.superprof.com/static/css/chunk-810c0692.6f95b768.css" rel="prefetch">
+        <link href="//c.superprof.com/static/css/chunk-d10332b2.d3cfbcc8.css" rel="prefetch">
+        <link href="//c.superprof.com/static/css/chunk-e4cd51ea.2833b37b.css" rel="prefetch">
+        <link href="//c.superprof.com/static/css/chunk-e5730bbe.125c14af.css" rel="prefetch">
+        <link href="//c.superprof.com/static/css/chunk-f99a5f8e.d17188cc.css" rel="prefetch">
+        <link href="//c.superprof.com/static/css/group-routes-accounts.c2ae4842.css" rel="prefetch">
+        <link href="//c.superprof.com/static/css/group-routes-accounts~group-routes-home0~group-routes-home2.acc73e2f.css"
+              rel="prefetch">
+        <link href="//c.superprof.com/static/css/group-routes-annocnes-list.ea415ae8.css" rel="prefetch">
+        <link
+                href="//c.superprof.com/static/css/group-routes-annocnes-list~group-routes-home~group-routes-myprofil2.f2cbbf76.css"
+                rel="prefetch">
+        <link href="//c.superprof.com/static/css/group-routes-bookmark.4651bd40.css" rel="prefetch">
+        <link href="//c.superprof.com/static/css/group-routes-demands.a0abf5c0.css" rel="prefetch">
+        <link href="//c.superprof.com/static/css/group-routes-demands0.a7d91a2b.css" rel="prefetch">
+        <link href="//c.superprof.com/static/css/group-routes-demands0~group-routes-demands1.dd8f3800.css" rel="prefetch">
+        <link href="//c.superprof.com/static/css/group-routes-demands1.e5ea6754.css" rel="prefetch">
+        <link
+                href="//c.superprof.com/static/css/group-routes-demands~group-routes-demands0~group-routes-demands1.a6a7a36c.css"
+                rel="prefetch">
+        <link href="//c.superprof.com/static/css/group-routes-demands~group-routes-demands1.9825485e.css" rel="prefetch">
+        <link href="//c.superprof.com/static/css/group-routes-evaluation.41c524f6.css" rel="prefetch">
+        <link href="//c.superprof.com/static/css/group-routes-evaluation0.fec24152.css" rel="prefetch">
+        <link href="//c.superprof.com/static/css/group-routes-evaluation0~group-routes-evaluation2.914875d6.css"
+              rel="prefetch">
+        <link href="//c.superprof.com/static/css/group-routes-evaluation2.2d8abd06.css" rel="prefetch">
+        <link href="//c.superprof.com/static/css/group-routes-evaluation~group-routes-home0~group-routes-home2.253bab9e.css"
+              rel="prefetch">
+        <link href="//c.superprof.com/static/css/group-routes-giftcards.cdadd5a8.css" rel="prefetch">
+        <link href="//c.superprof.com/static/css/group-routes-home.68930150.css" rel="prefetch">
+        <link href="//c.superprof.com/static/css/group-routes-home0.f7bd29b9.css" rel="prefetch">
+        <link href="//c.superprof.com/static/css/group-routes-home2.15166b63.css" rel="prefetch">
+        <link href="//c.superprof.com/static/css/group-routes-myprofil0.ef8d3399.css" rel="prefetch">
+        <link href="//c.superprof.com/static/css/group-routes-myprofil2.90df03b3.css" rel="prefetch">
+        <link href="//c.superprof.com/static/css/group-routes-payment.789a5ec3.css" rel="prefetch">
+        <link href="//c.superprof.com/static/css/groupe-routes-home.0837ef37.css" rel="prefetch">
+        <link href="//c.superprof.com/static/js/Modal.update.about_ad.6ebaa5e8.js" rel="prefetch">
+        <link href="//c.superprof.com/static/js/Modal.update.about_you.d275d3ed.js" rel="prefetch">
+        <link href="//c.superprof.com/static/js/Modal.update.degree.2969a94b.js" rel="prefetch">
+        <link href="//c.superprof.com/static/js/Modal.update.level.99856532.js" rel="prefetch">
+        <link href="//c.superprof.com/static/js/Modal.update.place.714161f3.js" rel="prefetch">
+        <link href="//c.superprof.com/static/js/Modal.update.price.89f71700.js" rel="prefetch">
+        <link href="//c.superprof.com/static/js/Modal.update.subject.aaf8e79b.js" rel="prefetch">
+        <link href="//c.superprof.com/static/js/Modal.update.title.92f34861.js" rel="prefetch">
+        <link href="//c.superprof.com/static/js/Modal.update.video.0b599d0b.js" rel="prefetch">
+        <link href="//c.superprof.com/static/js/chunk-23393056.9e2bc397.js" rel="prefetch">
+        <link href="//c.superprof.com/static/js/chunk-28f314a6.c464fde7.js" rel="prefetch">
+        <link href="//c.superprof.com/static/js/chunk-2aa4dfea.d4b80be0.js" rel="prefetch">
+        <link href="//c.superprof.com/static/js/chunk-2d21a587.f7fd9b1a.js" rel="prefetch">
+        <link href="//c.superprof.com/static/js/chunk-39781029.22850fd9.js" rel="prefetch">
+        <link href="//c.superprof.com/static/js/chunk-42644e0c.b456b3bf.js" rel="prefetch">
+        <link href="//c.superprof.com/static/js/chunk-440d3205.594f29b6.js" rel="prefetch">
+        <link href="//c.superprof.com/static/js/chunk-65624fdc.b4be3f3c.js" rel="prefetch">
+        <link href="//c.superprof.com/static/js/chunk-7088eb34.57ffeb9b.js" rel="prefetch">
+        <link href="//c.superprof.com/static/js/chunk-74b0c156.860b7360.js" rel="prefetch">
+        <link href="//c.superprof.com/static/js/chunk-78653286.87796c04.js" rel="prefetch">
+        <link href="//c.superprof.com/static/js/chunk-810c0692.9850128b.js" rel="prefetch">
+        <link href="//c.superprof.com/static/js/chunk-d10332b2.3bd36459.js" rel="prefetch">
+        <link href="//c.superprof.com/static/js/chunk-e4cd51ea.0c09f66d.js" rel="prefetch">
+        <link href="//c.superprof.com/static/js/chunk-e5730bbe.a8ac0211.js" rel="prefetch">
+        <link href="//c.superprof.com/static/js/chunk-f99a5f8e.e5de0766.js" rel="prefetch">
+        <link href="//c.superprof.com/static/js/group-routes-accounts.5e4f8a2d.js" rel="prefetch">
+        <link href="//c.superprof.com/static/js/group-routes-accounts~group-routes-home0~group-routes-home2.2ed21f33.js"
+              rel="prefetch">
+        <link href="//c.superprof.com/static/js/group-routes-annocnes-list.60dc9ea7.js" rel="prefetch">
+        <link
+                href="//c.superprof.com/static/js/group-routes-annocnes-list~group-routes-home~group-routes-myprofil2.62d3fdf2.js"
+                rel="prefetch">
+        <link href="//c.superprof.com/static/js/group-routes-bookmark.9013b201.js" rel="prefetch">
+        <link href="//c.superprof.com/static/js/group-routes-demands.18b1b903.js" rel="prefetch">
+        <link href="//c.superprof.com/static/js/group-routes-demands0.41efe1db.js" rel="prefetch">
+        <link href="//c.superprof.com/static/js/group-routes-demands0~group-routes-demands1.ff528dbc.js" rel="prefetch">
+        <link href="//c.superprof.com/static/js/group-routes-demands1.69a21ab3.js" rel="prefetch">
+        <link
+                href="//c.superprof.com/static/js/group-routes-demands~group-routes-demands0~group-routes-demands1.1af406a5.js"
+                rel="prefetch">
+        <link href="//c.superprof.com/static/js/group-routes-demands~group-routes-demands1.d943c4f1.js" rel="prefetch">
+        <link href="//c.superprof.com/static/js/group-routes-evaluation.5b628ff5.js" rel="prefetch">
+        <link href="//c.superprof.com/static/js/group-routes-evaluation0.d79ad865.js" rel="prefetch">
+        <link href="//c.superprof.com/static/js/group-routes-evaluation0~group-routes-evaluation2.39f8d6e4.js"
+              rel="prefetch">
+        <link href="//c.superprof.com/static/js/group-routes-evaluation2.267c64e3.js" rel="prefetch">
+        <link href="//c.superprof.com/static/js/group-routes-evaluation~group-routes-home0~group-routes-home2.296f27d0.js"
+              rel="prefetch">
+        <link href="//c.superprof.com/static/js/group-routes-giftcards.71fd44c0.js" rel="prefetch">
+        <link href="//c.superprof.com/static/js/group-routes-home.b725acf9.js" rel="prefetch">
+        <link href="//c.superprof.com/static/js/group-routes-home0.2b79588d.js" rel="prefetch">
+        <link href="//c.superprof.com/static/js/group-routes-home2.78c10e62.js" rel="prefetch">
+        <link href="//c.superprof.com/static/js/group-routes-myprofil0.806ac630.js" rel="prefetch">
+        <link href="//c.superprof.com/static/js/group-routes-myprofil2.11e7f357.js" rel="prefetch">
+        <link href="//c.superprof.com/static/js/group-routes-payment.d24e9d34.js" rel="prefetch">
+        <link href="//c.superprof.com/static/js/groupe-routes-home.447aee11.js" rel="prefetch">
+        <link href="css/app.f96ffb26.css" rel="stylesheet">
+        <link href="css/chunk-vendors.73d7d74b.css" rel="stylesheet">
+        <link href="//c.superprof.com/static/css/chunk-vendors.73d7d74b.css" rel="stylesheet">
+        <link href="//c.superprof.com/static/css/app.f96ffb26.css" rel="stylesheet">
+        <style type="text/css" id="operaUserStyle"></style>
+        <scrip async="true" id="xo-pptm"
+               src="https://www.paypal.com/tagmanager/pptm.js?id=www.superprof.es&amp;source=checkoutjs&amp;t=xo&amp;v=4.0.343">
+        </scrip>
+        <link rel="stylesheet" href="css/chunk-78653286.d314bd46.css">
+        <link rel="stylesheet" href="css/group-routes-accounts~group-routes-home0~group-routes-home2.acc73e2f.css">
+        <link rel="stylesheet" href="css/cropper.min.css">
+        <link rel="stylesheet" href="css/group-routes-evaluation~group-routes-home0~group-routes-home2.253bab9e.css">
+        <link rel="stylesheet" href="css/group-routes-home2.15166b63.css">
+        <style type="text/css">
+            whereby-embed {
+                display: block;
+            }
+
+            whereby-embed iframe {
+                border: none;
+                height: 100%;
+                width: 100%;
+            }
+        </style>
+        <style type="text/css">
+            :root [href^="//mage98rquewz.com/"],
+            :root [href^="//x4pollyxxpush.com/"],
+            :root zeus-ad,
+            :root span[id^="ezoic-pub-ad-placeholder-"],
+            :root ins.adsbygoogle[data-ad-slot],
+            :root guj-ad,
+            :root gpt-ad,
+            :root div[id^="zergnet-widget"],
+            :root div[id^="vuukle-ad-"],
+            :root div[id^="taboola-stream-"],
+            :root div[id^="sticky_ad_"],
+            :root div[id^="pa_sticky_ad_box_middle_"],
+            :root div[id^="optidigital-adslot"],
+            :root div[id^="gpt_ad_"],
+            :root div[id^="ezoic-pub-ad-"],
+            :root div[id^="dfp-ad-"],
+            :root div[id^="crt-"][style],
+            :root div[id^="adspot-"],
+            :root div[id^="adrotate_widgets-"],
+            :root ps-connatix-module,
+            :root div[id^="ad_position_"],
+            :root div[id^="ad-div-"],
+            :root div[id*="ScriptRoot"],
+            :root div[id*="MarketGid"],
+            :root div[data-native_ad],
+            :root div[data-native-ad],
+            :root div[data-id-advertdfpconf],
+            :root hl-adsense,
+            :root div[data-contentexchange-widget],
+            :root div[data-alias="300x250 Ad 2"],
+            :root div[data-adzone],
+            :root div[data-adunit-path],
+            :root div[data-adname],
+            :root div[data-ad-wrapper],
+            :root div[data-ad-placeholder],
+            :root div[class^="native-ad-"],
+            :root div[data-dfp-id],
+            :root div[class^="kiwi-ad-wrapper"],
+            :root div[aria-label="Ads"],
+            :root display-ads,
+            :root display-ad-component,
+            :root bottomadblock,
+            :root atf-ad-slot,
+            :root aside[id^="adrotate_widgets-"],
+            :root ark-top-ad,
+            :root amp-fx-flying-carpet,
+            :root amp-embed[type="taboola"],
+            :root amp-connatix-player,
+            :root amp-ad-custom,
+            :root amp-ad,
+            :root div[id^="google_dfp_"],
+            :root ad-slot,
+            :root ad-shield-ads,
+            :root a[style="width:100%;height:100%;z-index:10000000000000000;position:absolute;top:0;left:0;"],
+            :root a[onmousedown^="this.href='https://paid.outbrain.com/network/redir?"][target="_blank"]+.ob_source,
+            :root a[onmousedown^="this.href='http://paid.outbrain.com/network/redir?"][target="_blank"],
+            :root a[href^="https://www.purevpn.com/"][href*="&utm_source=aff-"],
+            :root a[href^="https://www.onlineusershielder.com/"],
+            :root a[href^="https://www.nudeidols.com/cams/"],
+            :root a[href^="https://financeads.net/tc.php?"],
+            :root a[href^="https://www.mrskin.com/tour"],
+            :root a[href^="https://www.kingsoffetish.com/tour?partner_id="],
+            :root a[href^="https://www.infowarsstore.com/"]>img,
+            :root a[href^="https://www.highperformancecpmgate.com/"],
+            :root a[href^="https://www.highcpmrevenuenetwork.com/"],
+            :root a[href^="https://lnkxt.bannerator.com/"],
+            :root a[href^="https://www.geekbuying.com/dynamic-ads/"],
+            :root a[href^="https://www.friendlyduck.com/AF_"],
+            :root a[href^="https://www.financeads.net/tc.php?"],
+            :root [href^="https://www.herbanomic.com/"]>img,
+            :root a[href^="https://maymooth-stopic.com/"],
+            :root a[href^="https://www.dql2clk.com/"],
+            :root a[href^="https://www.nutaku.net/signup/landing/"],
+            :root a[href^="https://www.dating-finder.com/signup/?ai_d="],
+            :root a[href^="https://explore-site.com/"],
+            :root a[href^="https://www.brazzersnetwork.com/landing/"],
+            :root a[href^="https://www.adxsrve.com/"],
+            :root [data-template-type="nativead"],
+            :root a[href^="https://www.endorico.com/Smartlink/"],
+            :root a[href^="https://www.adultempire.com/"][href*="?partner_id="],
+            :root a[href^="https://voluum.prom-xcams.com/"],
+            :root a[href^="https://twinrdsrv.com/"],
+            :root a[href^="https://trk.nfl-online-streams.club/"],
+            :root a[href^="https://tracking.avapartner.com/"],
+            :root a[href^="https://track.wg-aff.com"],
+            :root a[href^="https://track.ultravpn.com/"],
+            :root a[href^="https://track.afcpatrk.com/"],
+            :root a[href^="https://track.1234sd123.com/"],
+            :root a[href^="https://torguard.net/aff.php"]>img,
+            :root a[href^="https://tc.tradetracker.net/"]>img,
+            :root a[href^="https://tatrck.com/"],
+            :root a[href^="https://click.candyoffers.com/"],
+            :root [href^="https://zstacklife.com/"] img,
+            :root a[href^="https://t.aslnk.link/"],
+            :root a[href^="https://t.ajrkm3.com/"],
+            :root a[href^="https://t.adating.link/"],
+            :root a[href^="https://safesurfingtoday.com/"][href*="?skip="],
+            :root a[href^="https://land.brazzersnetwork.com/landing/"],
+            :root a[href^="https://t.acam.link/"],
+            :root a[href*="//daichoho.com/"],
+            :root a[href^="https://syndication.optimizesrv.com/"],
+            :root a[href^="https://go.trackitalltheway.com/"],
+            :root [href^="https://track.fiverr.com/visit/"]>img,
+            :root a[href^="https://syndication.exoclick.com/"],
+            :root a[href^="https://syndication.dynsrvtbg.com/"],
+            :root div[data-alias="300x250 Ad 1"],
+            :root a[href^="https://syndicate.contentsserved.com/"],
+            :root a[href^="https://svb-analytics.trackerrr.com/"],
+            :root a[href^="https://streamate.com/landing/click/"],
+            :root a[href^="https://ad.doubleclick.net/"],
+            :root a[href^="https://static.fleshlight.com/images/banners/"],
+            :root a[href^="https://slkmis.com/"],
+            :root a[href^="https://s.zlink3.com/"],
+            :root a[href^="https://www.mrskin.com/account/"],
+            :root a[href^="https://s.optzsrv.com/"],
+            :root a[href^="https://random-affiliate.atimaze.com/"],
+            :root a[href^="https://quotationfirearmrevision.com/"],
+            :root a[href^="https://pubads.g.doubleclick.net/"],
+            :root a[href^="https://ak.oalsauwy.net/"],
+            :root a[href^="https://softwa.cfd/"],
+            :root a[href^="https://play1ad.shop/"],
+            :root a[href^="https://prf.hn/click/"][href*="/camref:"]>img,
+            :root a[href^="https://www.dating-finder.com/?ai_d="],
+            :root a[href^="https://serve.awmdelivery.com/"],
+            :root a[href^="https://prf.hn/click/"][href*="/adref:"]>img,
+            :root app-ad,
+            :root a[href^="https://postback1win.com/"],
+            :root a[href^="https://a.adtng.com/"],
+            :root a[href^="https://playnano.online/offerwalls/?ref="],
+            :root a[href^="https://www.privateinternetaccess.com/"]>img,
+            :root a[href^="https://mmwebhandler.aff-online.com/"],
+            :root a[href^="https://www.bet365.com/"][href*="affiliate="],
+            :root a[href^="https://pb-track.com/"],
+            :root a[href^="https://pb-front.com/"],
+            :root a[href^="https://paid.outbrain.com/network/redir?"],
+            :root a[href^="https://ngineet.cfd/"],
+            :root a[href^="https://upsups.click/"],
+            :root a[href^="https://ndt5.net/"],
+            :root a[href^="http://eighteenderived.com/"],
+            :root a[href^="https://natour.naughtyamerica.com/track/"],
+            :root a[href^="https://mediaserver.entainpartners.com/renderBanner.do?"],
+            :root a[href^="https://www.sugarinstant.com/?partner_id="],
+            :root a[href^="https://m.do.co/c/"]>img,
+            :root [data-ad-name],
+            :root a[href^="https://loboclick.com/"],
+            :root .nya-slot[style],
+            :root a[href^="https://a.bestcontentweb.top/"],
+            :root a[href^="https://lobimax.com/"],
+            :root a[href^="https://lead1.pl/"],
+            :root a[href^="https://landing1.brazzersnetwork.com"],
+            :root a[href^="https://landing.brazzersnetwork.com/"],
+            :root a[href^="https://join.virtuallust3d.com/"],
+            :root a[href^="https://kiksajex.com/"],
+            :root a[href^="https://juicyads.in/"],
+            :root a[href^="https://www.mypornstarcams.com/landing/click/"],
+            :root a[href^="https://snowdayonline.xyz/"],
+            :root a[href^="https://mediaserver.gvcaffiliates.com/renderBanner.do?"],
+            :root a[href^="https://join.dreamsexworld.com/"],
+            :root a[href^="https://jaxofuna.com/"],
+            :root a[href^="https://itubego.com/video-downloader/?affid="],
+            :root a[href^="https://italarizege.xyz/"],
+            :root a[href^="https://iqbroker.com/"][href*="?aff="],
+            :root a[href^="https://hot-growngames.life/"],
+            :root a[href^="https://golinks.work/"],
+            :root a[href^="https://go.xxxvjmp.com/"],
+            :root a[href^="https://zirdough.net/"],
+            :root [class^="tile-picker__CitrusBannerContainer-sc-"],
+            :root a[href^="https://go.xxxiijmp.com"],
+            :root a[href^="https://go.xtbaffiliates.com/"],
+            :root .OUTBRAIN[data-widget-id^="FMS_REELD_"],
+            :root [data-role="tile-ads-module"],
+            :root a[href^="https://go.xlviirdr.com"],
+            :root a[href^="https://go.xlviiirdr.com"],
+            :root a[href^="https://ismlks.com/"],
+            :root [href^="https://www.mypillow.com/"]>img,
+            :root a[href^="https://go.xlirdr.com"],
+            :root [data-css-class="dfp-inarticle"],
+            :root a[href^="https://l.hyenadata.com/"],
+            :root a[href^="https://go.tmrjmp.com"],
+            :root a[href^="https://go.skinstrip.net"][href*="?campaignId="],
+            :root a[href^="https://go.markets.com/visit/?bta="],
+            :root a[href^="https://billing.purevpn.com/aff.php"]>img,
+            :root a[href^="https://go.hpyrdr.com/"],
+            :root a[href^="https://lijavaxa.com/"],
+            :root a[href^="https://go.goaserv.com/"],
+            :root a[href^="https://t.hrtye.com/"],
+            :root a[href^="https://go.etoro.com/"]>img,
+            :root a[href^="https://go.dmzjmp.com"],
+            :root div[class^="Display_displayAd"],
+            :root a[href^="https://www.bang.com/?aff="],
+            :root #mgb-container>#mgb,
+            :root a[href^="https://go.admjmp.com"],
+            :root div[id^="div-gpt-"],
+            :root a[href^="https://gml-grp.com/"],
+            :root a[href^="https://get.surfshark.net/aff_c?"][href*="&aff_id="]>img,
+            :root a[href^="https://gamingadlt.com/?offer="],
+            :root a[href^="https://www.adskeeper.com"],
+            :root [href^="https://www.reimageplus.com/"],
+            :root a[data-redirect^="https://paid.outbrain.com/network/redir?"],
+            :root [href^="https://clicks.affstrack.com/"]>img,
+            :root a[href^="https://ak.hauchiwu.com/"],
+            :root a[href^="https://engine.phn.doublepimp.com/"],
+            :root a[href^="https://engine.blueistheneworanges.com/"],
+            :root a[href^="https://eergortu.net/"],
+            :root a[href^="https://dl-protect.net/"],
+            :root a[href^="https://rixofa.com/"],
+            :root a[href^="https://disobediencecalculatormaiden.com/"],
+            :root a[href^="https://datingoffers30.info/"],
+            :root a[href*=".foxqck.com/"],
+            :root a[href^="https://ctosrd.com/"],
+            :root a[href^="https://clixtrac.com/"],
+            :root [href^="https://noqreport.com/"]>img,
+            :root a[href^="https://clicks.pipaffiliates.com/"],
+            :root a[href^="https://datewhisper.life/"],
+            :root a[href^="https://get-link.xyz/"],
+            :root a[href^="https://click.linksynergy.com/fs-bin/"]>img,
+            :root a[href^="https://combodef.com/"],
+            :root AD-TRIPLE-BOX,
+            :root a[href^="https://click.hoolig.app/"],
+            :root a[href^="https://track.totalav.com/"],
+            :root img[src^="https://images.purevpnaffiliates.com"],
+            :root a[href^="https://porntubemate.com/"],
+            :root a[href^="https://clickadilla.com/"],
+            :root a[href^="https://click.dtiserv2.com/"],
+            :root a[href^="https://go.xlvirdr.com"],
+            :root a[href^="http://www.iyalc.com/"],
+            :root a[href^="https://claring-loccelkin.com/"],
+            :root a[href^="https://s.ma3ion.com/"],
+            :root a[href^="https://cams.imagetwist.com/in/?track="],
+            :root a[href^="https://t.ajrkm1.com/"],
+            :root [href="https://masstortfinancing.com"] img,
+            :root a[href^="https://bongacams10.com/track?"],
+            :root a[href*=".g2afse.com/"],
+            :root a[href^="https://bodelen.com/"],
+            :root a[target="_blank"][onmousedown="this.href^='http://paid.outbrain.com/network/redir?"],
+            :root a[href^="https://banners.livepartners.com/"],
+            :root a[href^="http://revolvemockerycopper.com/"],
+            :root a[href^="https://awptjmp.com/"],
+            :root a[href^="https://join.sexworld3d.com/track/"],
+            :root a[href^="https://intenseaffiliates.com/redirect/"],
+            :root a[href^="https://aweptjmp.com/"],
+            :root [class^="s2nPlayer"],
+            :root a[href^="https://chaturbate.jjgirls.com/?track="],
+            :root a[href^="https://ausoafab.net/"],
+            :root a[href^="https://activate-game.com/"],
+            :root .scroll-fixable.rail-right>.deals-rail,
+            :root [data-wpas-zoneid],
+            :root a[href^="https://a2.adform.net/"],
+            :root a[href^="https://auesk.cfd/"],
+            :root a[href^="https://ak.psaltauw.net/"],
+            :root a[href^="https://adclick.g.doubleclick.net/"],
+            :root div[id^="ad-position-"],
+            :root a[href^="https://leg.xyz/?track="],
+            :root a[href^="https://www.toprevenuegate.com/"],
+            :root a[href^="https://bc.game/"],
+            :root a[href^="https://a.bestcontentoperation.top/"],
+            :root a[href^="https://adultfriendfinder.com/go/"],
+            :root a[href^="https://ads.planetwin365affiliate.com/"],
+            :root a[href^="https://ads.leovegas.com/"],
+            :root a[href^="https://a.candyai.love/"],
+            :root [data-m-ad-id],
+            :root a[href^="https://a-ads.com/"],
+            :root div[id^="rc-widget-"],
+            :root a[href^="http://eslp34af.click/"],
+            :root a[href^="https://turnstileunavailablesite.com/"],
+            :root a[href^="https://chaturbate.com/in/?"],
+            :root [href^="https://freecourseweb.com/"]>.sitefriend,
+            :root a[href^="https://prf.hn/click/"][href*="/creativeref:"]>img,
+            :root a[href*="&maxads="],
+            :root a[href^="http://www.adultempire.com/unlimited/promo?"][href*="&partner_id="],
+            :root a[href^="https://1betandgonow.com/"],
+            :root a[href^="https://www.googleadservices.com/pagead/aclk?"],
+            :root a[href^="http://www.mrskin.com/tour"],
+            :root a[href^="http://www.friendlyduck.com/AF_"],
+            :root a[href^="https://getvideoz.click/"],
+            :root a[href^="http://troopsassistedstupidity.com/"],
+            :root a[href^="https://bongacams2.com/track?"],
+            :root a[href^="http://trk.globwo.online/"],
+            :root a-ad,
+            :root a[href^="https://offhandpump.com/"],
+            :root a[href^="http://stickingrepute.com/"],
+            :root #slashboxes>.deals-rail,
+            :root a[href^="http://premonitioninventdisagree.com/"],
+            :root a[href^="http://naggingirresponsible.com/"],
+            :root a[href^="https://in.rabbtrk.com/"],
+            :root div[data-ad-targeting],
+            :root a[href^="https://hotplaystime.life/"],
+            :root a[href^="http://www.h4trck.com/"],
+            :root a[href^="https://81ac.xyz/"],
+            :root a[href^="http://guestblackmail.com/"],
+            :root a[href^="http://cam4com.go2cloud.org/aff_c?"],
+            :root a[href^="https://ads.betfair.com/redirect.aspx?"],
+            :root a[href^="https://ad.kubiccomps.icu/"],
+            :root [href^="https://www.mypatriotsupply.com/"]>img,
+            :root a[href^="https://trk.softonixs.xyz/"],
+            :root a[href^="https://sexynearme.com/"],
+            :root a[href^="https://myclick-2.com/"],
+            :root a[href^="http://dragnag.com/"],
+            :root [id^="div-gpt-ad"],
+            :root .ob_container .item-container-obpd,
+            :root div[id^="yandex_ad"],
+            :root a[href^="https://pb-imc.com/"],
+            :root a[href^="http://deskfrontfreely.com/"],
+            :root a[href^="https://track.adform.net/"],
+            :root a[href^="http://avthelkp.net/"],
+            :root a[href^="https://a.medfoodhome.com/"],
+            :root a[onmousedown^="this.href='http://paid.outbrain.com/network/redir?"][target="_blank"]+.ob_source,
+            :root a[href^="https://engine.flixtrial.com/"],
+            :root [data-type="ad-vertical"],
+            :root a[href^="http://annulmentequitycereals.com/"],
+            :root citrus-ad-wrapper,
+            :root a[href^="https://go.grinsbest.com/"],
+            :root a[onmousedown^="this.href='https://paid.outbrain.com/network/redir?"][target="_blank"],
+            :root a[href^="//startgaming.net/tienda/"i],
+            :root a[href^="https://www.get-express-vpn.com/offer/"],
+            :root a[href^="//s.st1net.com/splash.php"],
+            :root a[href^="https://a.medfoodsafety.com/"],
+            :root a[href^="//go.eabids.com/"],
+            :root a[href^=" https://www.friendlyduck.com/AF_"],
+            :root a[href*="/jump/next.php?r="],
+            :root [href^="https://ilovemyfreedoms.com/landing-"],
+            :root a[href^="https://go.nordvpn.net/aff"]>img,
+            :root .\[\&_\.gdprAdTransparencyCogWheelButton\]\:\!pjra-z-\[5\],
+            :root [href^="http://clicks.totemcash.com/"],
+            :root a[href^="https://ad.zanox.com/ppc/"]>img,
+            :root [data-d-ad-id],
+            :root a[href*=".engine.adglare.net/"],
+            :root [href^="https://www.profitablegatecpm.com/"],
+            :root div[id^="lazyad-"],
+            :root a[href^="http://com-1.pro/"],
+            :root a[href*=".cfm?domain="][href*="&fp="],
+            :root [data-dynamic-ads],
+            :root a[href^="https://xbet-4.com/"],
+            :root a[data-widget-outbrain-redirect^="http://paid.outbrain.com/network/redir?"],
+            :root [data-ad-width],
+            :root [data-block-type="ad"],
+            :root [href^="https://join.playboyplus.com/track/"],
+            :root a[data-url^="http://paid.outbrain.com/network/redir?"]+.author,
+            :root a[href^="https://ab.advertiserurl.com/aff/"],
+            :root a[data-oburl^="https://paid.outbrain.com/network/redir?"],
+            :root a[href^="https://trk.sportsflix4k.club/"],
+            :root a[href^="http://dragfault.com/"],
+            :root [href^="https://cpa.10kfreesilver.com/"],
+            :root a[href^="https://a.bestcontentfood.top/"],
+            :root a[data-obtrack^="http://paid.outbrain.com/network/redir?"],
+            :root a[data-href^="http://ads.trafficjunky.net/"],
+            :root a[href^="https://go.xlivrdr.com"],
+            :root [onclick^="location.href='https://1337x.vpnonly.site/"],
+            :root [name^="google_ads_iframe"],
+            :root [id^="section-ad-banner"],
+            :root [data-advadstrackid],
+            :root a[href^="http://muzzlematrix.com/"],
+            :root [href^="https://zone.gotrackier.com/"],
+            :root [href^="https://www.restoro.com/"],
+            :root a[href^="https://bngpt.com/"],
+            :root a[href^="https://www.sheetmusicplus.com/"][href*="?aff_id="],
+            :root a[href^="http://adultfriendfinder.com/go/"],
+            :root a[href^="https://fastestvpn.com/lifetime-special-deal?a_aid="],
+            :root a[href^="https://tour.mrskin.com/"],
+            :root a[href^="https://vo2.qrlsx.com/"],
+            :root [href^="https://www.avantlink.com/click.php"] img,
+            :root a[href^="https://losingoldfry.com/"],
+            :root [href^="https://routewebtk.com/"],
+            :root a[href^="https://t.ajump1.com/"],
+            :root span[data-ez-ph-id],
+            :root [href^="https://track.aftrk1.com/"],
+            :root div[id^="adngin-"],
+            :root [data-rc-widget],
+            :root a[href^="https://go.hpyjmp.com"],
+            :root [href^="https://mystore.com/"]>img,
+            :root div[id^="div-ads-"],
+            :root [href^="https://rapidgator.net/article/premium/ref/"],
+            :root [href^="https://join.girlsoutwest.com/"],
+            :root [href^="https://join3.bannedsextapes.com"],
+            :root a[href^="https://go.xxxijmp.com"],
+            :root [href^="https://istlnkcl.com/"],
+            :root div[data-adunit],
+            :root app-large-ad,
+            :root [href^="https://turtlebids.irauctions.com/"] img,
+            :root [href^="https://wct.link/click?"],
+            :root [href^="https://go.xlrdr.com"],
+            :root a[href^="https://tm-offers.gamingadult.com/"],
+            :root [href^="https://charmingdatings.life/"],
+            :root [href^="https://glersakr.com/"],
+            :root [href^="https://v.investologic.co.uk/"],
+            :root a[href^="https://www.goldenfrog.com/vyprvpn?offer_id="][href*="&aff_id="],
+            :root [id^="ad-wrap-"],
+            :root a[href*="//jjgirls.com/sex/Chaturbate"],
+            :root [data-id^="div-gpt-ad"],
+            :root a[href^="https://tracker.loropartners.com/"],
+            :root [href^="https://awbbjmp.com/"],
+            :root a[href*=".adsrv.eacdn.com/"],
+            :root [href^="https://antiagingbed.com/discount/"]>img,
+            :root [href^="https://www.brighteonstore.com/products/"] img,
+            :root a[href^="https://bngprm.com/"],
+            :root [href^="https://shiftnetwork.infusionsoft.com/go/"]>img,
+            :root a[href^="https://go.strpjmp.com/"],
+            :root a[href^="https://go.bushheel.com/"],
+            :root a[href^="https://ctjdwm.com/"],
+            :root a[href^="https://camfapr.com/landing/click/"],
+            :root [href="//sexcams.plus/"],
+            :root [href^="http://www.mypillow.com/"]>img,
+            :root [href^="https://www.targetingpartner.com/"],
+            :root div[class^="Adstyled__AdWrapper-"],
+            :root a[href^="https://startgaming.net/tienda/"i],
+            :root .section-subheader>.section-hotel-prices-header,
+            :root [href^="https://www.hostg.xyz/"]>img,
+            :root a[href^="https://join.virtualtaboo.com/track/"],
+            :root [id^="ad_sky"],
+            :root #kt_player>a[target="_blank"],
+            :root a[href^="http://bongacams.com/track?"],
+            :root [href^="http://mypillow.com/"]>img,
+            :root [href="https://ourgoldguy.com/contact/"] img,
+            :root [href="https://www.masstortfinancing.com/"]>img,
+            :root a[href^="https://go.rmhfrtnd.com/"],
+            :root [href="https://jdrucker.com/gold"]>img,
+            :root [href^="https://ad.admitad.com/"],
+            :root [href^="https://mypillow.com/"]>img,
+            :root [data-testid="ad_testID"],
+            :root a[href^="http://handgripvegetationhols.com/"],
+            :root [class^="amp-ad-"],
+            :root a[href^="http://tc.tradetracker.net/"]>img,
+            :root [data-ez-name],
+            :root a[href^="https://black77854.com/"],
+            :root [data-revive-zoneid]>iframe,
+            :root [data-testid="adBanner-wrapper"],
+            :root [href^="https://mylead.global/stl/"]>img,
+            :root [href^="https://mypatriotsupply.com/"]>img,
+            :root a[href^="https://witnessjacket.com/"],
+            :root [data-mobile-ad-id],
+            :root a[href^="https://fc.lc/ref/"],
+            :root [data-adshim],
+            :root topadblock,
+            :root a[href^="//s.zlinkd.com/"],
+            :root a[href^="https://bs.serving-sys.com"],
+            :root a[href^="https://go.cmtaffiliates.com/"],
+            :root [href^="https://optimizedelite.com/"]>img,
+            :root [data-name="adaptiveConstructorAd"],
+            :root a[href^="http://partners.etoro.com/"],
+            :root [href^="https://goldcometals.com/clk.trk"],
+            :root [data-desktop-ad-id],
+            :root [href^="https://www.cloudways.com/en/?id"],
+            :root a[href^="https://www.liquidfire.mobi/"],
+            :root .grid>.container>#aside-promotion,
+            :root DFP-AD,
+            :root [id^="ad_slider"],
+            :root [data-adbridg-ad-class],
+            :root a[href^="https://linkboss.shop/"],
+            :root [data-adblockkey],
+            :root [onclick*="content.ad/"],
+            :root [data-ad-manager-id],
+            :root AMP-AD,
+            :root [data-ad-cls],
+            :root a[href^="https://6-partner.com/"],
+            :root [href^="https://affiliate.fastcomet.com/"]>img,
+            :root a[href^="https://go.mnaspm.com/"],
+            :root [class^="adDisplay-module"],
+            :root AD-SLOT,
+            :root #kt_player>div[style="position: absolute; inset: 0px; z-index: 170;"],
+            :root [data-freestar-ad][id],
+            :root a[href^="https://go.xxxjmp.com"],
+            :root #leader-companion>a[href],
+            :root a[href^="http://www.adultdvdempire.com/?partner_id="][href*="&utm_"],
+            :root [data-ad-module],
+            :root app-advertisement,
+            :root a[href^="https://getmatchedlocally.com/"],
+            :root a[href^="https://clickins.slixa.com/"],
+            :root [class^="div-gpt-ad"],
+            :root a[href^="https://traffdaq.com/"],
+            :root a[href^="https://cam4com.go2cloud.org/"],
+            :root a[href^="http://li.blogtrottr.com/click?"],
+            :root .ob_dual_right>.ob_ads_header~.odb_div {
+                display: none !important;
+            }
+        </style>
+        <style type="text/css">
+            .counter[data-v-7c19dc82] {
+                background-color: var(--background-color);
+                color: var(--color);
+                padding: 10px;
+                border-radius: var(--border-radius);
+                border: var(--border-width) solid var(--border-color);
+                cursor: pointer;
+                box-sizing: border-box
+            }
+
+            .counter[data-v-7c19dc82]:disabled {
+                cursor: not-allowed;
+                opacity: .3
+            }
+        </style>
+        <style type="text/css">
+            .header-dropdown-item {
+                position: relative;
+                display: flex;
+                align-items: center;
+                text-decoration: none;
+                color: var(--base-font-color);
+                padding: var(--base-size-x1) var(--base-size-x2);
+                transition: background-color .15s;
+                cursor: pointer;
+                z-index: 1;
+                margin: 0
+            }
+
+            .header-dropdown-item:before {
+                content: "";
+                position: absolute;
+                bottom: 0;
+                left: 0;
+                width: 100%;
+                height: 0;
+                border-radius: var(--base-size-x2);
+                z-index: -1;
+                transition: all .2s
+            }
+
+            .header-dropdown-item.highlighted:before,
+            .header-dropdown-item:hover:before {
+                background-color: var(--base-background-item-hover);
+                height: 100%
+            }
+
+            .header-dropdown-item.is-admin {
+                color: var(--base-color-pink)
+            }
+
+            .header-dropdown-item.has-separator {
+                margin: 0 0 var(--base-size-x2) !important
+            }
+
+            .header-dropdown-item a {
+                width: 100%;
+                color: var(--base-font-color);
+                text-decoration: unset
+            }
+
+            .header-dropdown-item .header-dropdown-item-inner {
+                gap: var(--base-size-x1)
+            }
+
+            .header-dropdown-item .item-wrapper {
+                display: flex;
+                align-items: center;
+                gap: var(--base-size-x1);
+                overflow: hidden
+            }
+
+            .header-dropdown-item .icon {
+                width: var(--base-size-x3);
+                height: var(--base-size-x3);
+                background-color: var(--base-color-black);
+                margin-right: var(--base-size-x1)
+            }
+
+            .header-dropdown-item .feather {
+                --icon-size: calc(var(--base-size-x3) - 2px);
+                color: var(--base-color-grey-medium);
+                flex-shrink: 0
+            }
+
+            .header-dropdown-item .text {
+                text-overflow: ellipsis;
+                overflow: hidden
+            }
+
+            .header-dropdown-item .text .match {
+                color: var(--base-color-grey)
+            }
+
+            .header-dropdown-item .text strong {
+                font-weight: inherit
+            }
+
+            .header-dropdown-item .notification-badge {
+                margin-left: var(--base-size-x1)
+            }
+
+            .header-dropdown-item .separator {
+                position: absolute;
+                bottom: calc(var(--base-size-x1)*-1);
+                left: 50%;
+                transform: translateX(-50%);
+                width: 90%;
+                height: 1px;
+                background-color: var(--base-color-grey-medium)
+            }
+
+            @media (max-width:980px) {
+                .header-dropdown-item {
+                    padding: calc(var(--base-size-x3)/2) 0
+                }
+
+                .header-dropdown-item.highlighted:before,
+                .header-dropdown-item:hover:before {
+                    background-color: unset !important;
+                    height: unset !important
+                }
+
+                .header-dropdown-item .separator {
+                    display: none
+                }
+            }
+        </style>
+        <style type="text/css">
+            .header-dropdown[data-v-7bc63f14] {
+                position: absolute;
+                top: 100%;
+                background-color: var(--base-background-dropdown-item);
+                box-shadow: 0 4px 16px rgba(96, 97, 112, .08);
+                border-radius: var(--base-size-x3);
+                padding: var(--base-size-x1);
+                margin-top: var(--base-size-x1)
+            }
+
+            .header-dropdown[data-v-7bc63f14]:not(.show) {
+                pointer-events: none;
+                visibility: hidden;
+                opacity: 0
+            }
+
+            .header-dropdown a[data-v-7bc63f14] {
+                text-decoration: none;
+                color: var(--base-font-color)
+            }
+
+            .header-dropdown .credits[data-v-7bc63f14] {
+                text-align: right
+            }
+
+            .header-dropdown .credits img[data-v-7bc63f14] {
+                height: 14px;
+                margin-right: var(--base-size-x1)
+            }
+        </style>
+        <style type="text/css">
+            .header-search-engine {
+                display: flex;
+                align-items: center;
+                flex: 1;
+                z-index: 2;
+                border-radius: var(--base-size-x3);
+                transition: opacity .15s, visibility .15s
+            }
+
+            .header-search-engine.hide {
+                visibility: hidden;
+                opacity: 0;
+                width: 0;
+                height: 0;
+                pointer-events: none
+            }
+
+            .header-search-engine:not(.header-search-engine.open-state) .container {
+                cursor: pointer
+            }
+
+            .header-search-engine:not(.header-search-engine.open-state) .container .fields,
+            .header-search-engine:not(.header-search-engine.open-state) .container .fields .input-wrapper:first-child:after {
+                display: none
+            }
+
+            .header-search-engine:not(.header-search-engine.open-state) .container button {
+                pointer-events: none
+            }
+
+            .header-search-engine.open-state .overlay {
+                opacity: 1;
+                visibility: visible
+            }
+
+            .header-search-engine.open-state .container {
+                background-color: var(--base-background-sticky);
+                border: 1px solid var(--base-color-grey-medium);
+                width: 450px
+            }
+
+            .header-search-engine.open-state .container .main-text {
+                display: none
+            }
+
+            .header-search-engine.open-state .container input {
+                visibility: visible;
+                opacity: 1;
+                width: inherit;
+                height: 100%
+            }
+
+            .header-search-engine.dropdown-open-state .container .fields .input-wrapper .dropdown-title {
+                transition: unset
+            }
+
+            .header-search-engine.dropdown-title-visible .container .fields .input-wrapper .header-dropdown {
+                margin-top: calc(var(--base-size-x3)/2)
+            }
+
+            .header-search-engine .overlay {
+                position: fixed;
+                top: 0;
+                left: 0;
+                width: 200vw;
+                height: 200vh;
+                background-color: rgba(0, 0, 0, .15);
+                z-index: -1;
+                transition: all .3s;
+                opacity: 0;
+                visibility: hidden
+            }
+
+            .header-search-engine .container {
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                background-color: var(--base-background-search-engine-container);
+                border-radius: var(--base-size-x3);
+                padding: var(--base-size-x1);
+                transition: width .15s cubic-bezier(0, 0, 0, 1), background-color .3s ease;
+                box-sizing: initial;
+                -webkit-background-clip: padding-box;
+                -webkit-transform: translateZ(0);
+                border: 1px solid transparent
+            }
+
+            .header-search-engine .container:hover {
+                background-color: var(--base-background-sticky);
+                border: 1px solid var(--base-color-grey-medium)
+            }
+
+            .header-search-engine .container:hover .main-text {
+                color: var(--base-font-color-search-engine-hover)
+            }
+
+            .header-search-engine .container .main-text {
+                color: var(--base-font-color-search-engine);
+                margin: 0 var(--base-size-x2);
+                transition: opacity .3s
+            }
+
+            .header-search-engine .container .fields {
+                display: flex;
+                align-self: stretch;
+                flex: 1;
+                gap: 0 var(--base-size-x2);
+                padding: 0 var(--base-size-x1)
+            }
+
+            .header-search-engine .container .fields .input-wrapper {
+                position: relative;
+                display: flex;
+                align-items: center;
+                width: 100%
+            }
+
+            .header-search-engine .container .fields .input-wrapper:focus-within .field-wrapper>.feather,
+            .header-search-engine .container .fields .input-wrapper:hover .field-wrapper>.feather {
+                color: var(--base-color-pink)
+            }
+
+            .header-search-engine .container .fields .input-wrapper:first-child:after {
+                content: "";
+                width: 2px;
+                height: calc(100% - var(--base-size-x1)*2 - 8px);
+                background-color: var(--base-color-grey-medium);
+                border-radius: 100%
+            }
+
+            .header-search-engine .container .fields .input-wrapper:nth-child(2) {
+                margin: 0 calc(var(--base-size-x1)*-1)
+            }
+
+            .header-search-engine .container .fields .input-wrapper:nth-child(2).placeholder .header-dropdown {
+                width: inherit
+            }
+
+            .header-search-engine .container .fields .input-wrapper:nth-child(2):not(.placeholder) .header-dropdown .feather {
+                --icon-size: var(--base-size-x2);
+                flex-shrink: 0;
+                color: var(--base-color-grey-medium)
+            }
+
+            .header-search-engine .container .fields .input-wrapper:nth-child(2) .header-dropdown {
+                width: calc(100% + var(--base-size-x1)*7)
+            }
+
+            .header-search-engine .container .fields .input-wrapper:nth-child(2) .header-dropdown .header-dropdown-item.no-icon:hover .item-wrapper:before {
+                background-color: var(--base-color-pink)
+            }
+
+            .header-search-engine .container .fields .input-wrapper:nth-child(2) .header-dropdown .header-dropdown-item.no-icon .item-wrapper:before {
+                content: "";
+                flex-shrink: 0;
+                width: var(--base-size-x3);
+                height: var(--base-size-x3);
+                background-color: var(--base-color-grey);
+                margin-right: var(--base-size-x1)
+            }
+
+            .header-search-engine .container .fields .input-wrapper:nth-child(2) .field-wrapper {
+                border-radius: 0 0 var(--base-size-x3) var(--base-size-x3)
+            }
+
+            .header-search-engine .container .fields .input-wrapper.should-clear .clear-button {
+                opacity: 1;
+                transform: translateY(0);
+                visibility: visible
+            }
+
+            .header-search-engine .container .fields .input-wrapper .field-wrapper {
+                width: 100%;
+                height: 100%;
+                display: flex;
+                align-items: center;
+                gap: var(--base-size-x1)
+            }
+
+            .header-search-engine .container .fields .input-wrapper .field-wrapper .feather {
+                display: flex;
+                flex-shrink: 0;
+                transition: color .15s
+            }
+
+            .header-search-engine .container .fields .input-wrapper .field-wrapper>.feather {
+                color: var(--base-color-grey)
+            }
+
+            .header-search-engine .container .fields .input-wrapper .field-wrapper .previous-step-btn {
+                display: none
+            }
+
+            .header-search-engine .container .fields .input-wrapper .field-wrapper .previous-step-btn .feather {
+                --icon-size: var(--base-size-x3);
+                color: var(--base-color-black)
+            }
+
+            .header-search-engine .container .dropdown-title {
+                font-size: var(--base-body-font-size);
+                font-weight: var(--base-bold-font-weight);
+                line-height: var(--base-size-x3);
+                margin: 0 0 calc(var(--base-size-x3)/2);
+                max-height: 100px
+            }
+
+            .header-search-engine .container .dropdown-title:not(.header-search-engine .container .dropdown-title.visible) {
+                visibility: hidden;
+                max-height: 0;
+                opacity: 0;
+                margin: 0;
+                width: 0
+            }
+
+            .header-search-engine .container input {
+                visibility: hidden;
+                opacity: 0;
+                width: 0;
+                height: 0;
+                border: unset !important;
+                outline: unset;
+                padding: unset;
+                height: 100%;
+                background-color: unset;
+                color: var(--base-font-color);
+                transition: opacity .3s
+            }
+
+            .header-search-engine .container input::-moz-placeholder {
+                color: var(--base-color-grey)
+            }
+
+            .header-search-engine .container input:-ms-input-placeholder {
+                color: var(--base-color-grey)
+            }
+
+            .header-search-engine .container input::placeholder {
+                color: var(--base-color-grey)
+            }
+
+            .header-search-engine .container .clear-button {
+                position: absolute;
+                right: var(--base-size-x2);
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                width: var(--base-size-x2);
+                height: var(--base-size-x2);
+                background-color: var(--base-color-grey);
+                border-radius: 100%;
+                opacity: 0;
+                visibility: hidden;
+                transform: translateX(10px);
+                transition: opacity .2s, transform .2s, visibility .2s;
+                cursor: pointer
+            }
+
+            .header-search-engine .container .clear-button .feather {
+                --icon-size: calc(var(--base-size-x1) + 4px);
+                color: var(--base-color-white)
+            }
+
+            .header-search-engine .header-dropdown {
+                --dropdown-parent-gap: var(--base-size-x1);
+                width: calc(100% + var(--dropdown-parent-gap));
+                top: calc(100% + var(--dropdown-parent-gap));
+                left: calc(var(--dropdown-parent-gap)*-1);
+                box-sizing: border-box
+            }
+
+            @media (max-width:980px) {
+                header .header-search-engine {
+                    position: fixed;
+                    top: 0;
+                    left: 0;
+                    width: 100%;
+                    height: 100%;
+                    z-index: 2
+                }
+
+                header .header-search-engine:not(.open-state) {
+                    display: none
+                }
+
+                header .header-search-engine.open-state {
+                    display: block
+                }
+
+                header .header-search-engine.open-state .container {
+                    width: 100%;
+                    border: unset;
+                    outline: unset;
+                    background-color: unset;
+                    display: flex;
+                    flex-direction: column
+                }
+
+                header .header-search-engine .dropdown-container {
+                    width: 100%;
+                    display: flex;
+                    flex-direction: column;
+                    gap: var(--base-size-x1) 0
+                }
+
+                header .header-search-engine .dropdown-container .recent-search ul li:nth-child(n+2) {
+                    display: none
+                }
+
+                header .header-search-engine .fields-container {
+                    display: flex;
+                    flex-direction: column;
+                    width: 100%
+                }
+
+                header .header-search-engine .overlay {
+                    background-color: var(--base-background-sticky);
+                    opacity: 1;
+                    visibility: visible
+                }
+
+                header .header-search-engine .container {
+                    padding: var(--base-size-x2);
+                    box-sizing: border-box
+                }
+
+                header .header-search-engine .container .navigation-mobile {
+                    width: 100%;
+                    display: flex;
+                    align-items: center;
+                    justify-content: space-between;
+                    margin-bottom: var(--base-size-x3)
+                }
+
+                header .header-search-engine .container .navigation-mobile .nav-close .feather {
+                    width: var(--base-size-x3);
+                    height: var(--base-size-x3)
+                }
+
+                header .header-search-engine .container .navigation-mobile .nav-submit {
+                    font-size: var(--base-caption-font-size);
+                    font-weight: var(--base-medium-font-weight);
+                    line-height: var(--base-size-x3);
+                    color: var(--base-color-pink)
+                }
+
+                header .header-search-engine .container .fields {
+                    flex-direction: column;
+                    align-items: center
+                }
+
+                header .header-search-engine .container .fields .input-wrapper {
+                    align-items: flex-start;
+                    flex-direction: column
+                }
+
+                header .header-search-engine .container .fields .input-wrapper:last-child {
+                    margin-bottom: var(--base-size-x3)
+                }
+
+                header .header-search-engine .container .fields .input-wrapper:not(.is-focus) .previous-step-btn .feather {
+                    color: var(--base-color-grey)
+                }
+
+                header .header-search-engine .container .fields .input-wrapper.is-focus .field-wrapper .previous-step-btn {
+                    opacity: 0;
+                    width: 0;
+                    height: 0
+                }
+
+                header .header-search-engine .container .fields .input-wrapper.is-focus .previous-step-btn .feather {
+                    color: var(--base-color-black)
+                }
+
+                header .header-search-engine .container .fields .input-wrapper:first-child .field-wrapper {
+                    border-radius: var(--base-size-x3) var(--base-size-x3) 0 0
+                }
+
+                header .header-search-engine .container .fields .input-wrapper:first-child .field-wrapper:after {
+                    content: "";
+                    position: absolute;
+                    bottom: 0;
+                    left: calc(var(--base-size-x4)/2);
+                    width: calc(100% - var(--base-size-x4));
+                    height: 1px;
+                    background-color: var(--base-color-grey-medium)
+                }
+
+                header .header-search-engine .container .fields .input-wrapper .field-wrapper {
+                    background-color: var(--base-color-grey-light);
+                    padding: calc(var(--base-size-x2) + 4px) var(--base-size-x1);
+                    border-radius: var(--base-size-x3);
+                    box-sizing: border-box;
+                    margin-left: unset
+                }
+
+                header .header-search-engine .container .fields .input-wrapper .field-wrapper>.feather {
+                    display: none
+                }
+
+                header .header-search-engine .container .fields .input-wrapper .field-wrapper input {
+                    margin-left: unset
+                }
+
+                header .header-search-engine .container .fields .input-wrapper .field-wrapper .previous-step-btn {
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    width: var(--base-size-x3);
+                    height: var(--base-size-x3);
+                    border-radius: 100%;
+                    flex-shrink: 0;
+                    margin: 0 var(--base-size-x1)
+                }
+
+                header .header-search-engine .container .fields .input-wrapper .field-wrapper .previous-step-btn:before {
+                    margin: 0
+                }
+
+                header .header-search-engine .container .fields .input-wrapper .field-wrapper .clear-button {
+                    width: calc(var(--base-size-x3) - 2px);
+                    height: calc(var(--base-size-x3) - 2px)
+                }
+
+                header .header-search-engine .container .fields .input-wrapper .field-wrapper .clear-button .feather {
+                    --icon-size: calc(var(--base-size-x1) + 6px);
+                    color: var(--base-color-black)
+                }
+
+                header .header-search-engine .container .fields .input-wrapper .field-wrapper .clear-button:before {
+                    background-color: var(--base-color-black)
+                }
+
+                header .header-search-engine .container .fields .input-wrapper .dropdown-title {
+                    padding: 0 var(--base-size-x2)
+                }
+
+                header .header-search-engine .container .header-dropdown {
+                    position: relative;
+                    top: unset;
+                    left: unset;
+                    padding: 0 var(--base-size-x2);
+                    margin-top: 0;
+                    box-shadow: unset;
+                    background-color: unset;
+                    transition: opacity .2s, visibility .2s, max-height .2s;
+                    max-height: 1000px;
+                    max-width: calc(100vw - var(--base-size-x2)*2)
+                }
+
+                header .header-search-engine .container .header-dropdown:not(header .header-search-engine .container .header-dropdown.show) {
+                    max-height: 0
+                }
+
+                header .header-search-engine .container button {
+                    display: none
+                }
+            }
+        </style>
+        <style type="text/css">
+            .basic-header-button[data-v-017dc95e] {
+                position: relative;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                text-decoration: unset;
+                background-color: var(--base-background-button) !important;
+                border-radius: calc(var(--base-size-x3) - 4px);
+                padding: var(--base-size-x1) var(--base-size-x2);
+                color: var(--base-font-color);
+                -webkit-user-select: none;
+                -moz-user-select: none;
+                -ms-user-select: none;
+                user-select: none;
+                cursor: pointer;
+                font-family: var(--base-font-family);
+                z-index: 1
+            }
+
+            .basic-header-button[data-v-017dc95e]:before {
+                content: "";
+                position: absolute;
+                bottom: -1px;
+                width: calc(100% + 2px);
+                height: 0;
+                border-radius: calc(var(--base-size-x3) - 4px);
+                z-index: -1;
+                transition: background-color .15s, height .2s
+            }
+
+            .basic-header-button[data-v-017dc95e]:hover {
+                color: var(--base-font-color-hover)
+            }
+
+            .basic-header-button[data-v-017dc95e]:hover:before {
+                background-color: var(--base-background-button-hover);
+                height: calc(100% + 2px)
+            }
+
+            .basic-header-button:hover.has-icon[data-v-017dc95e]:after,
+            .basic-header-button:hover .icon-menu span[data-v-017dc95e] {
+                background-color: var(--base-font-color-hover)
+            }
+
+            .basic-header-button.has-icon[data-v-017dc95e] {
+                width: var(--base-size-x5);
+                height: var(--base-size-x5);
+                padding: unset
+            }
+
+            .basic-header-button.has-avatar[data-v-017dc95e] {
+                padding: calc(var(--base-size-x1)/2)
+            }
+
+            .basic-header-button.open-state[data-v-017dc95e] {
+                background-color: var(--base-background-button-open-highlight) !important
+            }
+
+            .basic-header-button.open-state[data-v-017dc95e]:before {
+                opacity: 0
+            }
+
+            .basic-header-button.open-state .avatar-wrapper[data-v-017dc95e]:before {
+                background-color: var(--base-color-white)
+            }
+
+            .basic-header-button .avatar-wrapper[data-v-017dc95e],
+            .basic-header-button .avatar-wrapper .avatar[data-v-017dc95e] {
+                display: flex;
+                align-items: center;
+                justify-content: center
+            }
+
+            .basic-header-button .avatar-wrapper .avatar[data-v-017dc95e] {
+                width: var(--base-size-x4);
+                height: var(--base-size-x4);
+                border-radius: 100%;
+                background-size: cover;
+                background-position: 50%;
+                background-repeat: no-repeat
+            }
+
+            .basic-header-button .avatar-wrapper .avatar .initial[data-v-017dc95e] {
+                color: var(--base-color-white);
+                font-size: var(--base-body-font-size);
+                font-weight: var(--base-medium-font-weight)
+            }
+
+            .basic-header-button.button-pink[data-v-017dc95e] {
+                color: var(--base-font-color-hover);
+                background-color: var(--base-background-button-hover) !important
+            }
+
+            .basic-header-button.button-pink[data-v-017dc95e]:before {
+                background-color: var(--base-background-button) !important;
+                height: 0 !important
+            }
+
+            .basic-header-button.special-button[data-v-017dc95e] {
+                position: relative;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                padding: var(--base-size-x2) var(--base-size-x5);
+                background-color: unset;
+                color: var(--base-color-white);
+                text-decoration: unset;
+                z-index: 1
+            }
+
+            .basic-header-button.special-button[data-v-017dc95e]:before {
+                content: "";
+                position: absolute;
+                width: 100%;
+                height: 100%;
+                background-color: var(--base-color-pink);
+                border-radius: var(--base-size-x3);
+                z-index: -1;
+                transition: transform .15s
+            }
+
+            .basic-header-button.special-button[data-v-017dc95e]:hover:before {
+                transform: scale3d(1.02, 1.04, 1)
+            }
+
+            @media (max-width:980px) {
+                .basic-header-button.special-button[data-v-017dc95e] {
+                    padding: var(--base-size-x2) var(--base-size-x3)
+                }
+
+                .basic-header-button .avatar-wrapper .initial[data-v-017dc95e] {
+                    font-size: var(--base-caption-font-size)
+                }
+            }
+        </style>
+        <style type="text/css">
+            .header-buttons {
+                display: inline-flex;
+                gap: var(--base-size-x1)
+            }
+
+            .header-buttons .interaction-wrapper {
+                position: relative;
+                display: none
+            }
+
+            .header-buttons .interaction-wrapper.open-state .notification-badge {
+                opacity: 0
+            }
+
+            .header-buttons .interaction-wrapper.open-state .icon-menu span {
+                background-color: var(--base-font-color) !important
+            }
+
+            .header-buttons .interaction-wrapper .notification-badge {
+                top: -12px;
+                right: -4px
+            }
+
+            .header-buttons .icon-menu {
+                margin: 0 var(--base-size-x1)
+            }
+
+            .header-buttons .icon-menu span {
+                position: relative;
+                display: block;
+                width: 16px;
+                height: 2px;
+                border-radius: 4px;
+                background-color: var(--base-font-color);
+                transform-origin: 0 0;
+                transition: transform .3s cubic-bezier(.77, .3, .05, 1), background-color .15s ease, opacity .3s ease, width .15s;
+                z-index: 1
+            }
+
+            .header-buttons .icon-menu span:not(:last-child) {
+                margin-bottom: 3px
+            }
+
+            .header-buttons .icon-menu span:first-child {
+                transform-origin: 0 0
+            }
+
+            .header-buttons .icon-menu span:nth-child(2) {
+                transform-origin: 50% 50%
+            }
+
+            .header-buttons .icon-menu span:nth-child(3) {
+                transform-origin: 2px -1px
+            }
+
+            .header-buttons .notification-badge {
+                position: absolute;
+                top: calc(var(--base-size-x1)/2*-1);
+                right: calc(var(--base-size-x1)/2*-1);
+                border: 2px solid var(--base-background-sticky)
+            }
+
+            .header-buttons .interaction-wrapper.open-state .icon-menu span,
+            .header-buttons a.open-state .icon-menu span,
+            .header-buttons button.open-state .icon-menu span {
+                opacity: 1;
+                background-color: var(--base-font-color-hover)
+            }
+
+            .header-buttons .interaction-wrapper.open-state .icon-menu span:first-child,
+            .header-buttons a.open-state .icon-menu span:first-child,
+            .header-buttons button.open-state .icon-menu span:first-child {
+                opacity: 0;
+                transform: rotate(0deg) scale(.2)
+            }
+
+            .header-buttons .interaction-wrapper.open-state .icon-menu span:nth-child(2),
+            .header-buttons a.open-state .icon-menu span:nth-child(2),
+            .header-buttons button.open-state .icon-menu span:nth-child(2) {
+                transform: rotate(45deg) translate(0)
+            }
+
+            .header-buttons .interaction-wrapper.open-state .icon-menu span:nth-child(3),
+            .header-buttons a.open-state .icon-menu span:nth-child(3),
+            .header-buttons button.open-state .icon-menu span:nth-child(3) {
+                transform: rotate(-45deg) translate(0)
+            }
+
+            @media (max-width:980px) {
+
+                header .static-content,
+                header .sticky-content {
+                    justify-content: space-between
+                }
+
+                header .static-content .header-buttons>:not(.has-avatar):not(.interaction-wrapper):not(.special-button),
+                header .sticky-content .header-buttons>:not(.has-avatar):not(.interaction-wrapper):not(.special-button) {
+                    display: none
+                }
+
+                header .static-content .header-buttons .icon-menu span,
+                header .sticky-content .header-buttons .icon-menu span {
+                    width: 18px
+                }
+
+                header .static-content .header-buttons .icon-menu span:not(:last-child),
+                header .sticky-content .header-buttons .icon-menu span:not(:last-child) {
+                    margin-bottom: .25em
+                }
+
+                header .static-content .header-buttons .icon-menu span:nth-child(3),
+                header .sticky-content .header-buttons .icon-menu span:nth-child(3) {
+                    transform-origin: 2px -2px
+                }
+
+                header .static-content .header-buttons .has-avatar,
+                header .sticky-content .header-buttons .has-avatar {
+                    padding: unset
+                }
+
+                header .static-content .header-buttons .has-avatar:before,
+                header .sticky-content .header-buttons .has-avatar:before {
+                    background-color: unset
+                }
+
+                header .static-content .header-buttons .has-avatar .avatar-wrapper .icon-menu,
+                header .sticky-content .header-buttons .has-avatar .avatar-wrapper .icon-menu {
+                    display: none
+                }
+
+                header .static-content .header-buttons .has-avatar .avatar-wrapper .avatar,
+                header .sticky-content .header-buttons .has-avatar .avatar-wrapper .avatar {
+                    width: var(--base-size-x5);
+                    height: var(--base-size-x5);
+                    border-radius: calc(var(--base-size-x2) + 2px)
+                }
+
+                header .static-content .header-buttons .interaction-wrapper,
+                header .sticky-content .header-buttons .interaction-wrapper {
+                    display: block
+                }
+            }
+        </style>
+        <style type="text/css">
+            .flat-button[data-v-9047dd34] {
+                position: relative;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                padding: calc(var(--base-size-x1) + 4px) 0
+            }
+
+            .flat-button[theme=light-grey][data-v-9047dd34]:before {
+                background-color: var(--base-color-grey-light)
+            }
+
+            .flat-button[theme=pink][data-v-9047dd34]:before {
+                background-color: var(--base-color-pink)
+            }
+
+            .flat-button[theme=pink] .text[data-v-9047dd34] {
+                color: var(--base-color-white)
+            }
+
+            .flat-button[data-v-9047dd34]:before {
+                content: "";
+                position: absolute;
+                width: 100%;
+                height: 100%;
+                border-radius: var(--base-size-x2);
+                z-index: -1
+            }
+
+            .flat-button .text[data-v-9047dd34] {
+                font-size: var(--base-body-font-size);
+                font-weight: var(--base-bold-font-weight);
+                line-height: var(--base-size-x3);
+                color: var(--base-color-black)
+            }
+        </style>
+        <style type="text/css">
+            .header-menu {
+                position: absolute;
+                top: 88px;
+                right: var(--base-size-x3);
+                z-index: 1;
+                pointer-events: none
+            }
+
+            .header-menu.open-state {
+                pointer-events: unset
+            }
+
+            .header-menu.no-transition {
+                transition: unset
+            }
+
+            .header-menu .desktop .header-dropdown {
+                position: relative;
+                top: calc(var(--base-size-x1)*-1);
+                width: 248px
+            }
+
+            .header-menu .desktop .header-dropdown .header-dropdown-item {
+                position: relative
+            }
+
+            .header-menu .desktop .header-dropdown .header-dropdown-item .feather,
+            .header-menu .desktop .header-dropdown .header-dropdown-item .icon {
+                display: none
+            }
+
+            .header-menu .desktop .header-dropdown .header-dropdown-item:nth-child(3) {
+                margin-bottom: 14px
+            }
+
+            .header-menu .desktop .header-dropdown .header-dropdown-item:nth-child(3):after {
+                content: "";
+                position: absolute;
+                bottom: -8px;
+                left: 0;
+                width: 100%;
+                height: 2px;
+                background-color: var(--base-background-dropdown-item-separator)
+            }
+
+            .header-menu .desktop .header-dropdown .header-dropdown-item:nth-child(n+4) {
+                font-weight: var(--base-regular-font-weight)
+            }
+
+            .header-menu .mobile {
+                display: none
+            }
+
+            .header-menu .mobile .overlay {
+                position: fixed;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 100%;
+                background-color: var(--base-background-sticky);
+                z-index: -1
+            }
+
+            .header-menu .mobile .interaction {
+                position: absolute;
+                top: var(--base-size-x3);
+                right: var(--base-size-x3)
+            }
+
+            .header-menu .mobile .container {
+                padding: var(--base-size-x3);
+                margin-top: var(--base-size-x7)
+            }
+
+            .header-menu .mobile .upper-part {
+                display: flex;
+                flex-direction: column
+            }
+
+            .header-menu .mobile .upper-part .user-wrapper {
+                display: flex;
+                align-items: center;
+                gap: var(--base-size-x1);
+                padding: 0 var(--base-size-x4);
+                margin-bottom: var(--base-size-x3)
+            }
+
+            .header-menu .mobile .upper-part .user-wrapper .avatar {
+                width: var(--base-size-x6);
+                height: var(--base-size-x6);
+                border-radius: 100%;
+                background-size: cover;
+                background-position: 50%;
+                background-repeat: no-repeat
+            }
+
+            .header-menu .mobile .upper-part .user-wrapper ul {
+                color: var(--base-font-color)
+            }
+
+            .header-menu .mobile .upper-part .user-wrapper ul li {
+                font-weight: var(--base-regular-font-weight);
+                line-height: var(--base-size-x3)
+            }
+
+            .header-menu .mobile .upper-part .user-wrapper ul li.name {
+                font-size: var(--base-h6-font-size);
+                font-weight: var(--base-bold-font-weight)
+            }
+
+            .header-menu .mobile .upper-part .user-wrapper ul li .link-wrapper {
+                display: flex
+            }
+
+            .header-menu .mobile .upper-part .user-wrapper ul li.header-dropdown-item {
+                padding: unset
+            }
+
+            .header-menu .mobile .upper-part .user-wrapper ul li .feather {
+                --icon-size: var(--base-size-x2);
+                order: 1
+            }
+
+            .header-menu .mobile .upper-part .connect-wrapper {
+                padding: 0 var(--base-size-x2);
+                margin: var(--base-size-x2) 0 var(--base-size-x5)
+            }
+
+            .header-menu .mobile .upper-part .connect-wrapper .flat-button:not(:last-child) {
+                margin-bottom: var(--base-size-x2)
+            }
+
+            .header-menu .mobile .bottom-part {
+                margin-top: var(--base-size-x5)
+            }
+
+            .header-menu .mobile .bottom-part .header-dropdown {
+                position: relative;
+                top: unset;
+                box-shadow: unset;
+                padding: 0 var(--base-size-x4)
+            }
+
+            .header-menu .mobile .bottom-part .header-dropdown .header-dropdown-item {
+                padding: unset
+            }
+
+            .header-menu .mobile .bottom-part .header-dropdown li {
+                position: relative;
+                display: flex;
+                align-items: center;
+                font-size: var(--base-body-font-size);
+                font-weight: var(--base-medium-font-weight);
+                line-height: var(--base-size-x3)
+            }
+
+            .header-menu .mobile .bottom-part .header-dropdown li:not(:last-child) {
+                margin-bottom: var(--base-size-x5)
+            }
+
+            .header-menu .mobile .bottom-part .header-dropdown li.highlight:before {
+                content: "";
+                position: absolute;
+                left: calc(var(--base-size-x1)/2*-1 + var(--base-size-x2)*-1);
+                width: calc(var(--base-size-x1)/2);
+                height: 100%;
+                border-radius: var(--base-size-x5);
+                background-color: var(--base-color-black);
+                margin-right: var(--base-size-x1)
+            }
+
+            .header-menu .mobile .bottom-part .header-dropdown li>* {
+                display: flex;
+                align-items: center
+            }
+
+            @media (max-width:980px) {
+                .header-menu {
+                    position: fixed;
+                    top: 0;
+                    left: 0 !important;
+                    right: unset !important;
+                    width: 100%;
+                    height: 100%;
+                    overflow: auto;
+                    transform: translateX(100%);
+                    opacity: 0;
+                    transition: transform .3s, opacity .1s
+                }
+
+                .header-menu .desktop {
+                    display: none
+                }
+
+                .header-menu .mobile {
+                    display: block
+                }
+
+                .header-menu.open-state {
+                    transform: unset;
+                    opacity: 1
+                }
+            }
+        </style>
+        <style type="text/css">
+            :root {
+                --base-size: 8px;
+                --base-size-x1: var(--base-size);
+                --base-size-x2: calc(var(--base-size)*2);
+                --base-size-x3: calc(var(--base-size)*3);
+                --base-size-x4: calc(var(--base-size)*4);
+                --base-size-x5: calc(var(--base-size)*5);
+                --base-size-x6: calc(var(--base-size)*6);
+                --base-size-x7: calc(var(--base-size)*7);
+                --base-size-x8: calc(var(--base-size)*8);
+                --base-size-x9: calc(var(--base-size)*9);
+                --base-size-x10: calc(var(--base-size)*10);
+                --base-color-white: #fff;
+                --base-color-black: #121212;
+                --base-color-grey: #a6a6a6;
+                --base-color-grey-medium: #d9d9d9;
+                --base-color-grey-light: #f7f7f7;
+                --base-color-blue: #157dfe;
+                --base-color-blue-medium: #5ba4fe;
+                --base-color-blue-light: #add2ff;
+                --base-color-blue-extra-light: #e8f2ff;
+                --base-color-yellow: #ffcb3f;
+                --base-color-yellow-medium: #ffdb78;
+                --base-color-yellow-light: #ffedbc;
+                --base-color-yellow-extra-light: #fffbf0;
+                --base-color-pink: #ff6363;
+                --base-color-pink-medium: #ff9292;
+                --base-color-pink-light: #ffc8c8;
+                --base-color-pink-extra-light: #fff1f1;
+                --base-color-orange: #ffa25e;
+                --base-color-system-success: #5bca8d;
+                --base-color-system-success-light: #f2fbf6;
+                --base-color-system-warning: #ff3636;
+                --base-font-family: "Buenos Aires", "Pulp", "OpenSans", "Open Sans", sans-serif;
+                --base-h1-font-size: 80px;
+                --base-h2-font-size: 60px;
+                --base-h3-font-size: 40px;
+                --base-h4-font-size: 30px;
+                --base-h5-font-size: 24px;
+                --base-h6-font-size: 20px;
+                --base-body-font-size: 16px;
+                --base-caption-font-size: 14px;
+                --base-small-font-size: 12px;
+                --base-tiny-font-size: 10px;
+                --base-button-xlarge-font-size: var(--base-body-font-size);
+                --base-button-large-font-size: var(--base-body-font-size);
+                --base-button-medium-font-size: var(--base-caption-font-size);
+                --base-button-small-font-size: var(--base-small-font-size);
+                --base-heavy-font-weight: 800;
+                --base-bold-font-weight: bold;
+                --base-medium-font-weight: 600;
+                --base-regular-font-weight: normal;
+                --base-thin-font-weight: 200;
+                --base-transition: all 0.3s ease;
+                --base-padding: var(--base-size) var(--base-size-x2);
+                --base-background-color: var(--base-color-white);
+                --base-text-color: var(--base-color-black)
+            }
+
+            #app.dark,
+            :root {
+                --base-contrast-color: var(--base-color-pink)
+            }
+
+            #app.dark {
+                --base-background-color: var(--base-color-black);
+                --base-text-color: var(--base-color-white)
+            }
+
+            @media screen and (max-width:330px) {
+                :root {
+                    --base-size: 6px !important;
+                    --base-h6-font-size: 18px !important;
+                    --base-body-font-size: 14px !important;
+                    --base-caption-font-size: 13px !important;
+                    --base-small-font-size: 11px !important
+                }
+            }
+
+            .feather {
+                --icon-size: var(--base-size-x2);
+                width: var(--icon-size);
+                height: var(--icon-size)
+            }
+
+            [dir=rtl] .header-menu {
+                left: var(--base-size-x3);
+                right: unset
+            }
+
+            [dir=rtl] .header-search-engine .container .clear-button {
+                left: var(--base-size-x2);
+                right: unset
+            }
+
+            header.header-superprof {
+                font-family: var(--base-font-family);
+                position: relative;
+                z-index: 999;
+                --base-custom-color-grey-dark-2: #3f3f3f;
+                --base-custom-color-grey-dark-3: #525252;
+                --base-background-main: var(--base-color-white);
+                --base-background-sticky: var(--base-color-white);
+                --base-background-search-engine-container: var(--base-color-grey-light);
+                --base-background-button: var(--base-color-grey-light);
+                --base-background-button-hover: var(--base-color-pink);
+                --base-background-dropdown-item: var(--base-color-white);
+                --base-background-item-hover: var(--base-color-pink-extra-light);
+                --base-background-dropdown-item-separator: var(--base-color-grey-light);
+                --base-background-button-open-highlight: var(--base-background-button-hover);
+                --base-font-color: var(--base-color-black);
+                --base-font-color-hover: var(--base-color-white);
+                --base-font-color-search-engine: var(--base-font-color);
+                --base-font-color-search-engine-hover: unset
+            }
+
+            header.header-superprof .themes.light-pink {
+                --base-background-main: var(--base-color-pink-extra-light);
+                --base-background-sticky: var(--base-color-pink-extra-light);
+                --base-background-search-engine-container: var(--base-color-white);
+                --base-background-button: var(--base-color-white);
+                --base-background-button-hover: var(--base-color-pink);
+                --base-background-dropdown-item: var(--base-color-pink-extra-light)
+            }
+
+            header.header-superprof .themes.dark {
+                --base-background-main: var(--base-color-black);
+                --base-background-sticky: var(--base-color-black);
+                --base-background-search-engine-container: hsla(0, 0%, 100%, 0.9);
+                --base-background-button: var(--base-custom-color-grey-dark-2);
+                --base-background-button-hover: var(--base-color-pink);
+                --base-background-dropdown-item: var(--base-custom-color-grey-dark-2);
+                --base-background-item-hover: var(--base-custom-color-grey-dark-3);
+                --base-background-dropdown-item-separator: var(--base-custom-color-grey-dark-2);
+                --base-font-color: var(--base-color-white);
+                --base-font-color-hover: var(--base-color-white);
+                --base-font-color-search-engine: var(--base-color-black);
+                --base-font-color-search-engine-hover: var(--base-color-white)
+            }
+
+            header.header-superprof[class*=-mode],
+            header.header-superprof[class*=-mode]>:not(.header-menu) {
+                width: 100%;
+                box-sizing: border-box
+            }
+
+            header.header-superprof.absolute-mode .static-content {
+                position: absolute;
+                top: 0;
+                left: 0
+            }
+
+            header.header-superprof.fixed-mode {
+                position: fixed
+            }
+
+            header.header-superprof button {
+                border: unset;
+                outline: unset;
+                -webkit-appearance: unset;
+                -moz-appearance: unset;
+                appearance: unset;
+                background-color: unset
+            }
+
+            header.header-superprof ul {
+                list-style: none;
+                padding: 0;
+                margin: 0
+            }
+
+            header.header-superprof .caption {
+                font-size: var(--base-caption-font-size);
+                font-weight: var(--base-medium-font-weight);
+                line-height: var(--base-size-x3);
+                margin: 0
+            }
+
+            header.header-superprof .notification-badge {
+                display: inline-flex;
+                align-items: center;
+                flex-shrink: 0;
+                justify-content: center;
+                width: calc(var(--base-size-x2));
+                height: calc(var(--base-size-x2));
+                box-sizing: border-box;
+                background-color: var(--base-color-pink);
+                border-radius: 100%;
+                background-clip: padding-box;
+                z-index: 2;
+                transition: opacity .15s;
+                line-height: 1px;
+                font-size: calc(var(--base-tiny-font-size) - 2px);
+                font-weight: var(--base-bold-font-weight);
+                color: var(--base-color-white)
+            }
+
+            header.header-superprof .common-separator:after {
+                content: "";
+                display: inline-block;
+                width: 100%;
+                height: 2px;
+                background-color: var(--base-color-grey-light)
+            }
+
+            header.header-superprof .squishy-button {
+                position: relative;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                flex-shrink: 0;
+                width: var(--base-size-x5);
+                height: var(--base-size-x5);
+                z-index: 1;
+                cursor: pointer
+            }
+
+            header.header-superprof .squishy-button:before {
+                content: "";
+                position: absolute;
+                width: 100%;
+                height: 100%;
+                z-index: -1;
+                transition: transform .15s, background-color .15s;
+                background-color: var(--base-color-pink);
+                border-radius: calc(var(--base-size-x2) + 2px)
+            }
+
+            header.header-superprof .squishy-button .feather {
+                color: var(--base-color-white)
+            }
+
+            header.header-superprof .squishy-button:hover:before {
+                transform: scale(1.07)
+            }
+
+            header.header-superprof .false-search-engine {
+                display: flex;
+                align-items: center;
+                margin: 0 var(--base-size-x2);
+                padding: calc(var(--base-size-x1) + 4px);
+                background-color: var(--base-color-grey-light);
+                border-radius: var(--base-size-x2);
+                overflow: hidden
+            }
+
+            header.header-superprof .false-search-engine .main-text {
+                white-space: nowrap;
+                text-overflow: ellipsis;
+                overflow: hidden
+            }
+
+            header.header-superprof .false-search-engine .feather {
+                width: var(--base-size-x2);
+                height: var(--base-size-x2);
+                margin-right: calc(var(--base-size-x1)/2);
+                flex-shrink: 0
+            }
+
+            header.header-superprof .false-search-engine .fields {
+                text-overflow: ellipsis;
+                overflow: hidden;
+                width: 100%
+            }
+
+            header.header-superprof .false-search-engine .fields span {
+                font-size: var(--base-caption-font-size);
+                font-weight: var(--base-medium-font-weight);
+                white-space: nowrap
+            }
+
+            header.header-superprof .false-search-engine .fields span:not(:last-child):after {
+                content: " - "
+            }
+
+            header.header-superprof.disable-main-background .static-content {
+                --base-background-button: var(--base-color-white)
+            }
+
+            header.header-superprof.disable-main-background .static-content,
+            header.header-superprof.disable-main-background .sticky-content {
+                --base-background-main: transparent !important
+            }
+
+            header.header-superprof:not(header.header-superprof.sticky-thresold) .sticky-content .header-search-engine .header-dropdown {
+                opacity: 0;
+                visibility: hidden
+            }
+
+            header.header-superprof.sticky-thresold .header-menu {
+                position: fixed
+            }
+
+            header.header-superprof.sticky-thresold .sticky-content {
+                transform: translateY(0)
+            }
+
+            header.header-superprof.sticky-thresold .sticky-content .trademark a {
+                transition: unset
+            }
+
+            header.header-superprof.sticky-thresold .trademark.should-swap-logo a:first-child {
+                visibility: hidden;
+                opacity: 0;
+                width: 0;
+                height: 0
+            }
+
+            header.header-superprof.sticky-thresold .trademark.should-swap-logo a:nth-child(2) {
+                visibility: visible;
+                opacity: 1;
+                width: inherit;
+                height: inherit
+            }
+
+            header.header-superprof .trademark a {
+                width: 100%;
+                height: 100%;
+                display: block;
+                mask-size: contain;
+                mask-position: center;
+                mask-repeat: no-repeat;
+                -webkit-mask-size: contain;
+                -webkit-mask-position: center;
+                -webkit-mask-repeat: no-repeat
+            }
+
+            header.header-superprof .trademark a.is-IE {
+                background-size: contain;
+                background-color: unset;
+                background-position: 50%;
+                background-repeat: no-repeat
+            }
+
+            header.header-superprof .trademark a:nth-child(2) {
+                visibility: hidden;
+                opacity: 0;
+                width: 0;
+                height: 0
+            }
+
+            header.header-superprof .static-content,
+            header.header-superprof .sticky-content {
+                border-radius: 0 0 var(--base-size-x3) var(--base-size-x3);
+                background-color: var(--base-background-main);
+                color: var(--base-font-color);
+                display: flex;
+                align-items: center;
+                justify-content: space-between;
+                gap: var(--base-size-x3);
+                padding: var(--base-size-x2) var(--base-size-x3);
+                min-height: 88px
+            }
+
+            header.header-superprof .sticky-content {
+                background-color: var(--base-background-sticky);
+                position: fixed;
+                width: 100%;
+                top: 0;
+                left: 0;
+                transform: translateY(-200%);
+                transition: transform .3s;
+                box-sizing: border-box
+            }
+
+            header.header-superprof .sticky-content .trademark a {
+                transition: all 0s .3s
+            }
+
+            @media (max-width:980px) {
+                header.header-superprof .themes.dark {
+                    --base-background-dropdown-item: var(--base-color-black)
+                }
+
+                header.header-superprof .static-content,
+                header.header-superprof .sticky-content {
+                    justify-content: flex-start;
+                    min-height: 72px !important
+                }
+
+                header.header-superprof .static-content .header-buttons,
+                header.header-superprof .sticky-content .header-buttons {
+                    flex: 1;
+                    justify-content: flex-end
+                }
+
+                header.header-superprof.super-header .static-content {
+                    height: 72px !important
+                }
+            }
+        </style>
+        <style type="text/css">
+            @keyframes feather--spin-data-v-07452373 {
+                from {
+                    transform: rotate(0)
+                }
+
+                to {
+                    transform: rotate(360deg)
+                }
+            }
+
+            .feather[data-v-07452373] {
+                display: inline-block;
+                overflow: hidden
+            }
+
+            .feather--spin[data-v-07452373] {
+                animation: feather--spin-data-v-07452373 2s linear infinite
+            }
+
+            .feather--pulse[data-v-07452373] {
+                animation: feather--spin-data-v-07452373 2s infinite steps(8)
+            }
+
+            .feather--slow[data-v-07452373] {
+                animation-duration: 3s
+            }
+
+            .feather--fast[data-v-07452373] {
+                animation-duration: 1s
+            }
+
+            .feather__content[data-v-07452373] {
+                display: block;
+                height: inherit;
+                width: inherit
+            }
+        </style>
+        <style type="text/css">
+            .pops-container-general {
+                --icon-size: 32px;
+                position: fixed;
+                top: 16px;
+                right: 16px;
+                display: flex;
+                flex-direction: column;
+                align-items: flex-end;
+                justify-content: flex-start;
+                z-index: 999999999;
+                font-family: "Buenos Aires", "Pulp", "OpenSans", "Open Sans", sans-serif;
+                pointer-events: none;
+            }
+
+            .pops-container-general .pop {
+                pointer-events: all;
+                transition: all .3s ease;
+                transform: translateX(100%);
+                opacity: 0;
+                padding: 16px;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                border-radius: 24px;
+                background-color: var(--background-color);
+                color: var(--color);
+                cursor: default;
+            }
+
+            .pops-container-general .pop.clickable {
+                cursor: pointer;
+            }
+
+            .pops-container-general .pop.active {
+                transform: translateX(0);
+                opacity: 1;
+            }
+
+            .pops-container-general .pop:not(:last-child) {
+                margin-bottom: 8px;
+            }
+
+            .pops-container-general .pop[data-type="success"] {
+                --background-color: #F2FBF6;
+                --color: #5BCA8D;
+                --dimmed-color: rgba(91, 202, 141, 0.1);
+            }
+
+            .pops-container-general .pop[data-type="infos"] {
+                --background-color: #e8f2ff;
+                --color: #157dfe;
+                --dimmed-color: rgba(21, 125, 254, 0.1);
+            }
+
+            .pops-container-general .pop[data-type="warning"] {
+                --background-color: #FFFFFF;
+                --color: #ffa25e;
+                --dimmed-color: rgba(255, 162, 94, 0.1);
+            }
+
+            .pops-container-general .pop[data-type="error"] {
+                --background-color: #fff1f1;
+                --color: #FF3636;
+                --dimmed-color: rgba(255, 54, 54, 0.1);
+            }
+
+            .pops-container-general .pop .icon {
+                width: var(--icon-size);
+                height: var(--icon-size);
+                background-color: var(--color);
+                border-radius: calc(var(--icon-size) * 0.4375);
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                flex-shrink: 0;
+            }
+
+            .pops-container-general .pop .icon span {
+                width: calc(var(--icon-size) / 2);
+                height: calc(var(--icon-size) / 2);
+                background-color: #fff;
+            }
+
+            .pops-container-general .pop .pop-text-container {
+                padding: 0 8px 0 8px;
+            }
+
+            .pops-container-general .pop .pop-text-container:not(:last-child) {
+                padding-right: 16px;
+            }
+
+            .pops-container-general .pop .pop-text-container h1 {
+                margin: 0;
+                font-size: 14px;
+                color: var(--color);
+            }
+
+            .pops-container-general .pop .pop-text-container h2 {
+                margin: 0;
+                font-size: 12px;
+                color: var(--color);
+            }
+
+            .pops-container-general .pop .pop-text-container p {
+                margin: 0;
+                color: var(--color);
+                font-size: 10px;
+                width: 100%;
+                max-width: 350px;
+            }
+
+            .pops-container-general .pop .pop-text-container p:not(:first-child) {
+                margin: 4px 0 0;
+            }
+
+            .pops-container-general .pop button {
+                width: var(--icon-size);
+                height: var(--icon-size);
+                flex-shrink: 0;
+                transition: all .3s ease;
+                background-color: transparent;
+                border-radius: calc(var(--icon-size) * 0.4375);
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                border: none;
+            }
+
+            .pops-container-general .pop button span {
+                width: calc(var(--icon-size) / 2);
+                height: calc(var(--icon-size) / 2);
+                background-color: var(--color);
+            }
+
+            .pops-container-general .pop button:hover {
+                background-color: var(--dimmed-color);
+            }
+        </style>
+        <style type="text/css">
+            @keyframes feather--spin-data-v-07452373 {
+                from {
+                    transform: rotate(0)
+                }
+
+                to {
+                    transform: rotate(360deg)
+                }
+            }
+
+            .feather[data-v-07452373] {
+                display: inline-block;
+                overflow: hidden
+            }
+
+            .feather--spin[data-v-07452373] {
+                animation: feather--spin-data-v-07452373 2s linear infinite
+            }
+
+            .feather--pulse[data-v-07452373] {
+                animation: feather--spin-data-v-07452373 2s infinite steps(8)
+            }
+
+            .feather--slow[data-v-07452373] {
+                animation-duration: 3s
+            }
+
+            .feather--fast[data-v-07452373] {
+                animation-duration: 1s
+            }
+
+            .feather__content[data-v-07452373] {
+                display: block;
+                height: inherit;
+                width: inherit
+            }
+        </style>
+        <script type="text/javascript" charset="UTF-8"
+                src="https://maps.googleapis.com/maps-api-v3/api/js/57/4/intl/es_ALL/common.js"></scrip>
+        <script type="text/javascript" charset="UTF-8"
+                src="https://maps.googleapis.com/maps-api-v3/api/js/57/4/intl/es_ALL/util.js"></script>
+    </head>
+
+    <body class="" id="not-mobile-app">
+    <div id="app" class="" dir="ltr">
+        
+        <!--
+        <div class="header-wrapper">
+            <header class="header-superprof fixed-mode">
+                <div class="static-content themes white">
+                    <div class="trademark"><a href="/" aria-label="Logo" title="Logo" class=""
+                                              style="mask-image: url(&quot;//c.superprof.com/style/images/logos/superprof.svg&quot;); background-color: var(--base-color-pink); width: 120px; height: 24px;"></a>
+                    </div>
+                    <div id="search-engine-0" class="header-search-engine empty-step">
+                        <div class="overlay" style="display: none;"></div>
+                        <div class="container">
+                            <span class="main-text caption">¿Qué quieres aprender?</span>
+                            <div class="fields">
+                                <div class="input-wrapper">
+                                    <div class="field-wrapper">
+                                        <i data-v-07452373="" data-name="book"
+                                                  data-tags="read,dictionary,booklet,magazine,library" data-type="book"
+                                                  class="feather feather--book"><svg data-v-07452373=""
+                                                                                     xmlns="http://www.w3.org/2000/svg" width="24" height="24"
+                                                                                     viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                                                                                     stroke-linecap="round" stroke-linejoin="round"
+                                                                                     class="feather feather-book feather__content">
+                                        <path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"></path>
+                                        <path
+                                                d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z">
+                                        </path>
+                                    </svg></i><input data-proxy="subject.input" data-proxy-field="subject"
+                                                     data-local-target="inputs.subject" data-field-index="SUBJECT"
+                                                     name="subject-field" type="text" class="caption"
+                                                     placeholder="¿Qué materia?">
+                                        <div class="clear-button"><i data-v-07452373="" data-name="x"
+                                                                     data-tags="cancel,close,delete,remove,times,clear" data-type="x"
+                                                                     class="feather feather--x"><svg data-v-07452373=""
+                                                                                                     xmlns="http://www.w3.org/2000/svg" width="24" height="24"
+                                                                                                     viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                                                                                     stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                                                                                                     class="feather feather-x feather__content">
+                                            <line x1="18" y1="6" x2="6" y2="18"></line>
+                                            <line x1="6" y1="6" x2="18" y2="18"></line>
+                                        </svg></i></div>
+                                    </div><span class="dropdown-title">Top materias</span>
+                                    <ul data-v-7bc63f14="" class="header-dropdown" style="display: none;">
+                                        <li data-v-7bc63f14="" class="header-dropdown-item" style="display: none;">
+                                            <div data-v-7bc63f14="" class="header-dropdown-item-inner"><i
+                                                    data-v-07452373="" data-v-7bc63f14="" data-name="more-horizontal"
+                                                    data-tags="ellipsis" data-type="more-horizontal"
+                                                    class="feather feather--more-horizontal"><svg data-v-07452373=""
+                                                                                                  xmlns="http://www.w3.org/2000/svg" width="24" height="24"
+                                                                                                  viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                                                                                  stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                                                                                                  class="feather feather-more-horizontal feather__content">
+                                                <circle cx="12" cy="12" r="1"></circle>
+                                                <circle cx="19" cy="12" r="1"></circle>
+                                                <circle cx="5" cy="12" r="1"></circle>
+                                            </svg></i><span data-v-7bc63f14="">Plus</span></div>
+                                        </li>
+                                    </ul>
+                                </div>
+                                <div class="input-wrapper placeholder">
+                                    <div class="field-wrapper">
+                                        <i data-v-07452373="" data-name="map-pin"
+                                                  data-tags="location,navigation,travel,marker" data-type="map-pin"
+                                                  class="feather feather--map-pin"><svg data-v-07452373=""
+                                                                                        xmlns="http://www.w3.org/2000/svg" width="24" height="24"
+                                                                                        viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                                                                                        stroke-linecap="round" stroke-linejoin="round"
+                                                                                        class="feather feather-map-pin feather__content">
+                                        <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path>
+                                        <circle cx="12" cy="10" r="3"></circle>
+                                    </svg></i><input data-proxy="city.input" data-proxy-field="city"
+                                                     data-local-target="inputs.city" data-field-index="CITY" name="city-field"
+                                                     type="text" class="caption" placeholder="¿Dirección, ciudad o barrio?">
+                                        <div class="clear-button"><i data-v-07452373="" data-name="x"
+                                                                     data-tags="cancel,close,delete,remove,times,clear" data-type="x"
+                                                                     class="feather feather--x"><svg data-v-07452373=""
+                                                                                                     xmlns="http://www.w3.org/2000/svg" width="24" height="24"
+                                                                                                     viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                                                                                     stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                                                                                                     class="feather feather-x feather__content">
+                                            <line x1="18" y1="6" x2="6" y2="18"></line>
+                                            <line x1="6" y1="6" x2="18" y2="18"></line>
+                                        </svg></i></div>
+                                    </div><span class="dropdown-title">Top ciudades</span>
+                                    <ul data-v-7bc63f14="" class="header-dropdown">
+                                        <li data-v-7bc63f14="" class="header-dropdown-item caption" data-index="3"
+                                            data-highlight="0">
+                                            <div class="item-wrapper data-a"><i data-v-07452373="" data-name="target"
+                                                                                data-tags="logo,bullseye" data-type="target"
+                                                                                class="feather feather--target"><svg data-v-07452373=""
+                                                                                                                     xmlns="http://www.w3.org/2000/svg" width="24" height="24"
+                                                                                                                     viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                                                                                                     stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                                                                                                                     class="feather feather-target feather__content">
+                                                <circle cx="12" cy="12" r="10"></circle>
+                                                <circle cx="12" cy="12" r="6"></circle>
+                                                <circle cx="12" cy="12" r="2"></circle>
+                                            </svg></i><span class="text">Buscar cerca de mí</span>
+                                            </div>
+                                        </li>
+                                        <li data-v-7bc63f14="" class="header-dropdown-item caption" data-index="4"
+                                            data-highlight="0">
+                                            <div class="item-wrapper data-a"><i data-v-07452373="" data-name="video"
+                                                                                data-tags="camera,movie,film" data-type="video"
+                                                                                class="feather feather--video"><svg data-v-07452373=""
+                                                                                                                    xmlns="http://www.w3.org/2000/svg" width="24" height="24"
+                                                                                                                    viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                                                                                                    stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                                                                                                                    class="feather feather-video feather__content">
+                                                <polygon points="23 7 16 12 23 17 23 7"></polygon>
+                                                <rect x="1" y="5" width="15" height="14" rx="2" ry="2"></rect>
+                                            </svg></i><span class="text">En línea</span>
+                                            </div>
+                                        </li>
+                                        <li data-v-7bc63f14="" class="header-dropdown-item" style="display: none;">
+                                            <div data-v-7bc63f14="" class="header-dropdown-item-inner"><i
+                                                    data-v-07452373="" data-v-7bc63f14="" data-name="more-horizontal"
+                                                    data-tags="ellipsis" data-type="more-horizontal"
+                                                    class="feather feather--more-horizontal"><svg data-v-07452373=""
+                                                                                                  xmlns="http://www.w3.org/2000/svg" width="24" height="24"
+                                                                                                  viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                                                                                  stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                                                                                                  class="feather feather-more-horizontal feather__content">
+                                                <circle cx="12" cy="12" r="1"></circle>
+                                                <circle cx="19" cy="12" r="1"></circle>
+                                                <circle cx="5" cy="12" r="1"></circle>
+                                            </svg></i><span data-v-7bc63f14="">Plus</span></div>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <button title="search_submit" class="squishy-button"><i data-v-07452373=""
+                                                                                           data-name="search" data-tags="find,magnifier,magnifying glass" data-type="search"
+                                                                                           class="feather feather--search"><svg data-v-07452373=""
+                                                                                                                                xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
+                                                                                                                                fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                                                                                                                stroke-linejoin="round" class="feather feather-search feather__content">
+                            <circle cx="11" cy="11" r="8"></circle>
+                            <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+                        </svg></i></button>
+                        </div>
+                    </div>
+                    <div class="header-buttons"><a data-v-017dc95e="" to="[object Object]"
+                                                   href="https://www.superprof.es/ayuda/" class="basic-header-button caption has-icon">
+                        <i data-v-07452373="" data-v-017dc95e="" data-name="help-circle"
+                                  data-tags="question mark" data-type="help-circle"
+                                  class="feather feather--help-circle"><svg data-v-07452373=""
+                                                                            xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
+                                                                            fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                                                            stroke-linejoin="round" class="feather feather-help-circle feather__content">
+                        <circle cx="12" cy="12" r="10"></circle>
+                        <path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"></path>
+                        <line x1="12" y1="17" x2="12.01" y2="17"></line>
+                    </svg></i></a><a data-v-017dc95e="" class="basic-header-button caption has-icon">
+                        <i data-v-07452373="" data-v-017dc95e="" data-name="heart"
+                                  data-tags="like,love,emotion" data-type="heart" class="feather feather--heart"><svg
+                            data-v-07452373="" xmlns="http://www.w3.org/2000/svg" width="24" height="24"
+                            viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                            stroke-linecap="round" stroke-linejoin="round"
+                            class="feather feather-heart feather__content">
+                        <path
+                                d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z">
+                        </path>
+                    </svg></i></a><button data-v-017dc95e="" to="[object Object]"
+                                          class="basic-header-button caption has-avatar">
+                     
+                        <div data-v-017dc95e="" class="avatar-wrapper">
+                            <div data-v-017dc95e="" class="icon-menu"><span data-v-017dc95e=""></span><span
+                                    data-v-017dc95e=""></span><span data-v-017dc95e=""></span></div>
+                            <div data-v-017dc95e="" class="avatar"
+                                 style="background-image: url(&quot;https://c.superprof.com/i/m/30308655/140/20240313080839/30308655.jpg&quot;);">
+                                
+                            </div>
+                        </div>
+                    </button>
+                    </div>
+                </div>
+                <div class="header-menu themes white">
+                    <div class="desktop">
+                        <ul data-v-7bc63f14="" class="header-dropdown">
+                            <li data-v-7bc63f14="" class="header-dropdown-item caption" data-index="3"><a
+                                    href="/panel-de-control.html"
+                                    class="item-wrapper data-routeur router-link-exact-active router-link-active"><i
+                                    data-v-07452373="" data-name="grid" data-tags="" data-type="grid"
+                                    class="feather feather--grid"><svg data-v-07452373=""
+                                                                       xmlns="http://www.w3.org/2000/svg" width="24" height="24"
+                                                                       viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                                                                       stroke-linecap="round" stroke-linejoin="round"
+                                                                       class="feather feather-grid feather__content">
+                                <rect x="3" y="3" width="7" height="7"></rect>
+                                <rect x="14" y="3" width="7" height="7"></rect>
+                                <rect x="14" y="14" width="7" height="7"></rect>
+                                <rect x="3" y="14" width="7" height="7"></rect>
+                            </svg></i><span class="text">Mi panel de control</span>
+                                </a>
+                            </li>
+                            <li data-v-7bc63f14="" class="header-dropdown-item caption" data-index="4"><a
+                                    href="/panel-de-control.html/mensajeria" class="item-wrapper data-routeur"><i
+                                    data-v-07452373="" data-name="message-circle" data-tags="comment,chat"
+                                    data-type="message-circle" class="feather feather--message-circle"><svg
+                                    data-v-07452373="" xmlns="http://www.w3.org/2000/svg" width="24" height="24"
+                                    viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                                    stroke-linecap="round" stroke-linejoin="round"
+                                    class="feather feather-message-circle feather__content">
+                                <path
+                                        d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z">
+                                </path>
+                            </svg></i><span class="text">Mensajes</span>
+                               </a>
+                            </li>
+                            <li data-v-7bc63f14="" class="header-dropdown-item caption" data-index="7"><a
+                                    href="/panel-de-control.html/mis-anuncios/lista"
+                                    class="item-wrapper data-routeur"><i data-v-07452373="" data-name="clipboard"
+                                                                         data-tags="copy" data-type="clipboard" class="feather feather--clipboard"><svg
+                                    data-v-07452373="" xmlns="http://www.w3.org/2000/svg" width="24" height="24"
+                                    viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                                    stroke-linecap="round" stroke-linejoin="round"
+                                    class="feather feather-clipboard feather__content">
+                                <path
+                                        d="M16 4h2a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h2">
+                                </path>
+                                <rect x="8" y="2" width="8" height="4" rx="1" ry="1"></rect>
+                            </svg></i><span class="text">Mis anuncios</span>
+                              </a>
+                            </li>
+                            <li data-v-7bc63f14="" class="header-dropdown-item caption no-icon" data-index="13"><a
+                                    href="/panel-de-control.html/mi-perfil/" class="item-wrapper data-routeur">
+                              <span class="text">Mi perfil</span>
+                               </a>
+                            </li>
+                            <li data-v-7bc63f14="" class="header-dropdown-item caption" data-index="15"><a
+                                    href="/panel-de-control.html/premium" class="item-wrapper data-routeur"><i
+                                    data-v-07452373="" data-name="trending-up" data-tags="" data-type="trending-up"
+                                    class="feather feather--trending-up"><svg data-v-07452373=""
+                                                                              xmlns="http://www.w3.org/2000/svg" width="24" height="24"
+                                                                              viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                                                                              stroke-linecap="round" stroke-linejoin="round"
+                                                                              class="feather feather-trending-up feather__content">
+                                <polyline points="23 6 13.5 15.5 8.5 10.5 1 18"></polyline>
+                                <polyline points="17 6 23 6 23 12"></polyline>
+                            </svg></i><span class="text">Premium</span>
+                               </a>
+                            </li>
+                            <li data-v-7bc63f14="" class="header-dropdown-item caption no-icon" data-index="17">
+                                <div class="item-wrapper data-a">
+                                   <span class="text">Desconectarse</span>
+                                </div>
+                            </li>
+                            <li data-v-7bc63f14="" class="header-dropdown-item" style="display: none;">
+                                <div data-v-7bc63f14="" class="header-dropdown-item-inner"><i data-v-07452373=""
+                                                                                              data-v-7bc63f14="" data-name="more-horizontal" data-tags="ellipsis"
+                                                                                              data-type="more-horizontal" class="feather feather--more-horizontal"><svg
+                                        data-v-07452373="" xmlns="http://www.w3.org/2000/svg" width="24" height="24"
+                                        viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                                        stroke-linecap="round" stroke-linejoin="round"
+                                        class="feather feather-more-horizontal feather__content">
+                                    <circle cx="12" cy="12" r="1"></circle>
+                                    <circle cx="19" cy="12" r="1"></circle>
+                                    <circle cx="5" cy="12" r="1"></circle>
+                                </svg></i><span data-v-7bc63f14="">Plus</span></div>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="mobile">
+                        <div class="overlay"></div>
+                        <div class="interaction">
+                            <div class="squishy-button"><i data-v-07452373="" data-name="x"
+                                                           data-tags="cancel,close,delete,remove,times,clear" data-type="x"
+                                                           class="feather feather--x"><svg data-v-07452373=""
+                                                                                           xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
+                                                                                           fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                                                                           stroke-linejoin="round" class="feather feather-x feather__content">
+                                <line x1="18" y1="6" x2="6" y2="18"></line>
+                                <line x1="6" y1="6" x2="18" y2="18"></line>
+                            </svg></i></div>
+                        </div>
+                        <div class="container">
+                            <div class="upper-part common-separator">
+                                <div class="user-wrapper">
+                                    <div class="avatar"
+                                         style="background-image: url(&quot;https://c.superprof.com/i/m/30308655/140/20240313080839/30308655.jpg&quot;);">
+                                    </div>
+                                    <ul>
+                                        <li class="name">Pedro</li>
+                                        <div class="link-wrapper">
+                                            <li class="header-dropdown-item caption"><a
+                                                    href="/panel-de-control.html/mi-perfil/"
+                                                    class="item-wrapper data-routeur"><i data-v-07452373=""
+                                                                                         data-name="arrow-right" data-tags="" data-type="arrow-right"
+                                                                                         class="feather feather--arrow-right"><svg data-v-07452373=""
+                                                                                                                                   xmlns="http://www.w3.org/2000/svg" width="24" height="24"
+                                                                                                                                   viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                                                                                                                   stroke-width="2" stroke-linecap="round"
+                                                                                                                                   stroke-linejoin="round"
+                                                                                                                                   class="feather feather-arrow-right feather__content">
+                                                <line x1="5" y1="12" x2="19" y2="12"></line>
+                                                <polyline points="12 5 19 12 12 19"></polyline>
+                                            </svg></i><span class="text">Mi perfil</span>
+                                                </a>
+                                            </li>
+                                        </div>
+                                    </ul>
+                                </div>
+                            </div>
+                            <div class="bottom-part">
+                                <ul data-v-7bc63f14="" class="header-dropdown show">
+                                    <li data-v-7bc63f14="" class="header-dropdown-item caption" data-index="2">
+                                        <div class="item-wrapper data-a"><i data-v-07452373="" data-name="search"
+                                                                            data-tags="find,magnifier,magnifying glass" data-type="search"
+                                                                            class="feather feather--search"><svg data-v-07452373=""
+                                                                                                                 xmlns="http://www.w3.org/2000/svg" width="24" height="24"
+                                                                                                                 viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                                                                                                 stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                                                                                                                 class="feather feather-search feather__content">
+                                            <circle cx="11" cy="11" r="8"></circle>
+                                            <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+                                        </svg></i><span class="text">Buscar un/a profe</span>
+                                           
+                                        </div>
+                                     
+                                    </li>
+                                    <li data-v-7bc63f14="" class="header-dropdown-item caption" data-index="3"><a
+                                            href="/panel-de-control.html"
+                                            class="item-wrapper data-routeur router-link-exact-active router-link-active"><i
+                                            data-v-07452373="" data-name="grid" data-tags="" data-type="grid"
+                                            class="feather feather--grid"><svg data-v-07452373=""
+                                                                               xmlns="http://www.w3.org/2000/svg" width="24" height="24"
+                                                                               viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                                                               stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                                                                               class="feather feather-grid feather__content">
+                                        <rect x="3" y="3" width="7" height="7"></rect>
+                                        <rect x="14" y="3" width="7" height="7"></rect>
+                                        <rect x="14" y="14" width="7" height="7"></rect>
+                                        <rect x="3" y="14" width="7" height="7"></rect>
+                                    </svg></i><span class="text">Mi panel de control</span>
+                                      </a>
+                                     
+                                    </li>
+                                    <li data-v-7bc63f14="" class="header-dropdown-item caption" data-index="5"><a
+                                            href="/panel-de-control.html/mensajeria"
+                                            class="item-wrapper data-routeur"><i data-v-07452373=""
+                                                                                 data-name="message-circle" data-tags="comment,chat"
+                                                                                 data-type="message-circle" class="feather feather--message-circle"><svg
+                                            data-v-07452373="" xmlns="http://www.w3.org/2000/svg" width="24"
+                                            height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                            stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                                            class="feather feather-message-circle feather__content">
+                                        <path
+                                                d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z">
+                                        </path>
+                                    </svg></i><span class="text">Mis solicitudes de clases</span>
+                                       </a>
+                                    </li>
+                                    <li data-v-7bc63f14="" class="header-dropdown-item caption" data-index="6"><a
+                                            href="/panel-de-control.html/cours" class="item-wrapper data-routeur"><i
+                                            data-v-07452373="" data-name="book"
+                                            data-tags="read,dictionary,booklet,magazine,library" data-type="book"
+                                            class="feather feather--book"><svg data-v-07452373=""
+                                                                               xmlns="http://www.w3.org/2000/svg" width="24" height="24"
+                                                                               viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                                                               stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                                                                               class="feather feather-book feather__content">
+                                        <path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"></path>
+                                        <path
+                                                d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z">
+                                        </path>
+                                    </svg></i><span class="text">Clases</span>
+                                      </a>
+                                    </li>
+                                    <li data-v-7bc63f14="" class="header-dropdown-item caption" data-index="7"><a
+                                            href="/panel-de-control.html/mis-anuncios/lista"
+                                            class="item-wrapper data-routeur"><i data-v-07452373=""
+                                                                                 data-name="clipboard" data-tags="copy" data-type="clipboard"
+                                                                                 class="feather feather--clipboard"><svg data-v-07452373=""
+                                                                                                                         xmlns="http://www.w3.org/2000/svg" width="24" height="24"
+                                                                                                                         viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                                                                                                         stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                                                                                                                         class="feather feather-clipboard feather__content">
+                                        <path
+                                                d="M16 4h2a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h2">
+                                        </path>
+                                        <rect x="8" y="2" width="8" height="4" rx="1" ry="1"></rect>
+                                    </svg></i><span class="text">Mis anuncios</span>
+                                        </a>
+                                    </li>
+                                    <li data-v-7bc63f14="" class="header-dropdown-item caption" data-index="9"><a
+                                            href="/panel-de-control.html/favoritos" class="item-wrapper data-routeur"><i
+                                            data-v-07452373="" data-name="heart" data-tags="like,love,emotion"
+                                            data-type="heart" class="feather feather--heart"><svg data-v-07452373=""
+                                                                                                  xmlns="http://www.w3.org/2000/svg" width="24" height="24"
+                                                                                                  viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                                                                                  stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                                                                                                  class="feather feather-heart feather__content">
+                                        <path
+                                                d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z">
+                                        </path>
+                                    </svg></i><span class="text">Favoritos</span>
+                                    </a>
+                                    </li>
+                                    <li data-v-7bc63f14="" class="header-dropdown-item caption" data-index="10"><a
+                                            href="https://www.superprof.es/ayuda/" class="item-wrapper data-a"><i
+                                            data-v-07452373="" data-name="help-circle" data-tags="question mark"
+                                            data-type="help-circle" class="feather feather--help-circle"><svg
+                                            data-v-07452373="" xmlns="http://www.w3.org/2000/svg" width="24"
+                                            height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                            stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                                            class="feather feather-help-circle feather__content">
+                                        <circle cx="12" cy="12" r="10"></circle>
+                                        <path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"></path>
+                                        <line x1="12" y1="17" x2="12.01" y2="17"></line>
+                                    </svg></i><span class="text">Ayuda</span>
+                                      </a>
+                                    </li>
+                                    <li data-v-7bc63f14="" class="header-dropdown-item caption" data-index="15"><a
+                                            href="/panel-de-control.html/premium" class="item-wrapper data-routeur"><i
+                                            data-v-07452373="" data-name="trending-up" data-tags=""
+                                            data-type="trending-up" class="feather feather--trending-up"><svg
+                                            data-v-07452373="" xmlns="http://www.w3.org/2000/svg" width="24"
+                                            height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                            stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                                            class="feather feather-trending-up feather__content">
+                                        <polyline points="23 6 13.5 15.5 8.5 10.5 1 18"></polyline>
+                                        <polyline points="17 6 23 6 23 12"></polyline>
+                                    </svg></i><span class="text">Premium</span>
+                                        </a>
+                                        
+                                    </li>
+                                    <li data-v-7bc63f14="" class="header-dropdown-item caption no-icon" data-index="17">
+                                        <div class="item-wrapper data-a">
+                                            <span class="text">Desconectarse</span>
+                                            
+                                        </div>
+                                        
+                                    </li>
+                                    <li data-v-7bc63f14="" class="header-dropdown-item" style="display: none;">
+                                        <div data-v-7bc63f14="" class="header-dropdown-item-inner"><i data-v-07452373=""
+                                                                                                      data-v-7bc63f14="" data-name="more-horizontal" data-tags="ellipsis"
+                                                                                                      data-type="more-horizontal"
+                                                                                                      class="feather feather--more-horizontal"><svg data-v-07452373=""
+                                                                                                                                                    xmlns="http://www.w3.org/2000/svg" width="24" height="24"
+                                                                                                                                                    viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                                                                                                                                    stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                                                                                                                                                    class="feather feather-more-horizontal feather__content">
+                                            <circle cx="12" cy="12" r="1"></circle>
+                                            <circle cx="19" cy="12" r="1"></circle>
+                                            <circle cx="5" cy="12" r="1"></circle>
+                                        </svg></i><span data-v-7bc63f14="">Plus</span></div>
+                                    </li>
+                                    
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </header>
+            <div class="navigation-header">
+                <ul>
+                    <li><a href="/panel-de-control.html"
+                           class="home-highlight router-link-exact-active router-link-active force-highlight"
+                           data-label="Tableau de bord">Panel de control</a></li>
+                    <li><a href="/panel-de-control.html/mensajeria" class="messages-highlight"
+                           data-label="Mes messages">Mensajes</a></li>
+                    <li><a href="/panel-de-control.html/mis-anuncios/lista" class="annonces-highlight"
+                           data-label="Mes annonces">Mis anuncios</a></li>
+                    <li><a href="/panel-de-control.html/evaluaciones/recomendaciones" class="evaluations-highlight"
+                           data-label="Evaluations">Comentarios</a></li>
+                    <li><a href="/panel-de-control.html/mi-perfil/" class="comptes-highlight" data-label="Mon compte">Mi
+                        cuenta</a></li>
+                    <li><a href="/panel-de-control.html/premium" class="premium-highlight"
+                           data-label="Premium">Premium</a></li>
+                    
+                    <li class="selected-sub-bar" style="left: 1px; width: 111px; margin: 0px;"></li>
+                </ul>
+            </div>
+        </div>
+        -->
+        <div class="page-container">
+            <div class="page-dashboard home">
+                <div class="part-container">
+                    <div class="left-part">
+                        <div class="profil-infos">
+                            <div class="preview-avatar-container">
+                                <div data-v-1620da0e="" class="avatar-wrapper"><img data-v-1620da0e=""
+                                                                                    src="https://c.superprof.com/i/m/30308655/200/20240313080839/30308655.jpg"
+                                                                                    alt="profile picture" class="avatar"><span data-v-1620da0e=""
+                                                                                                                               class="curtain-photo"></span><span data-v-1620da0e=""
+                                                                                                                                                                  class="icon-camera-wrapper"><i data-v-07452373="" data-v-1620da0e=""
+                                                                                                                                                                                                 data-name="camera" data-tags="photo" data-type="camera"
+                                                                                                                                                                                                 class="feather feather--camera"><svg data-v-07452373=""
+                                                                                                                                                                                                                                      xmlns="http://www.w3.org/2000/svg" width="24" height="24"
+                                                                                                                                                                                                                                      viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                                                                                                                                                                                                                                      stroke-linecap="round" stroke-linejoin="round"
+                                                                                                                                                                                                                                      class="feather feather-camera feather__content">
+                                                <path
+                                                        d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z">
+                                                </path>
+                                                <circle cx="12" cy="13" r="4"></circle>
+                                            </svg></i></span></div>
+                            </div>
+                            <div class="name">Pedro</div>
+                            <div class="adress">Jaén, España</div>
+                            <div class="teacher-infos">
+                                <ul>
+                                    
+                                    <li><span class="left" data-label="Profil vérifié">Perfil verificado</span><span
+                                            class="right"><span class="o-valide-1 icon"></span></span></li>
+                                    <li class="spe"><span class="left">
+                                            <div class="valide" data-label="Email">Correo electrónico</div><br>
+                                            <div class="valide" data-label="Mobile">Teléfono móvil</div>
+                                        </span><span class="right"></span></li>
+                                    
+                                    
+                                    
+                                    
+                                    
+                                </ul><a href="/panel-de-control.html/premium" class="ss-pro-btn"
+                                        data-label="Passer à 0 % de commission">HAZTE PREMIUM 🚀</a>
+                            </div>
+                        </div>
+                        <div class="useful-link">
+                            <div class="line">
+                                <div class="svg-wrapper"><img
+                                        src="//c.superprof.com/static/img/etoile-jaune.5b726489.svg" alt="etoile-jaune"
+                                        class="icon-svg icon-svg-undefined"></div><a
+                                    href="/panel-de-control.html/evaluaciones/recomendaciones" class="text"
+                                    data-label="Demander des recommandations">Solicitar recomendaciones</a>
+                            </div>
+                            <div class="line">
+                                <div class="svg-wrapper"><img src="//c.superprof.com/static/img/money-box.3d1df147.svg"
+                                                              alt="money-box" class="icon-svg icon-svg-undefined"></div><a
+                                    href="/panel-de-control.html/mi-perfil/pago/preferencias" class="text"
+                                    data-label="Préférence de versement">Preferencias de cobro</a>
+                            </div>
+                            <div class="line">
+                                <div class="svg-wrapper"><img
+                                        src="//c.superprof.com/static/img/politique-d-annulation.72486bd8.svg"
+                                        alt="politique-d-annulation" class="icon-svg icon-svg-undefined"></div><a
+                                    href="/panel-de-control.html/mi-perfil/pago/anulacion" class="text"
+                                    data-label="Politique d’annulation">Política de anulación</a>
+                            </div>
+                            <div class="line">
+                                <div class="svg-wrapper"><img src="//c.superprof.com/static/img/contact.4842cfdb.svg"
+                                                              alt="contact" class="icon-svg icon-svg-undefined"></div><a
+                                    href="https://www.superprof.es/contacto.html" class="text"
+                                    data-label="Besoin d'aide ?">Contactarnos</a>
+                            </div>
+                        </div>
+                        
+                    </div>
+                    <div class="right-part">
+                        
+                        <div class="status-teacher">
+                            <div class="container">
+                                <div class="step-container">
+                                    <div class="step step-1 active last-active">
+                                        <div class="text">Nuevo</div>
+                                        <div class="dot"></div>
+                                    </div>
+                                    <div class="step step-2">
+                                        <div class="text">Estatus Confirmado</div>
+                                        <div class="dot"></div>
+                                    </div>
+                                    <div class="step step-3">
+                                        <div class="text">Super Profesor/a</div>
+                                        <div class="dot"></div>
+                                    </div>
+                                    <div class="step step-4">
+                                        <div class="text">Embajador/a</div>
+                                        <div class="dot"></div>
+                                    </div>
+                                </div>
+                                <div class="to-fill">
+                                    <div class="filler" style="width: 1%;"></div>
+                                </div>
+                            </div><a href="/panel-de-control.html/estado" class="howTo"
+                                     data-label="Passer au statut supérieur">Pasar a un estatus superior</a>
+                        </div>
+                        <div class="demands-preview">
+                            <div class="header-demands">
+                                <h1><span data-label="Mes messages">Mensajes</span>
+                                    
+                                </h1>
+                            </div>
+                            <ul>
+                                <li class="one-demand">
+                                    <div class="infos-container"><span class="bubble"></span><span
+                                            class="avatar img-40"><img class="classic" style="--letter: 'L';"
+                                                                       src="https://c.superprof.com/i/a/7739831/12427861/200/20230908170219/clases-programacion-actualmente-soy-estudiante-ingenieria-informatica-clases-presenciales-online.jpg"
+                                                                       alt="avatar"></span>
+                                        <div class="sender-infos">
+                                            <p class="firstname">Luis</p>
+                                            <p vars="[object Object]" class="mat-name"
+                                               data-label="Prof @TPL_DE_D@@MATIERE@">Profe de Programación</p>
+                                        </div><span class="last-text has-space"></span>
+                                    </div>
+                                    <div class="float-state-container"><span class="new waiting-payment"> Finalizar la
+                                            solicitud </span><br>
+                                        <p class="date">hace 3 días</p>
+                                    </div>
+                                </li>
+                                <li class="one-demand">
+                                    <div class="infos-container"><span class="bubble"></span><span
+                                            class="avatar img-40"><img class="classic" style="--letter: 'G';"
+                                                                       src="https://c.superprof.com/i/a/13068034/6831732/200/20220822152109/profesor-arduino-ide-programacion-electronica-resolucion-proyectos-electronicos-tutorias-para-tfg-tfm-proyectos.jpg"
+                                                                       alt="avatar"></span>
+                                        <div class="sender-infos">
+                                            <p class="firstname">Germán</p>
+                                            <p vars="[object Object]" class="mat-name"
+                                               data-label="Prof @TPL_DE_D@@MATIERE@">Profe de Programación</p>
+                                        </div><span class="last-text has-space"></span>
+                                    </div>
+                                    <div class="float-state-container"><span class="new waiting-payment"> Finalizar la
+                                            solicitud </span><br>
+                                        <p class="date">hace 12 días</p>
+                                    </div>
+                                </li>
+                                <li class="one-demand">
+                                    <div class="infos-container"><span class="bubble"></span><span
+                                            class="avatar img-40">
+                                            <div class="default-profile-photo" style="--letter: 'G';"></div>
+                                        </span>
+                                        <div class="sender-infos">
+                                            <p class="firstname">Gabriela</p>
+                                            <p vars="[object Object]" class="mat-name"
+                                               data-label="Elève @TPL_DE_D@@MATIERE@">Alumno/a de PHP</p>
+                                        </div><span class="last-text has-space"></span>
+                                    </div>
+                                    <div class="float-state-container"><span class="terminated"> Rechazada </span><br>
+                                        <p class="date">hace 2 meses</p>
+                                    </div>
+                                </li>
+                            </ul>
+                            <div class="see-more-demands"><span data-label="Voir toutes mes messages">Ver todos los
+                                    mensajes</span></div>
+                        </div>
+                        
+                        <div class="pending-avis-home">
+                            
+                        </div>
+                        
+                        
+                        <div data-v-fd31dcf8="" class="annonces-preview">
+                            <div data-v-fd31dcf8="" class="header-annonces">
+                                <h1 data-v-fd31dcf8="" data-label="Mes annonces">Mis anuncios</h1>
+                            </div>
+                            <ul data-v-fd31dcf8="">
+                                <div data-v-fd31dcf8="">
+                                    <li class="unique-annonce">
+                                        <div class="avatar"
+                                             style="background-image: url(&quot;https://c.superprof.com/i/a/30308655/13803574/140/20240313080839/titulo-prueba.jpg&quot;);">
+                                        </div>
+                                        <div class="content"><span class="text">Titulo de prueba a a a a a aa a a a
+                                                a</span>
+                                            <div class="course-infos"><span class="course-name">Java
+                                                    programación</span><span class="course-price"><span
+                                                    vars="[object Object]" data-label="@PRICE@€">11€</span><span
+                                                    data-label="/h">/h</span></span></div>
+                                        </div>
+                                        <div class="buttons-container">
+                                            <div class="buttons-center deactivated"><span class="state-title"
+                                                                                          data-label="Hors ligne">No está en línea</span>
+                                                <div data-v-bdf91106="" class="tooltip-wrapper"><button
+                                                        data-v-bdf91106="" class="round-button switch"><i
+                                                        data-v-07452373="" data-name="eye-off"
+                                                        data-tags="view,watch,hide,hidden" data-type="eye-off"
+                                                        class="feather feather--eye-off" data-v-bdf91106=""><svg
+                                                        data-v-07452373="" xmlns="http://www.w3.org/2000/svg"
+                                                        width="24" height="24" viewBox="0 0 24 24" fill="none"
+                                                        stroke="currentColor" stroke-width="2"
+                                                        stroke-linecap="round" stroke-linejoin="round"
+                                                        class="feather feather-eye-off feather__content">
+                                                    <path
+                                                            d="M17.94 17.94A10.07 10.07 0 0 1 12 20c-7 0-11-8-11-8a18.45 18.45 0 0 1 5.06-5.94M9.9 4.24A9.12 9.12 0 0 1 12 4c7 0 11 8 11 8a18.5 18.5 0 0 1-2.16 3.19m-6.72-1.07a3 3 0 1 1-4.24-4.24">
+                                                    </path>
+                                                    <line x1="1" y1="1" x2="23" y2="23"></line>
+                                                </svg></i></button>
+                                                    <div data-v-bdf91106=""
+                                                         class="tooltip bottom auto-length small-padding"
+                                                         data-label="Passer en ligne"
+                                                         style="max-width: 300px; display: none;">Activar anuncio</div>
+                                                </div><button class="round-button"
+                                                              data-label="Modifier">Modificar</button>
+                                            </div>
+                                        </div>
+                                    </li>
+                                    
+                                </div>
+                                <div data-v-fd31dcf8="">
+                                    <li class="unique-annonce">
+                                        <div class="avatar"
+                                             style="background-image: url(&quot;https://c.superprof.com/i/a/30308655/13374456/140/20240313080839/descripcion-asdfasdfasfdsadf-asdfasdf-sadf-fds-sfd.jpg&quot;);">
+                                        </div>
+                                        <div class="content"><span class="text">Mi descripción asdfasdfasfdsadf asdfasdf
+                                                sadf fds sd sfd s fd df df d.</span>
+                                            <div class="course-infos"><span class="course-name">Programación</span><span
+                                                    class="course-price"><span vars="[object Object]"
+                                                                               data-label="@PRICE@€">12€</span><span
+                                                    data-label="/h">/h</span></span></div>
+                                        </div>
+                                        <div class="buttons-container">
+                                            <div class="buttons-center deactivated"><span class="state-title"
+                                                                                          data-label="Hors ligne">No está en línea</span>
+                                                <div data-v-bdf91106="" class="tooltip-wrapper"><button
+                                                        data-v-bdf91106="" class="round-button switch"><i
+                                                        data-v-07452373="" data-name="eye-off"
+                                                        data-tags="view,watch,hide,hidden" data-type="eye-off"
+                                                        class="feather feather--eye-off" data-v-bdf91106=""><svg
+                                                        data-v-07452373="" xmlns="http://www.w3.org/2000/svg"
+                                                        width="24" height="24" viewBox="0 0 24 24" fill="none"
+                                                        stroke="currentColor" stroke-width="2"
+                                                        stroke-linecap="round" stroke-linejoin="round"
+                                                        class="feather feather-eye-off feather__content">
+                                                    <path
+                                                            d="M17.94 17.94A10.07 10.07 0 0 1 12 20c-7 0-11-8-11-8a18.45 18.45 0 0 1 5.06-5.94M9.9 4.24A9.12 9.12 0 0 1 12 4c7 0 11 8 11 8a18.5 18.5 0 0 1-2.16 3.19m-6.72-1.07a3 3 0 1 1-4.24-4.24">
+                                                    </path>
+                                                    <line x1="1" y1="1" x2="23" y2="23"></line>
+                                                </svg></i></button>
+                                                    <div data-v-bdf91106=""
+                                                         class="tooltip bottom auto-length small-padding"
+                                                         data-label="Passer en ligne"
+                                                         style="max-width: 300px; display: none;">Activar anuncio</div>
+                                                </div><button class="round-button"
+                                                              data-label="Modifier">Modificar</button>
+                                            </div>
+                                        </div>
+                                    </li>
+                                    
+                                </div>
+                            </ul>
+                            
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div data-v-4062e2c6="" class="pops-container-general"></div>
+        
+        
+        <div data-v-79d5a8fd="" class="datepicker-container">
+            <div data-v-79d5a8fd="" class="vdatetime"> <input type="text" class="vdatetime-input"
+                                                              style="display: none;">
+                
+                <div></div>
+            </div>
+        </div>
+        <div data-v-ea06c25c="" class="paypal-button-container"><a data-v-ea06c25c="" id="paypal-checkout-button"
+                                                                   href="#" data-paypal-click-listener=""></a></div>
+        <div data-v-04408784="" class="generic-avatar-dropzone">
+            
+            
+        </div>
+        <div data-v-a4081660="" class="jitsi-curtain" style="display: none;">
+            <div data-v-a4081660="" class="jitsi-container">
+                <div data-v-a4081660="" class="pending-content"><span data-v-a4081660=""
+                                                                      data-label="messenger_whereby_pending_request">messenger_whereby_pending_request</span></div>
+            </div>
+        </div>
+    </div>
+    <script
+            src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAWGLYJIDx3js5iValdsBuAJ59dkIe-c08&amp;libraries=places&amp;language=es">
+    </script>
+    <script src="https://js.stripe.com/v3/"></script>
+    <script src="https://www.paypalobjects.com/js/external/api.js"></script>
+    <script src="https://www.paypalobjects.com/api/checkout.js" async=""></script>
+    <script>
+        window.tdb_version = 4.2
+        window.tdb_stripe_api_key = 'pk_live_iSa8NqZyy581G6V7mo5ZsMrQ'
+        window.tdb_paypal_app_id = 'AZ9rV4lGwLQ6jNwJ30Qwtq6-q_MZMar-uBg_9ZhAurUo8k3__Kfpc4Gg-ThOq4AbRZ0skFWfvxUHC_t3'
+        window.tdb_paypal_merchant_id = 'LE6N2649Z524W'
+        window.tdb_paypal_environnement = 'production'
+        window.tdb_facebook_app_id = '541897999191679'
+        window.user_id = '30308655'
+        window.gtm_id_country = 'GTM-WVHCQW2'
+        window.error_msgs = ``
+        window.valid_msgs = ``
+        window.warning_msgs = ``
+        window.tpl_cdn = `//c.superprof.com`
+    </script>
+    <script>
+        window.superprof_urls = {
+            "tableau-de-bord.html": "panel-de-control.html",
+            "mise-en-relations": "puesta-en-relacion",
+            "annonces": "mis-anuncios",
+            "avis": "comentario",
+            "mon-compte": "mi-perfil",
+            "description": "descripcion",
+            "public": "publico",
+            "carte": "mapa",
+            "photo": "foto",
+            "video": "video",
+            "masterclass": "masterclass",
+            "references": "recomendaciones",
+            "edition": "edicion",
+            "status": "estado",
+            "evaluations": "evaluaciones",
+            "traductions": "traducciones",
+            "statistiques": "estadistica",
+            "liste": "lista",
+            "detail": "detalle",
+            "parrainage": "patrocinio",
+            "factures": "facturas",
+            "favori": "favoritos",
+            "payement": "panel-de-control-suscripciones.html",
+            "aide": "ayuda\/",
+            "favs": "mis-anuncios.html",
+            "contact": "contacto.html",
+            "new-annonce": "nuevo-anuncio.html",
+            "create-masterclass": "nuevo-curso-step-1.html",
+            "paiement": "pago",
+            "historique": "historial",
+            "methodes": "metodos",
+            "preference": "preferencias",
+            "annulation": "anulacion",
+            "messagerie": "mensajeria",
+            "agenda": "agenda",
+            "premium": "premium",
+            "student-pass": "student-pass",
+            "gift-cards": "supertarjeta",
+            "carte-cadeau": "supertarjeta",
+            "carte-cadeau-landing": "supertarjeta",
+            "carte-cadeau-formulaire": "comprar-supertarjeta",
+            "ad-create": "creacion"
+        }
+    </script>
+    <script async="" src="https://www.googletagmanager.com/gtm.js?id=GTM-WVHCQW2"></script>
+    <script>
+        window.notification = {
+            'type': 'error',
+            'msg': ''
+        }
+    </script>
+
+    <script type="text/javascript">
+        // Il faut réécrire cette partie pour que sous certaines conditions
+        // ( webview + boolean ) le datalayer ne sois pas renseigner mais envoyer
+        // a l'api webview
+
+        // Si comportement spécial webview && window?.ReactNativeWebView?.postMessage
+
+
+
+
+        window.dataLayer = window.dataLayer || [];
+        window.dataLayer.push(
+
+            {
+                "event": "userDatas",
+                "eventCategory": "1.0.1",
+                "pageType": "dashboard",
+                "user": "30308655",
+                "user_mail": "pedrojcros@gmail.com",
+                "user_phone": "+34609323607",
+                "user_mail_hash": "2f19405d8d421976186ef1b49b87bfb363412748268bde7f80fd065739eac576",
+                "location": {
+                    "country": "Espa\u00f1a"
+                }
+            }
+
+
+        );
+        console.log('dt');
+    </script>
+
+    <iframe name="__privateStripeMetricsController2230" frameborder="0" allowtransparency="true" scrolling="no"
+            role="presentation" allow="payment *"
+            src="https://js.stripe.com/v3/m-outer-3437aaddcdf6922d623e172c2d6f9278.html#url=https%3A%2F%2Fwww.superprof.es%2Fpanel-de-control.html&amp;title=Superprof&amp;referrer=https%3A%2F%2Fwww.superprof.es%2Fclases-programacion-actualmente-soy-estudiante-ingenieria-informatica-clases-presenciales-online.html&amp;muid=57109951-242b-40ec-9bac-455430ee1f4c648213&amp;sid=NA&amp;version=6&amp;preview=false"
+            aria-hidden="true" tabindex="-1"
+            style="border: none !important; margin: 0px !important; padding: 0px !important; width: 1px !important; min-width: 100% !important; overflow: hidden !important; display: block !important; visibility: hidden !important; position: fixed !important; height: 1px !important; pointer-events: none !important; user-select: none !important;"></iframe>
+    <script type="text/javascript" id="">
+        var cookieName = "first_referrer",
+            cookieExist = document.cookie.match(/^(.*;)?\s*first_referrer\s*=\s*[^;]+(.*)?$/);
+        if (!document.referrer.includes("paypal") && (null === cookieExist || null !== cookieExist && !document.referrer
+            .includes(location.hostname))) {
+            var cookieValue = "" === document.referrer ? "direct" : document.referrer,
+                expirationTime = 86400;
+            expirationTime *= 1E3;
+            var date = new Date,
+                dateTimeNow = date.getTime();
+            date.setTime(dateTimeNow + expirationTime);
+            expirationTime = date.toUTCString();
+            document.cookie = cookieName + "\x3d" + cookieValue + "; expires\x3d" + expirationTime +
+                "; path\x3d/; domain\x3d" + location.hostname
+        };
+    </script>
+    <script type="text/javascript" id="">
+        ! function (b, e, f, g, a, c, d) {
+            b.fbq || (a = b.fbq = function () {
+                a.callMethod ? a.callMethod.apply(a, arguments) : a.queue.push(arguments)
+            }, b._fbq || (b._fbq = a), a.push = a, a.loaded = !0, a.version = "2.0", a.queue = [], c = e
+                .createElement(f), c.async = !0, c.src = g, d = e.getElementsByTagName(f)[0], d.parentNode
+                .insertBefore(c, d))
+        }(window, document, "script", "https://connect.facebook.net/en_US/fbevents.js");
+        fbq("init", "659167000921752", {
+            external_id: google_tag_manager["rm"]["13123844"](17)
+        });
+        fbq("init", "1015278722280518", {
+            external_id: google_tag_manager["rm"]["13123844"](18)
+        });
+    </script>
+
+    <script type="text/javascript" id="">
+        fbq("track", "PageView");
+    </script>
+    </body>
+
+    </html>

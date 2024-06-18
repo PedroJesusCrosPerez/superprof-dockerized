@@ -1,0 +1,25 @@
+<!-- dependencies.html -->
+<html xmlns:th="http://www.thymeleaf.org">
+
+<!-- SweetAlert2 -->
+<div th:fragment="sweetalert">
+
+  <!-- JS -->
+  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+</div>
+
+<!-- MyOwnLibrary - Ajax -->
+<div th:fragment="ajaxLib">
+
+  <!-- JS -->
+  <script th:src="@{/js/_ajaxLibrary.js}"></script>
+</div>
+</div>
+
+<!-- MyOwnLibrary - Modals -->
+<div th:fragment="modalLib">
+
+  <!-- JS -->
+  <script th:src="@{/js/_modalLibrary.js}"></script>
+</div>
+</html>

@@ -1,0 +1,1227 @@
+<!DOCTYPE html ><!--"http://www.thymeleaf.org/dtd/xhtml1-strict-thymeleaf-spring4-4.dtd">-->
+<html lang="es" xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security"
+> <!-- xmlns:sec="http://www.w3.org/1999/xhtml">-->
+<head th:replace="layout/base::layout(~{::title}, ~{::fragment_css}, ~{::fragment_js}, ~{::main})">
+    <title th:text="#{inicio}">Home</title>
+
+    <div th:insert="fragments/dependencies :: sweetalert"></div>
+    <div th:insert="fragments/dependencies :: ajaxLib"></div>
+    <div th:insert="fragments/dependencies :: modalLib"></div>
+
+    <th:block th:fragment="fragment_css">
+        <link rel="stylesheet" th:href="@{/css/home.css}">
+        <link rel="stylesheet" th:href="@{/css/my_home.css}">
+
+        <!-- User drop down -->
+        <link rel="stylesheet" th:href="@{/css/template/userDropDown.css}">
+    </th:block>
+
+    <th:block th:fragment="fragment_js">
+        <script th:src="@{/js/dependencies/jquery-3.7.1.min.js}"></script>
+        <script th:src="@{/js/home.js}"></script>
+
+        <!-- User drop down -->
+        <script th:src="@{/js/template/userDropDown.js}"></script>
+
+        <!-- Header -->
+        <script th:src="@{/js/template/header.js}"></script>
+    </th:block>
+</head>
+<body>
+
+<!--
+<div class="button-group" sec:authorize="!isFullyAuthenticated()">
+    <a href="/login">Login</a>
+    <a href="/register">Register</a>
+</div>
+<div class="button-group" sec:authorize="isFullyAuthenticated()">
+    <a href="/logout">Logout</a>
+</div>
+-->
+
+<header th:replace="layout/base :: header"></header>
+<!--<header sec:authorize="hasAuthority('ADMIN')" th:insert="layout/base :: header"></header>
+<header sec:authorize="!isAuthenticated()" th:insert="layout/header_notAuthenticated"></header>-->
+
+
+<main th:fragment="main">
+    <div class="sp-global">
+        <div id="homeV4" class="home-v4 loaded">
+            <div class="primary-content">
+                <div class="main-search">
+                    <div class="main-search-container">
+                        <div class="main-search-tool">
+                            <div class="main-text"><h1>Encuentra<br>tu profe ideal</h1>
+                                <h2 class="mobile-only">En línea o presencial,<br> escoge entre nuestros <b>27 millones
+                                    de profesores particulares</b></h2></div>
+                            <div class="mobile-style-container">
+                                <div class="search search-placeholder suggest-city">
+                                    <form class="search-box-v3-2 home-search-form autocomplete-form autocomplete-form-nosubmit HomeV2_form js-homeV2form"
+                                          method="post" action="/form-search.html" data-type="toute_matiere">
+                                        <div class="home-search-form-container search-header-form-visibility-trigger">
+                                            <div class="placeholder-picto desktop-only"></div>
+                                            <label for="search-placeholder-trigger" class="placeholder-animated"
+                                                   style="--n-subjects: 3;">
+<span class="subjects">
+<span class="specific">Maths</span>
+<!--<span class="default">¿Qué quieres aprender?</span>-->
+<input type="text" id="inputSearchSubject" placeholder="¿Qué quieres aprender?">
+
+<span class="random"></span>
+</span>
+                                            </label>
+                                            <div class="home-search-form-inner autocomplete">
+                                                <input data-proxy="subject.input" data-proxy-field="subject"
+                                                       data-sync="subject"
+                                                       class="HomeV2_input Search_box_input autocomplete-search-empty autocomplete-input HomeV2_wSubject"
+                                                       id="search_subject" type="text" placeholder="Prueba con “Mates”"
+                                                       name="search_subject" autocomplete="off"
+                                                       data-autocomplete-search-empty="true"
+                                                       data-autocomplete-ajax-url="/a/getSubjects/"
+                                                       data-autocomplete-result-html="<div>___data___</div>">
+                                                <div class="clear-button-subject"><span class="icon"></span></div>
+                                                <div class="home-search-results autocomplete-results"></div>
+                                            </div>
+                                            <div class="home-search-form-inner">
+                                                <div class="HomeV2_adress">
+                                                    <div class="search-container"><input data-proxy="city.input"
+                                                                                         data-proxy-field="city"
+                                                                                         data-sync="gplace"
+                                                                                         name="search_city"
+                                                                                         class="HomeV2_input Search_box_input HomeV2_inputAddress HomeV2_GoogleAutocomplete"
+                                                                                         id="search_city"
+                                                                                         data-country-code="ES"
+                                                                                         type="text"
+                                                                                         placeholder="Lugar de las clases particulares"
+                                                                                         autocomplete="off">
+                                                        <ul class="search-results"></ul>
+                                                    </div>
+                                                    <div class="clear-button-city"><span class="icon"></span></div>
+                                                    <input data-presets="search_lat" data-path="d_presetCoordonate"
+                                                           data-field-name="lat" type="hidden" id="search_lat"
+                                                           name="search_lat" value="">
+                                                    <input data-presets="search_lng" data-path="d_presetCoordonate"
+                                                           data-field-name="lng" type="hidden" id="search_lng"
+                                                           name="search_lng" value="">
+                                                    <input type="hidden" id="search_location" name="location" value="">
+                                                    <input type="hidden" name="src" value="home">
+                                                    <input type="hidden" name="isV_search" value="">
+                                                    <input type="hidden" name="search_custom_type" value="">
+                                                    <input type="hidden" name="search_id_type" value="">
+                                                    <div class="home-search-results autocomplete-results"></div>
+                                                    <div class="search-top-town"><p
+                                                            class="tab text town locate choice-locate" tabindex="-1">
+                                                        Cerca de mi</p>
+                                                        <p class="tab text town choice-webcam" tabindex="-1">En
+                                                            línea</p></div>
+                                                </div>
+                                            </div>
+                                            <div class="btn-container">
+                                                <button id="btnSearchSubject" class="btn HomeV2_searchButton search-header-submit button-topHide">
+                                                    <span class="text">Buscar</span>
+                                                </button>
+                                            </div>
+                                        </div>
+                                        <input type="hidden" name="search_all" value=""><input type="hidden"
+                                                                                               name="SPloc" value="">
+                                    </form>
+                                </div>
+                                <div class="search-subject-container">
+                                    <ul>
+
+
+                                        <li>
+                                            <a class="list-item" href="/clases/matematicas/espana/">
+                                                <img class="icon" src="//c.superprof.com/img/ico/mat/13.svg"
+                                                     alt="subject icon">
+                                                <span class="name">Matemáticas</span>
+                                            </a></li>
+                                        <li>
+                                            <a class="list-item" href="/clases/ingles/espana/">
+                                                <img class="icon" src="//c.superprof.com/img/ico/mat/224.svg"
+                                                     alt="subject icon">
+                                                <span class="name">Inglés</span>
+                                            </a></li>
+                                        <li>
+                                            <a class="list-item" href="/clases/entrenador-personal/espana/">
+                                                <img class="icon" src="//c.superprof.com/img/ico/mat/143.svg"
+                                                     alt="subject icon">
+                                                <span class="name">Entrenador</span>
+                                            </a></li>
+                                        <li>
+                                            <a class="list-item" href="/clases/ayuda-en-los-deberes/espana/">
+                                                <img class="icon" src="//c.superprof.com/img/ico/mat/default.svg"
+                                                     alt="subject icon">
+                                                <span class="name">Desarrollo Web</span>
+                                            </a></li>
+                                        <li>
+                                            <a class="list-item" href="/clases/guitarra/espana/">
+                                                <img class="icon" src="//c.superprof.com/img/ico/mat/123.svg"
+                                                     alt="subject icon">
+                                                <span class="name">Guitarra</span>
+                                            </a></li>
+                                        <li>
+                                            <a class="list-item" href="/clases/canto/espana/">
+                                                <img class="icon" src="//c.superprof.com/img/ico/mat/116.svg"
+                                                     alt="subject icon">
+                                                <span class="name">Canto</span>
+                                            </a></li>
+                                        <li>
+                                            <a class="list-item" href="/clases/piano/espana/">
+                                                <img class="icon" src="//c.superprof.com/img/ico/mat/132.svg"
+                                                     alt="subject icon">
+                                                <span class="name">Piano</span>
+                                            </a></li>
+                                        <li>
+                                            <a class="list-item" href="/clases/programacion/espana/">
+                                                <img class="icon" src="//c.superprof.com/img/ico/mat/110.svg"
+                                                     alt="subject icon">
+                                                <span class="name">Programación</span>
+                                            </a></li>
+                                        <li>
+                                            <a class="list-item" href="/clases/espanol-para-extranjeros/espana/">
+                                                <img class="icon" src="//c.superprof.com/img/ico/mat/48.svg"
+                                                     alt="subject icon">
+                                                <span class="name">Español</span>
+                                            </a></li>
+                                        <li>
+                                            <a class="list-item" href="/clases/tenis/espana/">
+                                                <img class="icon" src="//c.superprof.com/img/ico/mat/168.svg"
+                                                     alt="subject icon">
+                                                <span class="name">Tenis</span>
+                                            </a></li>
+
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="secondary-content">
+                <div class="viewed ads-pagination no-nav not-visible"
+                     style="--page: 1; --per-page: 3; --per-page-mobile: 2;">
+                    <div class="title"><h2>Anuncios vistos recientemente</h2>
+                        <div class="controls">
+                            <button class="btn prev"></button>
+                            <button class="btn next"></button>
+                        </div>
+                    </div>
+                    <div class="container">
+                        <div class="landing-v4-ads"></div>
+                    </div>
+                </div>
+                <div class="announcements ads-pagination" style="--page: 1; --per-page: 3; --per-page-mobile: 1;">
+                    <div class="title"><h2 class="stars-suffix">27 millones de profesores particulares evaluados</h2>
+                        <div class="controls">
+                            <button class="btn prev"></button>
+                            <button class="btn next"></button>
+                        </div>
+                    </div>
+                    <div class="SP-51-teacher-list">
+                        <div class="landing-v4-ads" data-url="/s/,España,,,,.html" data-number="">
+
+                            <div class="landing-v4-ads-bloc-container">
+                                <div onclick="location.href='/clases/apoyo-escolar/espana/'"
+                                     class="landing-v4-ads-bloc tck-announce-link" data-version="2" data-value="6134325"
+                                     target="_blank">
+                                    <div class="landing-v4-ads-wrapper">
+                                        <div class="landing-v4-ads-pic">
+                                            <div class="item icon-bookmark-wrapper" data-bookmark="6134325:false"
+                                                 data-announcement-name="José angel"
+                                                 data-announcement-img="//c.superprof.com/i/m/11430447/300/20240321160150/11430447.webp"
+                                                 data-announcement-gender="male" data-announcement-rating="4.9"
+                                                 data-bookmark-params="`id: 6134325, teacherId: 11430447, key: 1a45886ee7599ede858c53ef37173f14`">
+                                                <span class="icon-bookmark"></span></div>
+                                            <div class="img"
+                                                 data-src="//c.superprof.com/i/m/11430447/600/20240321160150/11430447.webp"
+                                                 style="background-image: url(&quot;//c.superprof.com/i/m/11430447/600/20240321160150/11430447.webp&quot;);"></div>
+                                            <div class="landing-v4-ads-pic-mask"></div>
+                                            <div class="landing-v4-ads-pic-text-container"><p
+                                                    class="landing-v4-ads-pic-firstname">José angel</p>
+                                                <div class="landing-v4-ads-pic-location">
+                                                    <span class="landing-v4-ads-pic-text">Madrid (presencial &amp; en línea)</span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="bottom-part">
+                                            <ul class="badge">
+                                                <li class="rating">
+
+                                                    <span class="emphasis">4.9</span>
+                                                    <span>(52 opiniones)</span>
+                                                </li>
+                                                <li class="status highest">
+                                                    <span>Embajador</span></li>
+                                            </ul>
+                                            <h3 class="landing-v4-ads-text">
+                                                <span class="first-subject">Apoyo escolar&nbsp;-&nbsp;</span>
+                                                <span>Técnicas de motivación escolar y técnicas de estudio todo online -profesor con 13 años de experiencia</span>
+                                            </h3>
+                                            <div class="chips-wrapper">
+                                                <ul class="chips">
+                                                    <li class="pricing">
+                                                        <span class="picto"></span>
+                                                        <span class="text">6€/h</span></li>
+                                                    <li class="gift">
+                                                        <span class="picto"></span>
+                                                        <span class="text">1<sup>a</sup> clase gratis</span></li>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="landing-v4-ads-bloc-container">
+                                <div onclick="location.href='/clases/guitarra/espana/'"
+                                     class="landing-v4-ads-bloc tck-announce-link" data-version="2" data-value="8185607"
+                                     target="_blank">
+                                    <div class="landing-v4-ads-wrapper">
+                                        <div class="landing-v4-ads-pic">
+                                            <div class="item icon-bookmark-wrapper" data-bookmark="8185607:false"
+                                                 data-announcement-name="Rammar"
+                                                 data-announcement-img="//c.superprof.com/i/m/16096980/300/20220804154732/16096980.webp"
+                                                 data-announcement-gender="male" data-announcement-rating="5"
+                                                 data-bookmark-params="`id: 8185607, teacherId: 16096980, key: 1a45886ee7599ede858c53ef37173f14`">
+                                                <span class="icon-bookmark"></span></div>
+                                            <div class="img"
+                                                 data-src="//c.superprof.com/i/m/16096980/600/20220804154732/16096980.webp"
+                                                 style="background-image: url(&quot;//c.superprof.com/i/m/16096980/600/20220804154732/16096980.webp&quot;);"></div>
+                                            <div class="landing-v4-ads-pic-mask"></div>
+                                            <div class="landing-v4-ads-pic-text-container"><p
+                                                    class="landing-v4-ads-pic-firstname">Rammar</p>
+                                                <div class="landing-v4-ads-pic-location">
+                                                    <span class="landing-v4-ads-pic-text">Madrid (presencial &amp; en línea)</span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="bottom-part">
+                                            <ul class="badge">
+                                                <li class="rating">
+
+                                                    <span class="emphasis">5</span>
+                                                    <span>(26 opiniones)</span>
+                                                </li>
+                                                <li class="status highest">
+                                                    <span>Embajador</span></li>
+                                            </ul>
+                                            <h3 class="landing-v4-ads-text">
+                                                <span class="first-subject">Guitarra&nbsp;-&nbsp;</span>
+                                                <span>Soy cantautor, productor, y licenciado en administración . ganador de grammy latino en 2017 como compositor. tengo más de 20 años en la rama artística, y más de 15 enseñando canto y composición. desd</span>
+                                            </h3>
+                                            <div class="chips-wrapper">
+                                                <ul class="chips">
+                                                    <li class="pricing">
+                                                        <span class="picto"></span>
+                                                        <span class="text">32€/h</span></li>
+                                                    <li class="gift">
+                                                        <span class="picto"></span>
+                                                        <span class="text">1<sup>a</sup> clase gratis</span></li>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="landing-v4-ads-bloc-container">
+                                <div onclick="location.href='/clases/matematicas/espana/'"
+                                     class="landing-v4-ads-bloc tck-announce-link" data-version="2" data-value="5054160"
+                                     target="_blank">
+                                    <div class="landing-v4-ads-wrapper">
+                                        <div class="landing-v4-ads-pic">
+                                            <div class="item icon-bookmark-wrapper" data-bookmark="5054160:false"
+                                                 data-announcement-name="Fátima"
+                                                 data-announcement-img="//c.superprof.com/i/m/9626400/300/20220912092053/9626400.webp"
+                                                 data-announcement-gender="female" data-announcement-rating="5"
+                                                 data-bookmark-params="`id: 5054160, teacherId: 9626400, key: 1a45886ee7599ede858c53ef37173f14`">
+                                                <span class="icon-bookmark"></span></div>
+                                            <div class="img"
+                                                 data-src="//c.superprof.com/i/m/9626400/600/20220912092053/9626400.webp"
+                                                 style="background-image: url(&quot;//c.superprof.com/i/m/9626400/600/20220912092053/9626400.webp&quot;);"></div>
+                                            <div class="landing-v4-ads-pic-mask"></div>
+                                            <div class="landing-v4-ads-pic-text-container"><p
+                                                    class="landing-v4-ads-pic-firstname">Fátima</p>
+                                                <div class="landing-v4-ads-pic-location">
+                                                    <span class="landing-v4-ads-pic-text">Salamanca (en línea)</span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="bottom-part">
+                                            <ul class="badge">
+                                                <li class="rating">
+
+                                                    <span class="emphasis">5</span>
+                                                    <span>(20 opiniones)</span>
+                                                </li>
+                                                <li class="status highest">
+                                                    <span>Embajadora</span></li>
+                                            </ul>
+                                            <h3 class="landing-v4-ads-text">
+                                                <span class="first-subject">Matemáticas&nbsp;-&nbsp;</span>
+                                                <span>Clases de matemáticas (nivel de primaria y  3º de la eso). casi cinco años de experiencia dando clases</span>
+                                            </h3>
+                                            <div class="chips-wrapper">
+                                                <ul class="chips">
+                                                    <li class="pricing">
+                                                        <span class="picto"></span>
+                                                        <span class="text">18€/h</span></li>
+                                                    <li class="gift">
+                                                        <span class="picto"></span>
+                                                        <span class="text">1<sup>a</sup> clase gratis</span></li>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="landing-v4-ads-bloc-container">
+                                <div onclick="location.href='/clases/entrenador-personal/espana/'"
+                                     class="landing-v4-ads-bloc tck-announce-link" data-version="2" data-value="7113359"
+                                     target="_blank">
+                                    <div class="landing-v4-ads-wrapper">
+                                        <div class="landing-v4-ads-pic">
+                                            <div class="item icon-bookmark-wrapper" data-bookmark="7113359:false"
+                                                 data-announcement-name="Gabriel"
+                                                 data-announcement-img="//c.superprof.com/i/m/10996305/300/20240402125516/10996305.webp"
+                                                 data-announcement-gender="male" data-announcement-rating="5"
+                                                 data-bookmark-params="`id: 7113359, teacherId: 10996305, key: 1a45886ee7599ede858c53ef37173f14`">
+                                                <span class="icon-bookmark"></span></div>
+                                            <div class="img"
+                                                 data-src="//c.superprof.com/i/m/10996305/600/20240402125516/10996305.webp"
+                                                 style="background-image: url(&quot;//c.superprof.com/i/m/10996305/600/20240402125516/10996305.webp&quot;);"></div>
+                                            <div class="landing-v4-ads-pic-mask"></div>
+                                            <div class="landing-v4-ads-pic-text-container"><p
+                                                    class="landing-v4-ads-pic-firstname">Gabriel</p>
+                                                <div class="landing-v4-ads-pic-location">
+                                                    <span class="landing-v4-ads-pic-text">Madrid (presencial &amp; en línea)</span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="bottom-part">
+                                            <ul class="badge">
+                                                <li class="rating">
+
+                                                    <span class="emphasis">5</span>
+                                                    <span>(110 opiniones)</span>
+                                                </li>
+                                                <li class="status highest">
+                                                    <span>Embajador</span></li>
+                                            </ul>
+                                            <h3 class="landing-v4-ads-text">
+                                                <span class="first-subject">Entrenador personal&nbsp;-&nbsp;</span>
+                                                <span>Entrenador personal y dietista graduado. ex-atleta de alto rendimiento. a domicilio, gimnasio, aire libre y online</span>
+                                            </h3>
+                                            <div class="chips-wrapper">
+                                                <ul class="chips">
+                                                    <li class="pricing">
+                                                        <span class="picto"></span>
+                                                        <span class="text">20€/h</span></li>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="landing-v4-ads-bloc-container">
+                                <div onclick="location.href='/clases/ingles/espana/'"
+                                     class="landing-v4-ads-bloc tck-announce-link" data-version="2" data-value="6258087"
+                                     target="_blank">
+                                    <div class="landing-v4-ads-wrapper">
+                                        <div class="landing-v4-ads-pic">
+                                            <div class="item icon-bookmark-wrapper" data-bookmark="6258087:false"
+                                                 data-announcement-name="Margot"
+                                                 data-announcement-img="//c.superprof.com/i/m/898618/300/20220802101243/898618.webp"
+                                                 data-announcement-gender="female" data-announcement-rating="5"
+                                                 data-bookmark-params="`id: 6258087, teacherId: 898618, key: 1a45886ee7599ede858c53ef37173f14`">
+                                                <span class="icon-bookmark"></span></div>
+                                            <div class="img"
+                                                 data-src="//c.superprof.com/i/m/898618/600/20220802101243/898618.webp"
+                                                 style="background-image: url(&quot;//c.superprof.com/i/m/898618/600/20220802101243/898618.webp&quot;);"></div>
+                                            <div class="landing-v4-ads-pic-mask"></div>
+                                            <div class="landing-v4-ads-pic-text-container"><p
+                                                    class="landing-v4-ads-pic-firstname">Margot</p>
+                                                <div class="landing-v4-ads-pic-location">
+                                                    <span class="landing-v4-ads-pic-text">Madrid (en línea)</span></div>
+                                            </div>
+                                        </div>
+                                        <div class="bottom-part">
+                                            <ul class="badge">
+                                                <li class="rating">
+
+                                                    <span class="emphasis">5</span>
+                                                    <span>(14 opiniones)</span>
+                                                </li>
+                                                <li class="status highest">
+                                                    <span>Embajadora</span></li>
+                                            </ul>
+                                            <h3 class="landing-v4-ads-text">
+                                                <span class="first-subject">Inglés&nbsp;-&nbsp;</span>
+                                                <span>Preparación entrevistas, oposiciones y presentaciones/clases de inglés de nivel profesional - former columbia university program manager/analyst (eeuu)</span>
+                                            </h3>
+                                            <div class="chips-wrapper">
+                                                <ul class="chips">
+                                                    <li class="pricing">
+                                                        <span class="picto"></span>
+                                                        <span class="text">35€/h</span></li>
+                                                    <li class="gift">
+                                                        <span class="picto"></span>
+                                                        <span class="text">1<sup>a</sup> clase gratis</span></li>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="landing-v4-ads-bloc-container">
+                                <div onclick="location.href='/clases/piano/espana/'"
+                                     class="landing-v4-ads-bloc tck-announce-link" data-version="2"
+                                     data-value="10720102" target="_blank">
+                                    <div class="landing-v4-ads-wrapper">
+                                        <div class="landing-v4-ads-pic">
+                                            <div class="item icon-bookmark-wrapper" data-bookmark="10720102:false"
+                                                 data-announcement-name="Pierfrancesco"
+                                                 data-announcement-img="//c.superprof.com/i/m/18304354/300/20220929144838/18304354.webp"
+                                                 data-announcement-gender="male" data-announcement-rating="5"
+                                                 data-bookmark-params="`id: 10720102, teacherId: 18304354, key: 1a45886ee7599ede858c53ef37173f14`">
+                                                <span class="icon-bookmark"></span></div>
+                                            <div class="img"
+                                                 data-src="//c.superprof.com/i/m/18304354/600/20220929144838/18304354.webp"
+                                                 style="background-image: url(&quot;//c.superprof.com/i/m/18304354/600/20220929144838/18304354.webp&quot;);"></div>
+                                            <div class="landing-v4-ads-pic-mask"></div>
+                                            <div class="landing-v4-ads-pic-text-container"><p
+                                                    class="landing-v4-ads-pic-firstname">Pierfrancesco</p>
+                                                <div class="landing-v4-ads-pic-location">
+                                                    <span class="landing-v4-ads-pic-text">Barcelona (presencial &amp; en línea)</span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="bottom-part">
+                                            <ul class="badge">
+                                                <li class="rating">
+
+                                                    <span class="emphasis">5</span>
+                                                    <span>(53 opiniones)</span>
+                                                </li>
+                                                <li class="status highest">
+                                                    <span>Embajador</span></li>
+                                            </ul>
+                                            <h3 class="landing-v4-ads-text">
+                                                <span class="first-subject">Piano&nbsp;-&nbsp;</span>
+                                                <span>Clases particulares de piano, teclados y sintetizadores. soy graduado en conservatorio y con experiencia internacional como profesor, pianista y compositor. online o presencial (zona barcelona).</span>
+                                            </h3>
+                                            <div class="chips-wrapper">
+                                                <ul class="chips">
+                                                    <li class="pricing">
+                                                        <span class="picto"></span>
+                                                        <span class="text">25€/h</span></li>
+                                                    <li class="gift">
+                                                        <span class="picto"></span>
+                                                        <span class="text">1<sup>a</sup> clase gratis</span></li>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+                        <div class="btn-container">
+                            <div class="btn landing-v4-more-teacher">
+                                <div class="text">
+                                    <span>Ver mas profesores/as</span>
+                                    <span class="picto"></span></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="opinions init">
+                    <div class="opinions-container">
+                        <div class="title-wrapper">
+                            <div class="title-stars"></div>
+                            <h2 class="title">La alquimia perfecta</h2>
+                            <h3 class="subtitle"><span class="emphasis">Más de un millón de alumnos/as</span> han
+                                dado<span class="emphasis"> <b>5 estrellas</b></span><b> a su profesor/a</b></h3>
+                            <div class="controls">
+                                <span class="prev"></span>
+                                <span class="next active"></span></div>
+                        </div>
+                        <div class="content" style="--opinion-total: 6;">
+                            <ul>
+                                <li>
+                                    <div class="review">
+                                        <div class="details">
+                                            <div class="avatar lazy-bg"
+                                                 data-src="//c.superprof.com/i/a/15421790/7852068/160/20240125120329/ciao-soy-benedetta-soy-nativa-italiana-encanta-ensenar-idioma-tambien-poco-cultura-italiana-mis-clases-ofrezco.jpg"></div>
+                                            <div class="infos"><p class="name">Benedetta</p>
+                                                <p class="desc">Profe de italiano</p></div>
+                                        </div>
+                                        <p class="comment">Me gustó mucho la clase con Benedetta. Quería una clase
+                                            divertida con práctica y así fue. Hubo conversación, ejercicios, lectura de
+                                            texto y también una canción. Volveré a tener clase con ella. Lo que más me
+                                            gustó fue que mientras me corregía, lo escribía en una hoja.</p>
+                                        <div class="rating-container">
+                                            <div class="rating"><p>Mayi</p>
+                                                <div class="stars" data-star="5.0"><span
+                                                        class="star-fullV2"></span><span
+                                                        class="star-fullV2"></span><span
+                                                        class="star-fullV2"></span><span
+                                                        class="star-fullV2"></span><span class="star-fullV2"></span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </li>
+                                <li>
+                                    <div class="review">
+                                        <div class="details">
+                                            <div class="avatar lazy-bg"
+                                                 data-src="//c.superprof.com/i/a/26628646/11949882/160/20231004220437/clases-maquillaje-perfeccionamiento-tecnicas-para-todas-las-edades-niveles.jpg"></div>
+                                            <div class="infos"><p class="name">Marta</p>
+                                                <p class="desc">Profe de maquillaje</p></div>
+                                        </div>
+                                        <p class="comment">He dado clases básicas para maquillaje del día a dia y todo
+                                            muy bien. Marta explica los conceptos de manera sencilla Me ha gustado mucho
+                                            y he aprendido bastantes cosas en poco tiempo. </p>
+                                        <div class="rating-container">
+                                            <div class="rating"><p>Carolina</p>
+                                                <div class="stars" data-star="5.0"><span
+                                                        class="star-fullV2"></span><span
+                                                        class="star-fullV2"></span><span
+                                                        class="star-fullV2"></span><span
+                                                        class="star-fullV2"></span><span class="star-fullV2"></span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </li>
+                                <li>
+                                    <div class="review">
+                                        <div class="details">
+                                            <div class="avatar lazy-bg"
+                                                 data-src="//c.superprof.com/i/a/26416504/11867881/160/20230514230655/ing-mecanico-prof-universitario-doy-asesorias-evaluaciones-clases-proyectos-areas-calculo-fisica-estatica.jpg"></div>
+                                            <div class="infos"><p class="name">Jesús Francisco</p>
+                                                <p class="desc">Profe de mecánica</p></div>
+                                        </div>
+                                        <p class="comment">Encantado con Jesús, un profesor con la materia muy clara y
+                                            sobre todo muy atento, resolviendo cualquier tipo de duda y explicando
+                                            detalladamente y de manera resolutiva cada una de mis dudas. Un experto de
+                                            Inventor.</p>
+                                        <div class="rating-container">
+                                            <div class="rating"><p>Marcos</p>
+                                                <div class="stars" data-star="5.0"><span
+                                                        class="star-fullV2"></span><span
+                                                        class="star-fullV2"></span><span
+                                                        class="star-fullV2"></span><span
+                                                        class="star-fullV2"></span><span class="star-fullV2"></span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </li>
+                                <li>
+                                    <div class="review">
+                                        <div class="details">
+                                            <div class="avatar lazy-bg"
+                                                 data-src="//c.superprof.com/i/a/30082009/13387281/160/20240315181630/hola-soy-una-estudiante-ingenieria-energia-universidad-carlos-iii-madrid-necesitais-ayuda-con-ingles.jpg"></div>
+                                            <div class="infos"><p class="name">María</p>
+                                                <p class="desc">Profe de matemáticas</p></div>
+                                        </div>
+                                        <p class="comment">María es una excelente profe de mate y física. Estoy muy
+                                            agradecida porque con su sabiduría,tranquilidad y simpatía, ha logrado que
+                                            mi hijo sacase muy buena nota en estas dos asignaturas.
+                                            Gracias María!!!!</p>
+                                        <div class="rating-container">
+                                            <div class="rating"><p>Laura</p>
+                                                <div class="stars" data-star="5.0"><span
+                                                        class="star-fullV2"></span><span
+                                                        class="star-fullV2"></span><span
+                                                        class="star-fullV2"></span><span
+                                                        class="star-fullV2"></span><span class="star-fullV2"></span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </li>
+                                <li>
+                                    <div class="review">
+                                        <div class="details">
+                                            <div class="avatar lazy-bg"
+                                                 data-src="//c.superprof.com/i/a/23816601/11029767/160/20230402085532/clases-particulares-frances-linea-para-todos-los-niveles-profesor-nativo-con-anos-experiencia.jpg"></div>
+                                            <div class="infos"><p class="name">Pierre Pablo</p>
+                                                <p class="desc">Profe de francés</p></div>
+                                        </div>
+                                        <p class="comment">Las clases con Pierre son muy interesantes, se me pasa el
+                                            tiempo muy rápido. Recomendable</p>
+                                        <div class="rating-container">
+                                            <div class="rating"><p>Daniel</p>
+                                                <div class="stars" data-star="5.0"><span
+                                                        class="star-fullV2"></span><span
+                                                        class="star-fullV2"></span><span
+                                                        class="star-fullV2"></span><span
+                                                        class="star-fullV2"></span><span class="star-fullV2"></span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </li>
+                                <li>
+                                    <div class="review">
+                                        <div class="details">
+                                            <div class="avatar lazy-bg"
+                                                 data-src="//c.superprof.com/i/a/29054400/12872152/160/20231211043441/teacher-desde-ninos-hasta-adultos-casual-para-trabajo-ayudo.jpg"></div>
+                                            <div class="infos"><p class="name">America</p>
+                                                <p class="desc">Profe de inglés</p></div>
+                                        </div>
+                                        <p class="comment">Según mi hijo, la profesora America es simplemente
+                                            maravillosa. A él le fascina su manera de enseñar; se toma el tiempo
+                                            necesario para explicar todo con calma y paciencia. Además, transmite
+                                            seguridad al alumno, fomentando su confianza en sí mismo.</p>
+                                        <div class="rating-container">
+                                            <div class="rating"><p>Diana</p>
+                                                <div class="stars" data-star="5.0"><span
+                                                        class="star-fullV2"></span><span
+                                                        class="star-fullV2"></span><span
+                                                        class="star-fullV2"></span><span
+                                                        class="star-fullV2"></span><span class="star-fullV2"></span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <a href="https://www.superprof.es/dar-clases-particulares/" class="join-us">
+                    <img class="lazy" data-src="//c.superprof.com/style/images/home/v4/become-teacher.webp"
+                         alt="a teacher giving a lesson">
+                    <div class="content"><h2 class="title">Tú también, <br>sé un Superprof</h2>
+                        <p class="subtitle">Comparte tus conocimientos, vive de tu pasión y sé independiente</p>
+                        <div class="btn-cta">
+                            <span class="text">Saber más</span>
+                            <span class="preview-icon">
+<span class="icon-container">
+<span class="icon"></span>
+<span class="icon"></span>
+</span>
+</span></div>
+                    </div>
+                </a>
+                <div class="seo">
+                    <section><h2 class="title-lvl-one">Aprende lo que quieras</h2>
+                        <ul class="blocks-container subjects">
+                            <li class="block">
+
+                                <a href="/clases/frances/espana/">Francés</a>
+
+                                <a href="/clases/apoyo-escolar/espana/">Apoyo escolar</a>
+
+                                <a href="/clases/lengua-castellana-y-literatura/espana/">Lengua Castellana y
+                                    Literatura</a>
+
+                                <a href="/clases/informatica-basica/espana/">Informática básica</a>
+
+                                <a href="/clases/padel/espana/">Pádel</a>
+
+                                <a href="/clases/contabilidad/espana/">Contabilidad</a>
+
+                                <a href="/clases/bachata/espana/">Bachata</a>
+
+                                <a href="/clases/baile/espana/">Baile</a>
+
+                                <a href="/clases/aleman/espana/">Alemán</a>
+
+                                <a href="/clases/solfeo/espana/">Solfeo</a>
+                            </li>
+                            <li class="block">
+
+                                <a href="/clases/estadistica/espana/">Estadística</a>
+
+                                <a href="/clases/dibujo/espana/">Dibujo</a>
+
+                                <a href="/clases/dibujo-tecnico/espana/">Dibujo técnico</a>
+
+                                <a href="/clases/futbol/espana/">Fútbol</a>
+
+                                <a href="/clases/euskera/espana/">Euskera</a>
+
+                                <a href="/clases/biologia/espana/">Biología</a>
+
+                                <a href="/clases/yoga/espana/">Yoga</a>
+
+                                <a href="/clases/quimica/espana/">Química</a>
+
+                                <a href="/clases/bateria/espana/">Batería</a>
+
+                                <a href="/clases/catalan/espana/">Catalán</a>
+                            </li>
+                            <li class="block">
+
+                                <a href="/clases/italiano/espana/">Italiano</a>
+
+                                <a href="/clases/java/espana/">Java baile</a>
+
+                                <a href="/clases/ingenieria/espana/">Ingeniería</a>
+
+                                <a href="/clases/natacion/espana/">Natación</a>
+
+                                <a href="/clases/economia/espana/">Economía</a>
+
+                                <a href="/clases/fisica/espana/">Física</a>
+
+                                <a href="/clases/excel/espana/">Excel</a>
+
+                                <a href="/clases/ayuda-en-la-redaccion-de-memorias-y-tesis/espana/">Ayuda en la
+                                    redacción de Memorias y Tesis</a>
+
+                                <a href="/clases/baile-para-principiantes/espana/">Baile para principiantes</a>
+
+                                <a href="/clases/fisica-y-quimica/espana/">Física y química</a>
+                            </li>
+                            <li class="block">
+
+                                <a href="/clases/preparacion-oposiciones-administracion-publica/espana/">Preparación
+                                    oposiciones Administración Pública</a>
+
+                                <a href="/clases/patinaje/espana/">Patinaje</a>
+
+                                <a href="/clases/ruso/espana/">Ruso</a>
+
+                                <a href="/clases/japones/espana/">Japonés</a>
+
+                                <a href="/clases/diseno-grafico/espana/">Diseño gráfico</a>
+
+                                <a href="/clases/python/espana/">Python</a>
+
+                                <a href="/clases/cocina/espana/">Cocina</a>
+
+                                <a href="/clases/geografia/espana/">Geografía</a>
+
+                                <a href="/clases/autocad/espana/">AutoCAD</a>
+
+                                <a href="/clases/violin/espana/">Violín</a>
+                            </li>
+                        </ul>
+                    </section>
+                    <section><h2 class="title-lvl-one">Aprende, <br>Explora tu ciudad</h2>
+                        <ul class="blocks-container towns">
+                            <li class="block">
+
+                                <a href="/clases/todas-materias/barcelona/" class="link_city">Barcelona</a>
+                                <ul class="subjects-list">
+                                    <li class="subject"><a href="/clases/entrenador-personal/barcelona/">Entrenador
+                                        personal</a></li>
+                                    <li class="subject"><a href="/clases/patinaje/barcelona/">Patinaje</a></li>
+                                    <li class="subject"><a href="/clases/skate/barcelona/">Skate</a></li>
+                                </ul>
+
+
+                                <a href="/clases/todas-materias/madrid/" class="link_city">Madrid</a>
+                                <ul class="subjects-list">
+                                    <li class="subject"><a href="/clases/entrenador-personal/madrid/">Entrenador
+                                        personal</a></li>
+                                    <li class="subject"><a href="/clases/padel/madrid/">Pádel</a></li>
+                                    <li class="subject"><a href="/clases/matematicas/madrid/">Matemáticas</a></li>
+                                </ul>
+
+
+                                <a href="/clases/todas-materias/valencia/" class="link_city">Valencia</a>
+                                <ul class="subjects-list">
+                                    <li class="subject"><a href="/clases/entrenador-personal/valencia/">Entrenador
+                                        personal</a></li>
+                                    <li class="subject"><a href="/clases/padel/valencia/">Pádel</a></li>
+                                    <li class="subject"><a href="/clases/canto/valencia/">Canto</a></li>
+                                </ul>
+
+
+                                <a href="/clases/todas-materias/sevilla/" class="link_city">Sevilla</a>
+                                <ul class="subjects-list">
+                                    <li class="subject"><a href="/clases/entrenador-personal/sevilla/">Entrenador
+                                        personal</a></li>
+                                    <li class="subject"><a href="/clases/padel/sevilla/">Pádel</a></li>
+                                    <li class="subject"><a href="/clases/guitarra-flamenca/sevilla/">Guitarra
+                                        flamenca</a></li>
+                                </ul>
+
+
+                                <a href="/clases/todas-materias/zaragoza/" class="link_city">Zaragoza</a>
+                                <ul class="subjects-list">
+                                    <li class="subject"><a href="/clases/entrenador-personal/zaragoza/">Entrenador
+                                        personal</a></li>
+                                    <li class="subject"><a href="/clases/tenis/zaragoza/">Tenis</a></li>
+                                    <li class="subject"><a href="/clases/padel/zaragoza/">Pádel</a></li>
+                                </ul>
+
+                            </li>
+                            <li class="block">
+
+                                <a href="/clases/todas-materias/las-palmas-de-gran-canaria/" class="link_city">Las
+                                    Palmas de Gran Canaria</a>
+                                <ul class="subjects-list">
+                                    <li class="subject"><a href="/clases/canto/las-palmas-de-gran-canaria/">Canto</a>
+                                    </li>
+                                    <li class="subject"><a
+                                            href="/clases/espanol-para-extranjeros/las-palmas-de-gran-canaria/">Español</a>
+                                    </li>
+                                    <li class="subject"><a href="/clases/matematicas/las-palmas-de-gran-canaria/">Matemáticas</a>
+                                    </li>
+                                </ul>
+
+
+                                <a href="/clases/todas-materias/malaga/" class="link_city">Málaga</a>
+                                <ul class="subjects-list">
+                                    <li class="subject"><a href="/clases/entrenador-personal/malaga/">Entrenador
+                                        personal</a></li>
+                                    <li class="subject"><a href="/clases/ingles/malaga/">Inglés</a></li>
+                                    <li class="subject"><a href="/clases/frances/malaga/">Francés</a></li>
+                                </ul>
+
+
+                                <a href="/clases/todas-materias/palma-de-mallorca/" class="link_city">Palma de
+                                    Mallorca</a>
+                                <ul class="subjects-list">
+                                    <li class="subject"><a
+                                            href="/clases/contabilidad/palma-de-mallorca/">Contabilidad</a></li>
+                                    <li class="subject"><a href="/clases/entrenador-personal/palma-de-mallorca/">Entrenador
+                                        personal</a></li>
+                                    <li class="subject"><a href="/clases/ajedrez/palma-de-mallorca/">Ajedrez</a></li>
+                                </ul>
+
+
+                                <a href="/clases/todas-materias/valladolid/" class="link_city">Valladolid</a>
+                                <ul class="subjects-list">
+                                    <li class="subject"><a href="/clases/padel/valladolid/">Pádel</a></li>
+                                    <li class="subject"><a href="/clases/entrenador-personal/valladolid/">Entrenador
+                                        personal</a></li>
+                                    <li class="subject"><a href="/clases/matematicas/valladolid/">Matemáticas</a></li>
+                                </ul>
+
+
+                                <a href="/clases/todas-materias/bilbao/" class="link_city">Bilbao</a>
+                                <ul class="subjects-list">
+                                    <li class="subject"><a href="/clases/canto/bilbao/">Canto</a></li>
+                                    <li class="subject"><a href="/clases/natacion/bilbao/">Natación</a></li>
+                                    <li class="subject"><a href="/clases/entrenador-personal/bilbao/">Entrenador
+                                        personal</a></li>
+                                </ul>
+
+                            </li>
+                            <li class="block">
+
+                                <a href="/clases/todas-materias/cordoba/" class="link_city">Córdoba</a>
+                                <ul class="subjects-list">
+                                    <li class="subject"><a href="/clases/entrenador-personal/cordoba/">Entrenador
+                                        personal</a></li>
+                                    <li class="subject"><a href="/clases/guitarra/cordoba/">Guitarra</a></li>
+                                    <li class="subject"><a href="/clases/aleman/cordoba/">Alemán</a></li>
+                                </ul>
+
+
+                                <a href="/clases/todas-materias/granada/" class="link_city">Granada</a>
+                                <ul class="subjects-list">
+                                    <li class="subject"><a href="/clases/entrenador-personal/granada/">Entrenador
+                                        personal</a></li>
+                                    <li class="subject"><a href="/clases/matematicas/granada/">Matemáticas</a></li>
+                                    <li class="subject"><a href="/clases/programacion/granada/">Programación</a></li>
+                                </ul>
+
+
+                                <a href="/clases/todas-materias/cartagena/" class="link_city">Cartagena</a>
+                                <ul class="subjects-list">
+                                    <li class="subject"><a href="/clases/fisica/cartagena/">Física</a></li>
+                                    <li class="subject"><a href="/clases/guitarra/cartagena/">Guitarra</a></li>
+                                    <li class="subject"><a href="/clases/preparacion-selectividad-ciencias/cartagena/">Preparación
+                                        selectividad Ciencias</a></li>
+                                </ul>
+
+
+                                <a href="/clases/todas-materias/alicante/" class="link_city">Alicante</a>
+                                <ul class="subjects-list">
+                                    <li class="subject"><a href="/clases/entrenador-personal/alicante/">Entrenador
+                                        personal</a></li>
+                                    <li class="subject"><a href="/clases/ingles/alicante/">Inglés</a></li>
+                                    <li class="subject"><a href="/clases/yoga/alicante/">Yoga</a></li>
+                                </ul>
+
+
+                                <a href="online.html" class="link_city">En línea</a>
+                                <ul class="subjects-list">
+                                    <li class="subject"><a href="/clases/ingles/online/">Inglés</a></li>
+                                    <li class="subject"><a href="/clases/matematicas/online/">Matemáticas</a></li>
+                                    <li class="subject"><a href="/clases/frances/online/">Francés</a></li>
+                                </ul>
+
+                            </li>
+                        </ul>
+                    </section>
+
+
+                    <section class="superguides-content">
+                        <div class="superguides-container"><h2 class="title-lvl-one">Descubre nuestras súper guías</h2>
+                            <div class="basic-articles">
+                                <ul>
+                                    <li>
+                                        <a href="https://www.superprof.es/blog/guia-juegos-olimpicos/" target="_blank"
+                                           class="article-wrapper">
+                                            <div class="content"><h3>Guía completa para disfrutar los Juegos Olímpicos
+                                                2024</h3>
+                                                <p class="abstract">Juegos Olímpicos: una guía desde sus orígenes hasta
+                                                    la edición 2024 El&nbsp;Espíritu&nbsp;Olímpico exalta y une en un
+                                                    conjunto equilibrado las cualidades del cuerpo, de la&nbsp;mente&nbsp;y
+                                                    de la&nbsp;voluntad. Barón Pierre de Coubertain (1863 – 1937). Padre
+                                                    de los Juegos Olímpicos modernos. ¿Estás listo para ser testigo de
+                                                    nuevos récords mundiales en la histórica ciudad de París? […]
+                                                </p>
+                                                <p class="date">
+                                                    <span>abril 2024</span>
+                                                    <span>17 minutos de lectura</span></p></div>
+                                        </a></li>
+                                    <li>
+                                        <a href="https://www.superprof.es/blog/cantar-profesional-guia/" target="_blank"
+                                           class="article-wrapper">
+                                            <div class="content"><h3>Canta como un profesional: dominar el arte de
+                                                cantar</h3>
+                                                <p class="abstract">La guía definitiva para cantantes de todos los
+                                                    niveles Lo único mejor que cantar, es cantar aún más. Ella
+                                                    Fitzgerald Abróchate el cinturón y prepárate para sumergirte en una
+                                                    exploración exhaustiva del polifacético mundo de la expresión vocal.
+                                                    Aquí nos adentraremos en el intrincado mundo del arte vocal con una
+                                                    exploración en profundidad de las […]
+                                                </p>
+                                                <p class="date">
+                                                    <span>marzo 2024</span>
+                                                    <span>15 minutos de lectura</span></p></div>
+                                        </a></li>
+                                    <li>
+                                        <a href="https://www.superprof.es/blog/saberlo-todo-programa-erasmus/"
+                                           target="_blank" class="article-wrapper">
+                                            <div class="content"><h3>¡La guía completa de Erasmus +!</h3>
+                                                <p class="abstract">Viajar al extranjero con Erasmus+: consejos a seguir
+                                                    Viajar&nbsp;y cambiar de lugar imparten un nuevo vigor a la mente.
+                                                    Lucio Anneo&nbsp;Séneca ¿Alguna vez te has sentido como en un barco
+                                                    a la deriva, buscando tu rumbo? Si estás pensando en Erasmus+,
+                                                    déjame decirte que estás en el camino correcto hacia una aventura
+                                                    inolvidable. Erasmus es […]
+                                                </p>
+                                                <p class="date">
+                                                    <span>marzo 2024</span>
+                                                    <span>13 minutos de lectura</span></p></div>
+                                        </a></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </section>
+
+
+                </div>
+                <div class="header-search-cta mobile-only search-header-form-visibility-trigger visible">
+                    <div class="cta-wrapper">
+                        <span class="text">¿Qué quieres aprender?</span>
+                        <div class="btn-container">
+                            <div class="btn">
+                                <span class="icon"></span></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <script type="text/template" id="last-viewed-template">
+                <div class="landing-v4-ads-bloc-container">
+                    <a href="{{ url }}" class="landing-v4-ads-bloc tck-announce-link" data-version="2"
+                       data-value="{{ id_annonce }}" target="_blank">
+                        <div class="landing-v4-ads-wrapper">
+                            <div class="landing-v4-ads-pic">
+                                <div
+                                        class="item icon-bookmark-wrapper"
+                                        data-bookmark="{{ id_annonce }}:{{ bookmark_list_id }}"
+                                        data-announcement-name="{{ teacherName }}"
+                                        data-announcement-img="{{ teacherPhoto }}"
+                                        data-announcement-gender="{{ gender }}"
+                                        data-announcement-rating="{{ averageRating }}"
+                                        data-bookmark-params="id: {{ id_annonce }}"
+                                >
+                                    <span class="icon-bookmark"></span>
+                                </div>
+                                <div
+                                        class="img"
+                                        style="background-image: url(&quot;{{ photoWebp300 }}&quot;);"
+                                ></div>
+                                <div class="landing-v4-ads-pic-mask"></div>
+                                <div class="landing-v4-ads-pic-text-container">
+                                    <p class="landing-v4-ads-pic-firstname">{{ teacherName }}</p>
+                                    <div class="landing-v4-ads-pic-location">
+                                        <span class="landing-v4-ads-pic-text">@CITY@ ( @IF_CAN_MOVE@ cara a cara @IF_CAN_MOVE@ @IF_BOTH@ & @IF_BOTH@ @IF_WEBCAM@ en línea @IF_WEBCAM@ )</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="bottom-part">
+                                <ul class="badge">
+                                    <li class="rating">
+                                        <span class="emphasis">{{ averageRating }}</span>
+                                        <span>({{ countRating }})</span>
+                                    </li>
+                                    <li class="status {{ isHighestBadge }} {{ showBadge }}">
+                                        <span>{{ badge }}</span>
+                                    </li>
+                                </ul>
+                                <h3 class="landing-v4-ads-text">
+                                    <span class="first-subject">{{ first_subject }}&nbsp;-&nbsp;</span><span>{{ title }}</span>
+                                </h3>
+                                <div class="chips-wrapper">
+                                    <ul class="chips">
+                                        <li class="pricing">
+                                            <span class="picto"></span>
+                                            <span class="text">{{ price_html }}</span>
+                                        </li>
+                                        <li class="gift" data-visible="{{ firstHourFree }}">
+                                            <span class="picto"></span>
+                                            <span class="text">1<sup>ra</sup> clase gratis</span>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </a>
+                </div></script>
+        </div>
+
+        <div class="notification valid hidden" id="errorNotification" data-timeout="15000">
+            <div class="wrapper"><p class="notification-text"></p>
+                <div class="notification-close"></div>
+            </div>
+        </div>
+
+        <div class="footer">
+            <div class="wrapper">
+                <div class="footer_links">
+                    <div class="blocs bloc1">
+                        <div class="title">Sobre nosotros</div>
+                        <ul class="list">
+                            <li>
+                                <button onclick="location.href='/quienes-somos.html'" title="">¿Quiénes somos?</button>
+                            </li>
+                            <li>
+                                <button onclick="location.href='/confianza-seguridad.html'" title="">Nuestros valores
+                                </button>
+                            </li>
+                            <li>
+                                <button onclick="location.href='/cgu.html'" title="">Menciones legales</button>
+                            </li>
+                            <li>
+                                <button onclick="location.href='/politica-de-confidencialidad.html'" title="">
+                                    Confidencialidad
+                                </button>
+                            </li>
+                            <li><a href="/superprof-en-el-mundo.html" title="">Países</a></li>
+                            <li><a href="/online.html" title="">Clases en línea</a></li>
+                            <li><a href="/provincias.html" title="">Provincias</a></li>
+                            <li>
+                                <button onclick="location.href='/oferta-trabajo/'" title="">Superprof recluta</button>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="blocs bloc2">
+                        <div class="title">Materias</div>
+                        <ul class="list">
+                            <li id="cat_11">
+                                <a href="/las-materias/11/arte.html">Arte</a></li>
+                            <li id="cat_14">
+                                <a href="/las-materias/14/desarrollo-profesional.html">Desarrollo profesional</a></li>
+                            <li id="cat_8">
+                                <a href="/las-materias/8/informatica.html">Informática</a></li>
+                            <li id="cat_5">
+                                <a href="/las-materias/5/idiomas.html">Idiomas</a></li>
+                            <li id="cat_9">
+                                <a href="/las-materias/9/musica.html">Música</a></li>
+                            <li id="cat_13">
+                                <a href="/las-materias/13/salud-y-bienestar.html">Salud y bienestar</a></li>
+                            <li id="cat_1">
+                                <a href="/las-materias/1/apoyo-escolar.html">Apoyo escolar</a></li>
+                            <li id="cat_10">
+                                <a href="/las-materias/10/deportes-y-baile.html">Deportes y baile</a></li>
+                        </ul>
+                    </div>
+                    <div class="blocs bloc3">
+                        <div class="title">Sigue la aventura</div>
+                        <ul class="list">
+                            <li><a href="https://www.superprof.es/blog/" title="">El blog We Love Prof</a></li>
+                            <li><a href="https://www.superprof.es/apuntes/" title="">Material Didáctico</a></li>
+                        </ul>
+                    </div>
+                    <div class="blocs TODO">
+                        <div class="title">Asistencia</div>
+                        <ul class="list">
+                            <li>
+                                <button onclick="location.href='/ayuda/alumnos-as/2/'" title="">Centro de ayuda</button>
+                            </li>
+                            <li>
+                                <button onclick="location.href='/contacto.html'" title="">Contacto</button>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="blocs bloc4">
+                        <div class="title">Síguenos</div>
+                        <ul class="list footer-socials">
+                            <li>
+                                <button class="social-facebook a-js"
+                                        data-href="https://www.facebook.com/SuperprofEspana" data-target="_blank"
+                                        aria-label="Facebook"></button>
+                            </li>
+                            <li>
+                                <button class="social-twitter a-js" data-href="https://twitter.com/superprof_es"
+                                        data-target="_blank" aria-label="Twitter"></button>
+                            </li>
+                            <li>
+                                <button class="social-instagram a-js"
+                                        data-href="https://www.instagram.com/superprof_es/" data-target="_blank"
+                                        aria-label="Instagram"></button>
+                            </li>
+
+                        </ul>
+                    </div>
+                </div>
+                <div class="footer-infos">
+                    <div class="logo">© 2024 Superprof, ¡aprende con los mejores!</div>
+                </div>
+            </div>
+        </div>
+
+        <script type="text/javascript">// Il faut réécrire cette partie pour que sous certaines conditions
+        // ( webview + boolean ) le datalayer ne sois pas renseigner mais envoyer
+        // a l'api webview
+
+        // Si comportement spécial webview && window?.ReactNativeWebView?.postMessage
+
+
+        window.dataLayer = window.dataLayer || [];
+        window.dataLayer.push(
+            {
+                "event": "userDatas",
+                "eventCategory": "1.0.1",
+                "pageType": "home",
+                "user": "",
+                "user_mail_hash": "",
+                "location": {"country": "Espa\u00f1a"}
+            }
+        );
+        console.log('dt');
+
+        </script>
+        <script src="//c.superprof.com/js/langue-ES-202101251137.js" type="text/javascript"></script>
+        <script src="//c.superprof.com/js/js-202405131336.js" type="text/javascript"></script>
+        <script src="https://apis.google.com/js/platform.js?onload=initGoogleConnect" async="" defer=""
+                gapi_processed="true"></script>
+        <script type="text/javascript">
+            function initGoogleConnect() {
+                window.dispatchEvent(new Event("googleconnect.loaded"));
+                window.googleConnect = true;
+            }
+        </script>
+        <script type="text/javascript"
+                src="https://maps.googleapis.com/maps/api/js?libraries=places&amp;key=AIzaSyAWGLYJIDx3js5iValdsBuAJ59dkIe-c08&amp;language=es"></script>
+    </div>
+</main>
+</body>
+</html>

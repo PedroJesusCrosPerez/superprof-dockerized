@@ -1,0 +1,1012 @@
+
+<link rel="stylesheet" th:href="@{/css/template/userDropDown.css}">
+<script th:src="@{/js/template/userDropDown.js}"></script>
+<div id="sp-vue-container">
+    <!-- HEADER -->
+    <header class="header-superprof super-header absolute-mode sticky-thresold disable-main-background"
+            style="--base-background-main: var(--base-color-white); --base-background-sticky: var(--base-color-white); --base-background-search-engine-container: var(--base-color-grey-light); --base-background-button: var(--base-color-grey-light); --base-button-hover: var(--base-color-pink); --base-background-button-open-highlight: var(--base-color-pink); --base-font-color: var(--base-color-black); --base-font-color-hover: var(--base-color-white);">
+
+        <!-- HEADER > NAV -->
+        <!-- VERSION AUTHENTICATED USER -->
+        <div class="static-content">
+            <div class="trademark">
+                <a href="/" aria-label="Clases particulares - Superprof" title="Clases particulares - Superprof" class="" style="mask-image: url(&quot;//c.superprof.com/style/images/logos/superprof.svg&quot;); background-color: var(--base-color-pink); width: 120px; height: 24px;"></a>
+            </div>
+            <div id="search-engine-0" class="header-search-engine empty-step" style="display: none;">
+                <div class="overlay" style="display: none;"></div>
+                <div class="container" style="width: 234.113px;">
+                    <span class="main-text caption"
+                        >¿Qué quieres aprender?</span>
+                    <div class="fields">
+                        <div class="input-wrapper">
+                            <div class="field-wrapper"><i data-v-07452373="" data-name="book"
+                                                          data-tags="read,dictionary,booklet,magazine,library"
+                                                          data-type="book" class="feather feather--book">
+                                <svg data-v-07452373="" xmlns="http://www.w3.org/2000/svg" width="24"
+                                     height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                     stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                                     class="feather feather-book feather__content">
+                                    <path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"></path>
+                                    <path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"></path>
+                                </svg>
+                            </i><input data-proxy="subject.input" data-proxy-field="subject"
+                                       data-local-target="inputs.subject" data-field-index="SUBJECT"
+                                       name="subject-field" type="text" placeholder="¿Qué materia?"
+                                       class="caption">
+                                <div class="clear-button"><i data-v-07452373="" data-name="x"
+                                                             data-tags="cancel,close,delete,remove,times,clear"
+                                                             data-type="x" class="feather feather--x">
+                                    <svg data-v-07452373="" xmlns="http://www.w3.org/2000/svg" width="24"
+                                         height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                         stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                                         class="feather feather-x feather__content">
+                                        <line x1="18" y1="6" x2="6" y2="18"></line>
+                                        <line x1="6" y1="6" x2="18" y2="18"></line>
+                                    </svg>
+                                </i></div>
+                            </div>
+                            <span class="dropdown-title">Top materias</span>
+                            <ul data-v-7bc63f14="" class="header-dropdown" style="display: none;">
+                                <li data-v-7bc63f14="" class="header-dropdown-item" style="display: none;">
+                                    <div data-v-7bc63f14="" class="header-dropdown-item-inner"><i
+                                            data-v-07452373="" data-v-7bc63f14="" data-name="more-horizontal"
+                                            data-tags="ellipsis" data-type="more-horizontal"
+                                            class="feather feather--more-horizontal">
+                                        <svg data-v-07452373="" xmlns="http://www.w3.org/2000/svg" width="24"
+                                             height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                             stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                                             class="feather feather-more-horizontal feather__content">
+                                            <circle cx="12" cy="12" r="1"></circle>
+                                            <circle cx="19" cy="12" r="1"></circle>
+                                            <circle cx="5" cy="12" r="1"></circle>
+                                        </svg>
+                                    </i><span data-v-7bc63f14="">Plus</span></div>
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="input-wrapper placeholder">
+                            <div class="field-wrapper"><i data-v-07452373="" data-name="map-pin"
+                                                          data-tags="location,navigation,travel,marker"
+                                                          data-type="map-pin"
+                                                          class="feather feather--map-pin">
+                                <svg data-v-07452373="" xmlns="http://www.w3.org/2000/svg" width="24"
+                                     height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                     stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                                     class="feather feather-map-pin feather__content">
+                                    <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path>
+                                    <circle cx="12" cy="10" r="3"></circle>
+                                </svg>
+                            </i><input data-proxy="city.input" data-proxy-field="city"
+                                       data-local-target="inputs.city" data-field-index="CITY" name="city-field"
+                                       type="text" placeholder="¿Dirección, ciudad o barrio?" class="caption">
+                                <div class="clear-button"><i data-v-07452373="" data-name="x"
+                                                             data-tags="cancel,close,delete,remove,times,clear"
+                                                             data-type="x" class="feather feather--x">
+                                    <svg data-v-07452373="" xmlns="http://www.w3.org/2000/svg" width="24"
+                                         height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                         stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                                         class="feather feather-x feather__content">
+                                        <line x1="18" y1="6" x2="6" y2="18"></line>
+                                        <line x1="6" y1="6" x2="18" y2="18"></line>
+                                    </svg>
+                                </i></div>
+                            </div>
+                            <span class="dropdown-title">Top ciudades</span>
+                            <ul data-v-7bc63f14="" class="header-dropdown">
+                                <li data-v-7bc63f14="" class="header-dropdown-item caption" data-index="3"
+                                    data-highlight="0">
+                                    <div class="item-wrapper data-a"><i data-v-07452373="" data-name="target"
+                                                                        data-tags="logo,bullseye"
+                                                                        data-type="target"
+                                                                        class="feather feather--target">
+                                        <svg data-v-07452373="" xmlns="http://www.w3.org/2000/svg" width="24"
+                                             height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                             stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                                             class="feather feather-target feather__content">
+                                            <circle cx="12" cy="12" r="10"></circle>
+                                            <circle cx="12" cy="12" r="6"></circle>
+                                            <circle cx="12" cy="12" r="2"></circle>
+                                        </svg>
+                                    </i><span class="text">Buscar cerca de mí</span>
+                                    </div>
+                                </li>
+                                <li data-v-7bc63f14="" class="header-dropdown-item caption" data-index="4"
+                                    data-highlight="0">
+                                    <div class="item-wrapper data-a"><i data-v-07452373="" data-name="video"
+                                                                        data-tags="camera,movie,film"
+                                                                        data-type="video"
+                                                                        class="feather feather--video">
+                                        <svg data-v-07452373="" xmlns="http://www.w3.org/2000/svg" width="24"
+                                             height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                             stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                                             class="feather feather-video feather__content">
+                                            <polygon points="23 7 16 12 23 17 23 7"></polygon>
+                                            <rect x="1" y="5" width="15" height="14" rx="2" ry="2"></rect>
+                                        </svg>
+                                    </i><span class="text">En línea</span>
+                                    </div>
+                                </li>
+                                <li data-v-7bc63f14="" class="header-dropdown-item" style="display: none;">
+                                    <div data-v-7bc63f14="" class="header-dropdown-item-inner"><i
+                                            data-v-07452373="" data-v-7bc63f14="" data-name="more-horizontal"
+                                            data-tags="ellipsis" data-type="more-horizontal"
+                                            class="feather feather--more-horizontal">
+                                        <svg data-v-07452373="" xmlns="http://www.w3.org/2000/svg" width="24"
+                                             height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                             stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                                             class="feather feather-more-horizontal feather__content">
+                                            <circle cx="12" cy="12" r="1"></circle>
+                                            <circle cx="19" cy="12" r="1"></circle>
+                                            <circle cx="5" cy="12" r="1"></circle>
+                                        </svg>
+                                    </i><span data-v-7bc63f14="">Plus</span></div>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                    <button title="search_submit" class="squishy-button">
+                        <i data-v-07452373=""
+                           data-name="search"
+                           data-tags="find,magnifier,magnifying glass"
+                           data-type="search"
+                           class="feather feather--search">
+                            <svg data-v-07452373="" xmlns="http://www.w3.org/2000/svg" width="24" height="24"
+                                 viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                                 stroke-linecap="round" stroke-linejoin="round"
+                                 class="feather feather-search feather__content">
+                                <circle cx="11" cy="11" r="8"></circle>
+                                <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+                            </svg>
+                        </i></button>
+                </div>
+            </div>
+            <div class="header-buttons"><a data-v-017dc95e="" to="[object Object]"
+                                           href="https://www.superprof.es/ayuda/"
+                                           class="basic-header-button caption has-icon">
+                <i
+                        data-v-07452373="" data-v-017dc95e="" data-name="help-circle" data-tags="question mark"
+                        data-type="help-circle" class="feather feather--help-circle">
+                    <svg data-v-07452373="" xmlns="http://www.w3.org/2000/svg" width="24" height="24"
+                         viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                         stroke-linecap="round" stroke-linejoin="round"
+                         class="feather feather-help-circle feather__content">
+                        <circle cx="12" cy="12" r="10"></circle>
+                        <path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"></path>
+                        <line x1="12" y1="17" x2="12.01" y2="17"></line>
+                    </svg>
+                </i></a><a data-v-017dc95e="" to="[object Object]" href="/panel-de-control.html/favoritos/"
+                           class="basic-header-button caption has-icon">
+                <i data-v-07452373=""
+                   data-v-017dc95e=""
+                   data-name="heart"
+                   data-tags="like,love,emotion"
+                   data-type="heart"
+                   class="feather feather--heart">
+                    <svg data-v-07452373="" xmlns="http://www.w3.org/2000/svg" width="24" height="24"
+                         viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                         stroke-linecap="round" stroke-linejoin="round"
+                         class="feather feather-heart feather__content">
+                        <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path>
+                    </svg>
+                </i></a>
+                <button id="btnUserDropDown" data-v-017dc95e="" to="[object Object]"
+                        class="basic-header-button caption has-avatar">
+                    <div data-v-017dc95e="" class="avatar-wrapper">
+                        <div data-v-017dc95e="" class="icon-menu"><span data-v-017dc95e=""></span><span
+                                data-v-017dc95e=""></span><span data-v-017dc95e=""></span></div>
+                        <div data-v-017dc95e="" class="avatar"
+                             style="background-image: url(&quot;//c.superprof.com/i/m/30308655/50/20240313080839/30308655.jpg&quot;);">
+                        </div>
+                    </div>
+                </button>
+            </div>
+        </div>
+
+        <div class="box dropdown header-menu open-state">
+            <div class="desktop">
+                <ul data-v-7bc63f14="" class="header-dropdown show">
+                    <li data-v-7bc63f14="" class="header-dropdown-item caption" data-index="3"><a
+                            href="/panel-de-control.html" class="item-wrapper data-a"><i data-v-07452373=""
+                                                                                         data-name="grid"
+                                                                                         data-tags=""
+                                                                                         data-type="grid"
+                                                                                         class="feather feather--grid">
+                        <svg data-v-07452373="" xmlns="http://www.w3.org/2000/svg" width="24" height="24"
+                             viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                             stroke-linecap="round" stroke-linejoin="round"
+                             class="feather feather-grid feather__content">
+                            <rect x="3" y="3" width="7" height="7"></rect>
+                            <rect x="14" y="3" width="7" height="7"></rect>
+                            <rect x="14" y="14" width="7" height="7"></rect>
+                            <rect x="3" y="14" width="7" height="7"></rect>
+                        </svg>
+                    </i><span class="text">Mi panel de control</span></a></li>
+                    <li data-v-7bc63f14="" class="header-dropdown-item caption" data-index="4"><a
+                            href="/panel-de-control.html/puesta-en-relacion/lista"
+                            class="item-wrapper data-a"><i data-v-07452373="" data-name="message-circle"
+                                                           data-tags="comment,chat" data-type="message-circle"
+                                                           class="feather feather--message-circle">
+                        <svg data-v-07452373="" xmlns="http://www.w3.org/2000/svg" width="24" height="24"
+                             viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                             stroke-linecap="round" stroke-linejoin="round"
+                             class="feather feather-message-circle feather__content">
+                            <path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"></path>
+                        </svg>
+                    </i><span class="text">Mensajes</span></a></li>
+                    <li data-v-7bc63f14="" class="header-dropdown-item caption" data-index="7">
+                        <a th:href="@{/teacher/my_agreements}" class="item-wrapper data-a">
+                            <i data-v-07452373="" data-name="clipboard" data-tags="copy" data-type="clipboard" class="feather feather--clipboard">
+                                <svg data-v-07452373="" xmlns="http://www.w3.org/2000/svg" width="24" height="24"
+                                     viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                                     stroke-linecap="round" stroke-linejoin="round"
+                                     class="feather feather-clipboard feather__content">
+                                    <path d="M16 4h2a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h2"></path>
+                                    <rect x="8" y="2" width="8" height="4" rx="1" ry="1"></rect>
+                                </svg>
+                            </i>
+                            <span class="text">Mis anuncios</span></a>
+                    </li>
+                    <li data-v-7bc63f14="" class="header-dropdown-item caption no-icon" data-index="13">
+                        <a href="/panel-de-control.html/mi-perfil/" class="item-wrapper data-a">
+                            <span class="text">Mi perfil</span>
+                        </a>
+                    </li>
+                    <li data-v-7bc63f14="" class="header-dropdown-item caption" data-index="15"><a
+                            href="https://www.superprof.es/panel-de-control.html/premium"
+                            class="item-wrapper data-a">
+                        <i data-v-07452373="" data-name="trending-up" data-tags="" data-type="trending-up" class="feather feather--trending-up">
+                            <svg data-v-07452373="" xmlns="http://www.w3.org/2000/svg" width="24" height="24"
+                                 viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                                 stroke-linecap="round" stroke-linejoin="round"
+                                 class="feather feather-trending-up feather__content">
+                                <polyline points="23 6 13.5 15.5 8.5 10.5 1 18"></polyline>
+                                <polyline points="17 6 23 6 23 12"></polyline>
+                            </svg>
+                        </i>
+                        <span class="text">Premium</span></a>
+                    </li>
+                    <li data-v-7bc63f14="" class="header-dropdown-item caption no-icon" data-index="17">
+                        <a href="/logout">
+                            <div class="item-wrapper data-a">
+                                <span class="text">Desconectarse</span>
+                            </div>
+                        </a>
+                    </li>
+                    <li data-v-7bc63f14="" class="header-dropdown-item" style="display: none;">
+                        <div data-v-7bc63f14="" class="header-dropdown-item-inner">
+                            <i data-v-07452373="" data-v-7bc63f14="" data-name="more-horizontal" data-tags="ellipsis" data-type="more-horizontal" class="feather feather--more-horizontal">
+                                <svg data-v-07452373="" xmlns="http://www.w3.org/2000/svg" width="24" height="24"
+                                     viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                                     stroke-linecap="round" stroke-linejoin="round"
+                                     class="feather feather-more-horizontal feather__content">
+                                    <circle cx="12" cy="12" r="1"></circle>
+                                    <circle cx="19" cy="12" r="1"></circle>
+                                    <circle cx="5" cy="12" r="1"></circle>
+                                </svg>
+                            </i>
+                            <span data-v-7bc63f14="">Plus</span></div>
+                    </li></ul>
+            </div>
+            <div class="mobile">
+                <div class="overlay"></div>
+                <div class="interaction">
+                    <div class="squishy-button"><i data-v-07452373="" data-name="x"
+                                                   data-tags="cancel,close,delete,remove,times,clear"
+                                                   data-type="x" class="feather feather--x">
+                        <svg data-v-07452373="" xmlns="http://www.w3.org/2000/svg" width="24" height="24"
+                             viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                             stroke-linecap="round" stroke-linejoin="round"
+                             class="feather feather-x feather__content">
+                            <line x1="18" y1="6" x2="6" y2="18"></line>
+                            <line x1="6" y1="6" x2="18" y2="18"></line>
+                        </svg>
+                    </i></div>
+                </div>
+                <div class="container">
+                    <div class="upper-part common-separator">
+                        <div class="user-wrapper">
+                            <div class="avatar"
+                                 style="background-image: url(&quot;//c.superprof.com/i/m/30308655/50/20240313080839/30308655.jpg&quot;);"></div>
+                            <ul>
+                                <li class="name">Pedro</li>
+                                <div class="link-wrapper">
+                                    <li class="header-dropdown-item caption"><a
+                                            href="/panel-de-control.html/mi-perfil/"
+                                            class="item-wrapper data-a"><i data-v-07452373=""
+                                                                           data-name="arrow-right" data-tags=""
+                                                                           data-type="arrow-right"
+                                                                           class="feather feather--arrow-right">
+                                        <svg data-v-07452373="" xmlns="http://www.w3.org/2000/svg" width="24"
+                                             height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                             stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                                             class="feather feather-arrow-right feather__content">
+                                            <line x1="5" y1="12" x2="19" y2="12"></line>
+                                            <polyline points="12 5 19 12 12 19"></polyline>
+                                        </svg>
+                                    </i><span class="text">Mi perfil</span></a></li>
+                                </div>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="bottom-part">
+                        <ul data-v-7bc63f14="" class="header-dropdown show">
+                            <li data-v-7bc63f14="" class="header-dropdown-item caption" data-index="2">
+                                <div class="item-wrapper data-a"><i data-v-07452373="" data-name="search"
+                                                                    data-tags="find,magnifier,magnifying glass"
+                                                                    data-type="search"
+                                                                    class="feather feather--search">
+                                    <svg data-v-07452373="" xmlns="http://www.w3.org/2000/svg" width="24"
+                                         height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                         stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                                         class="feather feather-search feather__content">
+                                        <circle cx="11" cy="11" r="8"></circle>
+                                        <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+                                    </svg>
+                                </i><span class="text">Buscar un/a profe</span></div></li>
+                            <li data-v-7bc63f14="" class="header-dropdown-item caption" data-index="3">
+                                <a href="/teacher/dashboard" class="item-wrapper data-a">
+                                    <i data-v-07452373="" data-name="grid" data-tags="" data-type="grid" class="feather feather--grid">
+                                        <svg data-v-07452373="" xmlns="http://www.w3.org/2000/svg" width="24"
+                                             height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                             stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                                             class="feather feather-grid feather__content">
+                                            <rect x="3" y="3" width="7" height="7"></rect>
+                                            <rect x="14" y="3" width="7" height="7"></rect>
+                                            <rect x="14" y="14" width="7" height="7"></rect>
+                                            <rect x="3" y="14" width="7" height="7"></rect>
+                                        </svg>
+                                    </i>
+                                    <span class="text">Mi panel de control</span>
+                                </a>
+                            </li>
+                            <li data-v-7bc63f14="" class="header-dropdown-item caption" data-index="5"><a
+                                    href="/panel-de-control.html/puesta-en-relacion/lista"
+                                    class="item-wrapper data-a"><i data-v-07452373="" data-name="message-circle"
+                                                                   data-tags="comment,chat"
+                                                                   data-type="message-circle"
+                                                                   class="feather feather--message-circle">
+                                <svg data-v-07452373="" xmlns="http://www.w3.org/2000/svg" width="24"
+                                     height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                     stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                                     class="feather feather-message-circle feather__content">
+                                    <path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"></path>
+                                </svg>
+                            </i><span class="text">Mis solicitudes de clases</span></a></li>
+                            <li data-v-7bc63f14="" class="header-dropdown-item caption" data-index="6"><a
+                                    href="/panel-de-control.html/clases/" class="item-wrapper data-a"><i
+                                    data-v-07452373="" data-name="book"
+                                    data-tags="read,dictionary,booklet,magazine,library" data-type="book"
+                                    class="feather feather--book">
+                                <svg data-v-07452373="" xmlns="http://www.w3.org/2000/svg" width="24"
+                                     height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                     stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                                     class="feather feather-book feather__content">
+                                    <path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"></path>
+                                    <path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"></path>
+                                </svg>
+                            </i><span class="text">Clases</span></a></li>
+                            <li data-v-7bc63f14="" class="header-dropdown-item caption" data-index="7"><a
+                                    href="/panel-de-control.html/mis-anuncios/lista"
+                                    class="item-wrapper data-a"><i data-v-07452373="" data-name="clipboard"
+                                                                   data-tags="copy" data-type="clipboard"
+                                                                   class="feather feather--clipboard">
+                                <svg data-v-07452373="" xmlns="http://www.w3.org/2000/svg" width="24"
+                                     height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                     stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                                     class="feather feather-clipboard feather__content">
+                                    <path d="M16 4h2a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h2"></path>
+                                    <rect x="8" y="2" width="8" height="4" rx="1" ry="1"></rect>
+                                </svg>
+                            </i><span class="text">Mis anuncios</span></a></li>
+                            <li data-v-7bc63f14="" class="header-dropdown-item caption" data-index="9"><a
+                                    href="/panel-de-control.html/favoritos/" class="item-wrapper data-a"><i
+                                    data-v-07452373="" data-name="heart" data-tags="like,love,emotion"
+                                    data-type="heart" class="feather feather--heart">
+                                <svg data-v-07452373="" xmlns="http://www.w3.org/2000/svg" width="24"
+                                     height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                     stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                                     class="feather feather-heart feather__content">
+                                    <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path>
+                                </svg>
+                            </i><span class="text">Favoritos</span></a></li>
+                            <li data-v-7bc63f14="" class="header-dropdown-item caption" data-index="10"><a
+                                    href="https://www.superprof.es/ayuda/" class="item-wrapper data-a"><i
+                                    data-v-07452373="" data-name="help-circle" data-tags="question mark"
+                                    data-type="help-circle" class="feather feather--help-circle">
+                                <svg data-v-07452373="" xmlns="http://www.w3.org/2000/svg" width="24"
+                                     height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                     stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                                     class="feather feather-help-circle feather__content">
+                                    <circle cx="12" cy="12" r="10"></circle>
+                                    <path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"></path>
+                                    <line x1="12" y1="17" x2="12.01" y2="17"></line>
+                                </svg>
+                            </i><span class="text">Ayuda</span></a></li>
+                            <li data-v-7bc63f14="" class="header-dropdown-item caption" data-index="15"><a
+                                    href="https://www.superprof.es/panel-de-control.html/premium"
+                                    class="item-wrapper data-a"><i data-v-07452373="" data-name="trending-up"
+                                                                   data-tags="" data-type="trending-up"
+                                                                   class="feather feather--trending-up">
+                                <svg data-v-07452373="" xmlns="http://www.w3.org/2000/svg" width="24"
+                                     height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                     stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                                     class="feather feather-trending-up feather__content">
+                                    <polyline points="23 6 13.5 15.5 8.5 10.5 1 18"></polyline>
+                                    <polyline points="17 6 23 6 23 12"></polyline>
+                                </svg>
+                            </i><span class="text">Premium</span></a></li>
+                            <li data-v-7bc63f14="" class="header-dropdown-item caption no-icon" data-index="17">
+                                <div class="item-wrapper data-a"><span class="text">Desconectarse</span>
+                                    </div></li>
+                            <li data-v-7bc63f14="" class="header-dropdown-item" style="display: none;">
+                                <div data-v-7bc63f14="" class="header-dropdown-item-inner"><i data-v-07452373=""
+                                                                                              data-v-7bc63f14=""
+                                                                                              data-name="more-horizontal"
+                                                                                              data-tags="ellipsis"
+                                                                                              data-type="more-horizontal"
+                                                                                              class="feather feather--more-horizontal">
+                                    <svg data-v-07452373="" xmlns="http://www.w3.org/2000/svg" width="24"
+                                         height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                         stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                                         class="feather feather-more-horizontal feather__content">
+                                        <circle cx="12" cy="12" r="1"></circle>
+                                        <circle cx="19" cy="12" r="1"></circle>
+                                        <circle cx="5" cy="12" r="1"></circle>
+                                    </svg>
+                                </i><span data-v-7bc63f14="">Plus</span></div>
+                            </li></ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!--
+        <div class="sticky-content">
+            <div class="trademark"><a href="/" aria-label="Clases particulares - Superprof"
+                                      title="Clases particulares - Superprof" class=""
+                                      style="mask-image: url(&quot;//c.superprof.com/style/images/logos/superprof.svg&quot;); background-color: var(--base-color-pink); width: 120px; height: 24px;"></a>
+            </div>
+            <div id="search-engine-1" class="header-search-engine empty-step">
+                <div class="overlay" style="display: none;"></div>
+                <div class="container" style="width: 234.113px;"><span class="main-text caption">¿Qué quieres aprender?</span>
+                    <div class="fields">
+                        <div class="input-wrapper">
+                            <div class="field-wrapper"><i data-v-07452373="" data-name="book"
+                                                                 data-tags="read,dictionary,booklet,magazine,library"
+                                                                 data-type="book" class="feather feather--book">
+                                <svg data-v-07452373="" xmlns="http://www.w3.org/2000/svg" width="24"
+                                     height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                     stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                                     class="feather feather-book feather__content">
+                                    <path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"></path>
+                                    <path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"></path>
+                                </svg>
+                            </i><input data-proxy="subject.input" data-proxy-field="subject"
+                                       data-local-target="inputs.subject" data-field-index="SUBJECT"
+                                       name="subject-field" type="text" placeholder="¿Qué materia?"
+                                       class="caption">
+                                <div class="clear-button"><i data-v-07452373="" data-name="x"
+                                                             data-tags="cancel,close,delete,remove,times,clear"
+                                                             data-type="x" class="feather feather--x">
+                                    <svg data-v-07452373="" xmlns="http://www.w3.org/2000/svg" width="24"
+                                         height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                         stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                                         class="feather feather-x feather__content">
+                                        <line x1="18" y1="6" x2="6" y2="18"></line>
+                                        <line x1="6" y1="6" x2="18" y2="18"></line>
+                                    </svg>
+                                </i></div>
+                            </div>
+                            <span class="dropdown-title">Top materias</span>
+                            <ul data-v-7bc63f14="" class="header-dropdown" style="display: none;">
+                                <li data-v-7bc63f14="" class="header-dropdown-item" style="display: none;">
+                                    <div data-v-7bc63f14="" class="header-dropdown-item-inner"><i
+                                            data-v-07452373="" data-v-7bc63f14="" data-name="more-horizontal"
+                                            data-tags="ellipsis" data-type="more-horizontal"
+                                            class="feather feather--more-horizontal">
+                                        <svg data-v-07452373="" xmlns="http://www.w3.org/2000/svg" width="24"
+                                             height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                             stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                                             class="feather feather-more-horizontal feather__content">
+                                            <circle cx="12" cy="12" r="1"></circle>
+                                            <circle cx="19" cy="12" r="1"></circle>
+                                            <circle cx="5" cy="12" r="1"></circle>
+                                        </svg>
+                                    </i><span data-v-7bc63f14="">Plus</span></div>
+                                </li></ul>
+                        </div>
+                        <div class="input-wrapper placeholder">
+                            <div class="field-wrapper"><i data-v-07452373="" data-name="map-pin"
+                                                                 data-tags="location,navigation,travel,marker"
+                                                                 data-type="map-pin"
+                                                                 class="feather feather--map-pin">
+                                <svg data-v-07452373="" xmlns="http://www.w3.org/2000/svg" width="24"
+                                     height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                     stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                                     class="feather feather-map-pin feather__content">
+                                    <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path>
+                                    <circle cx="12" cy="10" r="3"></circle>
+                                </svg>
+                            </i><input data-proxy="city.input" data-proxy-field="city"
+                                       data-local-target="inputs.city" data-field-index="CITY" name="city-field"
+                                       type="text" placeholder="¿Dirección, ciudad o barrio?" class="caption">
+                                <div class="clear-button"><i data-v-07452373="" data-name="x"
+                                                             data-tags="cancel,close,delete,remove,times,clear"
+                                                             data-type="x" class="feather feather--x">
+                                    <svg data-v-07452373="" xmlns="http://www.w3.org/2000/svg" width="24"
+                                         height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                         stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                                         class="feather feather-x feather__content">
+                                        <line x1="18" y1="6" x2="6" y2="18"></line>
+                                        <line x1="6" y1="6" x2="18" y2="18"></line>
+                                    </svg>
+                                </i></div>
+                            </div>
+                            <span class="dropdown-title">Top ciudades</span>
+                            <ul data-v-7bc63f14="" class="header-dropdown">
+                                <li data-v-7bc63f14="" class="header-dropdown-item caption" data-index="3"
+                                    data-highlight="0">
+                                    <div class="item-wrapper data-a"><i data-v-07452373="" data-name="target"
+                                                                        data-tags="logo,bullseye"
+                                                                        data-type="target"
+                                                                        class="feather feather--target">
+                                        <svg data-v-07452373="" xmlns="http://www.w3.org/2000/svg" width="24"
+                                             height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                             stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                                             class="feather feather-target feather__content">
+                                            <circle cx="12" cy="12" r="10"></circle>
+                                            <circle cx="12" cy="12" r="6"></circle>
+                                            <circle cx="12" cy="12" r="2"></circle>
+                                        </svg>
+                                    </i><span class="text">Buscar cerca de mí</span></div></li>
+                                <li data-v-7bc63f14="" class="header-dropdown-item caption" data-index="4"
+                                    data-highlight="0">
+                                    <div class="item-wrapper data-a"><i data-v-07452373="" data-name="video"
+                                                                        data-tags="camera,movie,film"
+                                                                        data-type="video"
+                                                                        class="feather feather--video">
+                                        <svg data-v-07452373="" xmlns="http://www.w3.org/2000/svg" width="24"
+                                             height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                             stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                                             class="feather feather-video feather__content">
+                                            <polygon points="23 7 16 12 23 17 23 7"></polygon>
+                                            <rect x="1" y="5" width="15" height="14" rx="2" ry="2"></rect>
+                                        </svg>
+                                    </i><span class="text">En línea</span></div></li>
+                                <li data-v-7bc63f14="" class="header-dropdown-item" style="display: none;">
+                                    <div data-v-7bc63f14="" class="header-dropdown-item-inner"><i
+                                            data-v-07452373="" data-v-7bc63f14="" data-name="more-horizontal"
+                                            data-tags="ellipsis" data-type="more-horizontal"
+                                            class="feather feather--more-horizontal">
+                                        <svg data-v-07452373="" xmlns="http://www.w3.org/2000/svg" width="24"
+                                             height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                             stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                                             class="feather feather-more-horizontal feather__content">
+                                            <circle cx="12" cy="12" r="1"></circle>
+                                            <circle cx="19" cy="12" r="1"></circle>
+                                            <circle cx="5" cy="12" r="1"></circle>
+                                        </svg>
+                                    </i><span data-v-7bc63f14="">Plus</span></div>
+                                </li></ul>
+                        </div>
+                    </div>
+                    <button title="search_submit" class="squishy-button"><i data-v-07452373=""
+                                                                            data-name="search"
+                                                                            data-tags="find,magnifier,magnifying glass"
+                                                                            data-type="search"
+                                                                            class="feather feather--search">
+                        <svg data-v-07452373="" xmlns="http://www.w3.org/2000/svg" width="24" height="24"
+                             viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                             stroke-linecap="round" stroke-linejoin="round"
+                             class="feather feather-search feather__content">
+                            <circle cx="11" cy="11" r="8"></circle>
+                            <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+                        </svg>
+                    </i></button>
+                </div>
+            </div>
+            <div class="header-buttons"><a data-v-017dc95e="" to="[object Object]"
+                                           href="https://www.superprof.es/ayuda/alumnos-as/2/"
+                                           class="basic-header-button caption has-icons"><i
+                    data-v-07452373="" data-v-017dc95e="" data-name="help-circle" data-tags="question mark"
+                    data-type="help-circle" class="feather feather--help-circle">
+                <svg data-v-07452373="" xmlns="http://www.w3.org/2000/svg" width="24" height="24"
+                     viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                     stroke-linecap="round" stroke-linejoin="round"
+                     class="feather feather-help-circle feather__content">
+                    <circle cx="12" cy="12" r="10"></circle>
+                    <path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"></path>
+                    <line x1="12" y1="17" x2="12.01" y2="17"></line>
+                </svg>
+            </i></a><a data-v-017dc95e="" to="[object Object]" href="/dar-clases-particulares/"
+                       class="basic-header-button caption">Dar clases particulares</a>
+                <button data-v-017dc95e="" to="[object Object]" class="basic-header-button caption">
+                    Conectarse
+                </button>
+                <div class="interaction-wrapper">
+                    <div class="icons-menu"><span></span><span></span><span></span></div>
+                </div>
+            </div>
+        </div>
+        -->
+        <!--<div class="header-menu">
+            <div class="desktop">
+                <ul data-v-7bc63f14="" class="header-dropdown">
+                    <li data-v-7bc63f14="" class="header-dropdown-item caption" data-index="3">
+                        <div class="item-wrapper data-a"><i data-v-07452373="" data-name="grid" data-tags=""
+                                                            data-type="grid" class="feather feather--grid">
+                            <svg data-v-07452373="" xmlns="http://www.w3.org/2000/svg" width="24" height="24"
+                                 viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                                 stroke-linecap="round" stroke-linejoin="round"
+                                 class="feather feather-grid feather__content">
+                                <rect x="3" y="3" width="7" height="7"></rect>
+                                <rect x="14" y="3" width="7" height="7"></rect>
+                                <rect x="14" y="14" width="7" height="7"></rect>
+                                <rect x="3" y="14" width="7" height="7"></rect>
+                            </svg>
+                        </i><span class="text"></span></div></li>
+                    <li data-v-7bc63f14="" class="header-dropdown-item caption" data-index="4">
+                        <div class="item-wrapper data-a"><i data-v-07452373="" data-name="message-circle"
+                                                            data-tags="comment,chat" data-type="message-circle"
+                                                            class="feather feather--message-circle">
+                            <svg data-v-07452373="" xmlns="http://www.w3.org/2000/svg" width="24" height="24"
+                                 viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                                 stroke-linecap="round" stroke-linejoin="round"
+                                 class="feather feather-message-circle feather__content">
+                                <path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"></path>
+                            </svg>
+                        </i><span class="text"></span></div></li>
+                    <li data-v-7bc63f14="" class="header-dropdown-item caption" data-index="11"><a
+                            href="/dar-clases-particulares/" class="item-wrapper data-a"><i data-v-07452373=""
+                                                                                            data-name="book"
+                                                                                            data-tags="read,dictionary,booklet,magazine,library"
+                                                                                            data-type="book"
+                                                                                            class="feather feather--book">
+                        <svg data-v-07452373="" xmlns="http://www.w3.org/2000/svg" width="24" height="24"
+                             viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                             stroke-linecap="round" stroke-linejoin="round"
+                             class="feather feather-book feather__content">
+                            <path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"></path>
+                            <path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"></path>
+                        </svg>
+                    </i><span class="text"></span></a></li>
+                    <li data-v-7bc63f14="" class="header-dropdown-item caption no-icons" data-index="13">
+                        <div class="item-wrapper data-a"><span class="text"></span></div>
+                    </li>
+                    <li data-v-7bc63f14="" class="header-dropdown-item caption no-icons" data-index="17">
+                        <div class="item-wrapper data-a"><span class="text"></span></div>
+                    </li>
+                    <li data-v-7bc63f14="" class="header-dropdown-item" style="display: none;">
+                        <div data-v-7bc63f14="" class="header-dropdown-item-inner"><i data-v-07452373=""
+                                                                                      data-v-7bc63f14=""
+                                                                                      data-name="more-horizontal"
+                                                                                      data-tags="ellipsis"
+                                                                                      data-type="more-horizontal"
+                                                                                      class="feather feather--more-horizontal">
+                            <svg data-v-07452373="" xmlns="http://www.w3.org/2000/svg" width="24" height="24"
+                                 viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                                 stroke-linecap="round" stroke-linejoin="round"
+                                 class="feather feather-more-horizontal feather__content">
+                                <circle cx="12" cy="12" r="1"></circle>
+                                <circle cx="19" cy="12" r="1"></circle>
+                                <circle cx="5" cy="12" r="1"></circle>
+                            </svg>
+                        </i><span data-v-7bc63f14="">Plus</span></div>
+                    </li></ul>
+            </div>
+            <div class="mobile">
+                <div class="overlay"></div>
+                <div class="interaction">
+                    <div class="squishy-button"><i data-v-07452373="" data-name="x"
+                                                   data-tags="cancel,close,delete,remove,times,clear"
+                                                   data-type="x" class="feather feather--x">
+                        <svg data-v-07452373="" xmlns="http://www.w3.org/2000/svg" width="24" height="24"
+                             viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                             stroke-linecap="round" stroke-linejoin="round"
+                             class="feather feather-x feather__content">
+                            <line x1="18" y1="6" x2="6" y2="18"></line>
+                            <line x1="6" y1="6" x2="18" y2="18"></line>
+                        </svg>
+                    </i></div>
+                </div>
+                <div class="container">
+                    <div class="upper-part common-separator">
+                        <div class="connect-wrapper">
+                            <div data-v-9047dd34="" theme="pink" class="flat-button"><span data-v-9047dd34=""
+                                                                                           class="text">Conectarse</span>
+                            </div>
+                            <div data-v-9047dd34="" theme="light-grey" class="flat-button"><span
+                                    data-v-9047dd34="" class="text">Inscribirse</span></div>
+                        </div>
+                    </div>
+                    <div class="bottom-part">
+                        <ul data-v-7bc63f14="" class="header-dropdown show">
+                            <li data-v-7bc63f14="" class="header-dropdown-item caption" data-index="2">
+                                <div class="item-wrapper data-a"><i data-v-07452373="" data-name="search"
+                                                                    data-tags="find,magnifier,magnifying glass"
+                                                                    data-type="search"
+                                                                    class="feather feather--search">
+                                    <svg data-v-07452373="" xmlns="http://www.w3.org/2000/svg" width="24"
+                                         height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                         stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                                         class="feather feather-search feather__content">
+                                        <circle cx="11" cy="11" r="8"></circle>
+                                        <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+                                    </svg>
+                                </i><span class="text">Buscar un/a profe</span></div></li>
+                            <li data-v-7bc63f14="" class="header-dropdown-item caption" data-index="3"><a
+                                    href="/dar-clases-particulares/" class="item-wrapper data-a"><i
+                                    data-v-07452373="" data-name="briefcase" data-tags="work,bag,baggage,folder"
+                                    data-type="briefcase" class="feather feather--briefcase">
+                                <svg data-v-07452373="" xmlns="http://www.w3.org/2000/svg" width="24"
+                                     height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                     stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                                     class="feather feather-briefcase feather__content">
+                                    <rect x="2" y="7" width="20" height="14" rx="2" ry="2"></rect>
+                                    <path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"></path>
+                                </svg>
+                            </i><span class="text">Dar clases particulares</span></a></li>
+                            <li data-v-7bc63f14="" class="header-dropdown-item caption" data-index="4"><a
+                                    href="https://www.superprof.es/ayuda/alumnos-as/2/"
+                                    class="item-wrapper data-a"><i data-v-07452373="" data-name="help-circle"
+                                                                   data-tags="question mark"
+                                                                   data-type="help-circle"
+                                                                   class="feather feather--help-circle">
+                                <svg data-v-07452373="" xmlns="http://www.w3.org/2000/svg" width="24"
+                                     height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                     stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                                     class="feather feather-help-circle feather__content">
+                                    <circle cx="12" cy="12" r="10"></circle>
+                                    <path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"></path>
+                                    <line x1="12" y1="17" x2="12.01" y2="17"></line>
+                                </svg>
+                            </i><span class="text">Ayuda</span></a></li>
+                            <li data-v-7bc63f14="" class="header-dropdown-item" style="display: none;">
+                                <div data-v-7bc63f14="" class="header-dropdown-item-inner"><i data-v-07452373=""
+                                                                                              data-v-7bc63f14=""
+                                                                                              data-name="more-horizontal"
+                                                                                              data-tags="ellipsis"
+                                                                                              data-type="more-horizontal"
+                                                                                              class="feather feather--more-horizontal">
+                                    <svg data-v-07452373="" xmlns="http://www.w3.org/2000/svg" width="24"
+                                         height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                         stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                                         class="feather feather-more-horizontal feather__content">
+                                        <circle cx="12" cy="12" r="1"></circle>
+                                        <circle cx="19" cy="12" r="1"></circle>
+                                        <circle cx="5" cy="12" r="1"></circle>
+                                    </svg>
+                                </i><span data-v-7bc63f14="">Plus</span></div>
+                            </li></ul>
+                    </div>
+                </div>
+            </div>
+        </div>-->
+    </header>
+
+    <!-- MODAL -->
+    <!--
+    <div id="connect-modal">
+        <div class="connect loading hide-content">
+            <div class="common-modal">
+                <div class="mask-modal"></div>
+                <div class="wrapper">
+                    <div class="container">
+                        <div class="cross" id="crossModal"><span class="picto visible"></span></div>
+                        <div class="v-loader visible center">
+                            <div class="dot dot1"></div>
+                            <div class="dot dot2"></div>
+                            <div class="dot dot3"></div>
+                            <div class="dot dot4"></div>
+                        </div>
+                        <div class="popin-content signup">
+                            <div class="upper">
+                                <p class="title">Registro</p>
+                                <div class="register">
+                                    <form id="signup-form" th:action="@{/auth/signup}" method="post">
+                                        <div class="input-holder pending">
+                                            <span class="label" style="top: -20px;">Name</span>
+                                            <input name="username" placeholder="Nombre de usuario" type="text">
+                                        </div>
+                                        <div class="input-holder pending">
+                                            <span class="label" style="top: -20px;">E-mail</span>
+                                            <input name="email" placeholder="Correo electrónico" type="text">
+                                        </div>
+                                        <div class="input-holder pending">
+                                            <span class="label" style="top: -20px;">Contraseña</span>
+                                            <input name="password" placeholder="Contraseña" type="password">
+                                        </div>
+                                    </form>
+                                </div>
+                                <p class="error-text" style="display: none;"></p>
+                            </div>
+                            <div class="bottom">
+                                <div class="big-button mail" id="submitSignUp">
+                                    <p class="text">Crear mi cuenta</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="popin-content signin">
+                            <div class="upper">
+                                <p class="title">Iniciar Sesión</p>
+                                <div class="login">
+                                    <form id="signin-form" th:action="@{/auth/signin}" method="post">
+                                        <div class="input-holder pending">
+                                            <span class="label" style="top: -20px;" name="email">E-mail</span>
+                                            <input name="username" placeholder="Nombre de usuario" type="text">
+                                        </div>
+                                        <div class="input-holder pending">
+                                            <span class="label" style="top: -20px;">Contraseña</span>
+                                            <input name="password" placeholder="Contraseña" type="password">
+                                        </div>
+                                    </form>
+                                </div>
+                                <p class="error-text" style="display: none;"></p>
+                            </div>
+                            <div class="bottom">
+                                <div class="big-button mail" id="submitSignIn">
+                                    <p class="text">Entrar</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="popin-content reset">
+                            <div class="reset"><p class="title">Restablecer mi contraseña</p>
+                                <p class="text">Para recuperar tu contraseña, introduce el correo electrónico de tu
+                                    cuenta en el campo inferior.</p>
+                                <div class="input-holder pending">
+                                    <span class="label" style="top: -20px;">E-mail</span>
+                                    <input placeholder="E-mail" type="text">
+                                </div>
+                                <p class="success-text" style="display: none;"></p>
+                                <p class="error-text" style="display: none;"></p>
+                                <p class="send-button">
+                                    <span class="text">Enviar</span></p>
+                                <div class="back">
+                                    <span class="arrow text">Volver a la pantalla de conexión</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    -->
+
+
+
+<!-- MODAL -->
+<div id="connect-modal">
+    <div class="connect loading hide-content">
+        <div class="common-modal">
+            <div class="mask-modal"></div>
+            <div class="wrapper">
+                <div class="container">
+                    <div class="cross" id="crossModal"><span class="picto visible"></span></div>
+                    <div class="v-loader visible center">
+                        <div class="dot dot1"></div>
+                        <div class="dot dot2"></div>
+                        <div class="dot dot3"></div>
+                        <div class="dot dot4"></div>
+                    </div>
+                    <div class="popin-content signup">
+                        <div class="upper">
+                            <p class="title">Registro</p>
+                            <div class="register">
+                                <form id="signup-form" th:action="@{/auth/signup}" method="post">
+                                    <div class="input-holder pending">
+                                        <span class="label" style="top: -20px;">Name</span>
+                                        <input name="username" placeholder="Nombre de usuario" type="text">
+                                    </div>
+                                    <div class="input-holder pending">
+                                        <span class="label" style="top: -20px;">E-mail</span>
+                                        <input name="email" placeholder="Correo electrónico" type="text">
+                                    </div>
+                                    <div class="input-holder pending">
+                                        <span class="label" style="top: -20px;">Contraseña</span>
+                                        <input name="password" placeholder="Contraseña" type="password">
+                                    </div>
+                                </form>
+                            </div>
+                            <p class="error-text" style="display: none;"></p>
+                        </div>
+                        <div class="bottom">
+                            <!--
+                            <div class="buttons-container">
+                                <div class="social-buttons">
+                                    <a class="big-button facebook">
+                                        <div class="picto"></div>
+                                        <p class="text long">Inscripción con Facebook</p>
+                                        <p class="text short">Facebook</p>
+                                    </a>
+                                    <div class="big-button google google-connect">
+                                        <div class="picto"></div>
+                                        <p class="text long">Inscripción con Google</p>
+                                        <p class="text short">Google</p>
+                                    </div>
+                                </div>
+                                -->
+                            <div class="big-button mail" id="submitSignUp">
+                                <p class="text">Crear mi cuenta</p>
+                            </div>
+                            <!--
+                            </div>
+
+                            <div class="sign-text">
+                                <span>¿Ya tienes una cuenta?</span>
+                                <span class="emphasis">Iniciar sesión</span>
+                            </div>
+                            -->
+                        </div>
+                    </div>
+                    <div class="popin-content signin">
+                        <div class="upper">
+                            <p class="title">Iniciar Sesión</p>
+                            <div class="login">
+                                <!--
+                                <form id="signin-form" th:action="@{/auth/signin}" method="post">
+                                -->
+                                <form id="signin-form" th:action="@{/login}" method="post">
+                                    <div class="input-holder pending">
+                                        <span class="label" style="top: -20px;" name="username">Nombre de usuario</span>
+                                        <input name="username" placeholder="Nombre de usuario" type="text">
+                                    </div>
+                                    <div class="input-holder pending">
+                                        <span class="label" style="top: -20px;">Contraseña</span>
+                                        <input name="password" placeholder="Contraseña" type="password">
+                                    </div>
+                                </form>
+                            </div>
+                            <p class="error-text" style="display: none;"></p>
+                        </div>
+                        <div class="bottom">
+                            <!--
+                            <div class="buttons-container">
+                                <div class="social-buttons">
+                                    <a class="big-button facebook">
+                                        <div class="picto"></div>
+                                        <p class="text long">Inscripción con Facebook</p>
+                                        <p class="text short">Facebook</p></a>
+                                    <div class="big-button google google-connect">
+                                        <div class="picto"></div>
+                                        <p class="text long">Inscripción con Google</p>
+                                        <p class="text short">Google</p>
+                                    </div>
+                                </div>
+                                -->
+                            <div class="big-button mail" id="submitSignIn">
+                                <p class="text">Entrar</p>
+                            </div>
+                            <!--
+                        </div>
+                        <div class="sign-text">
+                            <span>¿No tienes una cuenta?</span>
+                            <span class="emphasis">Registro</span>
+                        </div>
+                        <p class="forgot-password">¿Has olvidado tu contraseña?</p>
+                        -->
+                        </div>
+                    </div>
+                    <div class="popin-content reset">
+                        <div class="reset"><p class="title">Restablecer mi contraseña</p>
+                            <p class="text">Para recuperar tu contraseña, introduce el correo electrónico de tu
+                                cuenta en el campo inferior.</p>
+                            <div class="input-holder pending">
+                                <span class="label" style="top: -20px;">E-mail</span>
+                                <input placeholder="E-mail" type="text">
+                            </div>
+                            <p class="success-text" style="display: none;"></p>
+                            <p class="error-text" style="display: none;"></p>
+                            <p class="send-button">
+                                <span class="text">Enviar</span></p>
+                            <div class="back">
+                                <span class="arrow text">Volver a la pantalla de conexión</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</div>
