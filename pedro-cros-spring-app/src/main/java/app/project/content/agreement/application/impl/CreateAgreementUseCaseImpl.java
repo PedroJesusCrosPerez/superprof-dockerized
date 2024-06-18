@@ -47,46 +47,6 @@ public class CreateAgreementUseCaseImpl implements CreateAgreementUseCase {
     private final LanguageRepositoryJpa languageRepositoryJpa;
 
 
-//    @Override
-//    public Long save(AgreementInputDto agreementInputDto) {
-//
-//        Agreement agreement = AgreementEntityMapper.INSTANCE.toEntity(agreementInputDto);
-//
-//        // Languages
-//        for (Long idLanguage : agreementInputDto.getIdsLanguages()) {
-//            agreement.addLanguage(
-//                    languageUseCase.findById(idLanguage)
-//            );
-//        }
-//
-//
-//        // Rate
-//        Rate rate = RateMapper.INSTANCE.toEntity(agreementInputDto.getRate());
-//
-//        // Prueba 1
-////        Long idRateNew = rateUseCase.save(rate);
-////        rate.setIdRate(idRateNew);
-//
-//        // Prueba 2
-////        Rate newRate = rateUseCase.save(rate);
-//
-////        agreement.setRate(newRate);
-//
-//        // Prueba 3
-////        List<Pack> packsList = rate.getPacks();
-////        for (Pack pack : packsList) {
-////            rate.addPack(pack);
-////        }
-//
-//        // Save Agreement
-//        return createAgreementRepository.save(agreement);
-//    }
-
-    @Override
-    public Long save(Agreement agreement) {
-        return 99L;
-    }
-
     @Override
     @Transactional
     public Long save(AgreementInputDto agreementInputDto) {
@@ -102,33 +62,6 @@ public class CreateAgreementUseCaseImpl implements CreateAgreementUseCase {
 
         return createAgreementRepository.save(agreement);
     }
-
-//    @Override
-//    @Transactional
-//    public Long save(AgreementInputDto agreementInputDto) {
-//        Agreement agreement = AgreementEntityMapper.INSTANCE.toEntity(agreementInputDto);
-//        // Languages
-//        for (Long idLanguage : agreementInputDto.getIdsLanguages()) {
-//            agreement.addLanguage(
-//                    languageUseCase.findById(idLanguage)
-//            );
-//        }
-//        AgreementJpa agreementJpa = AgreementEntityMapper.INSTANCE.toEntityJpa(agreement);
-//
-//        // Set the rate for each pack
-//        RateJpa rateJpa = agreementJpa.getRate();
-//        if (rateJpa != null) {
-//            for (PackJpa pack : rateJpa.getPacks()) {
-//                pack.setRate(rateJpa);
-//            }
-//            rateRepositoryJpa.save(rateJpa);
-//        }
-//
-//        // Save the agreement with the associated rate
-//        agreementRepositoryJpa.save(agreementJpa);
-//
-//        return agreementJpa.getIdAgreement();
-//    }
 
 
     @Override
@@ -162,6 +95,101 @@ public class CreateAgreementUseCaseImpl implements CreateAgreementUseCase {
 
         return AgreementEntityMapper.INSTANCE.toEntity(agreementJpa);
     }
+
+
+    @Override
+    @Transactional
+    public Agreement createNewAgreementWithRateAndPack(AgreementInputDto agreementInputDto) {
+
+        // Create and config new Pack(s)
+        List<PackJpa> packJpaList = agreementInputDto.getRate().getPacks().stream().map(packInputDto -> {
+            PackJpa packJpa = new PackJpa();
+            packJpa.setHours(packInputDto.getHours());
+            packJpa.setPrice(packInputDto.getPrice());
+            return packJpa;
+        }).collect(Collectors.toList());
+
+        // Create and config new Rate
+        RateInputDto rateInputDto = agreementInputDto.getRate();
+        RateJpa rateJpa = new RateJpa();
+        rateJpa.setPricePerHour(rateInputDto.getPricePerHour());
+        rateJpa.setPacks(packJpaList);
+
+        // Create and config new Agreement
+        AgreementJpa agreementJpa = new AgreementJpa();
+        agreementJpa.setTitle(agreementInputDto.getTitle());
+        agreementJpa.setDescription(agreementInputDto.getDescription());
+        agreementJpa.setAboutMe(agreementInputDto.getAboutMe());
+        agreementJpa.setPlaces(agreementInputDto.getPlaces());
+
+        // GET and SET Subjects
+//        List<SubjectJpa> subjectsJpaList = agreementInputDto.getIdsSubjects().stream()
+//                .map(retrieveSubjectUseCase::findByIdSubject)
+//                .map(SubjectEntityMapper.INSTANCE::toEntityJpa)
+//                .collect(Collectors.toList());
+//        agreementJpa.setSubjects(subjectsJpaList);
+        List<Long> idsSubjectsList = agreementInputDto.getIdsSubjects();
+        for (Long idSubject : idsSubjectsList) {
+            SubjectJpa subjectJpa = subjectRepositoryJpa.findById(idSubject).orElseThrow(
+                    () -> new NotFoundException(SubjectJpa.class, idSubject)
+            );
+            agreementJpa.addSubject(subjectJpa);
+        }
+
+
+
+        // GET and SET Languages
+        List<LanguageJpa> languages = agreementInputDto.getIdsLanguages().stream()
+                .map(languageUseCase::findById)
+                .map(LanguageMapper.INSTANCE::toEntityJpa)
+                .collect(Collectors.toList());
+        agreementJpa.setLanguages(languages);
+
+        // Save Agreement to take ID
+        agreementRepositoryJpa.save(agreementJpa);
+
+        // Config relations
+        packJpaList.forEach(packJpa -> packJpa.setRate(rateJpa));
+        agreementJpa.setRate(rateJpa);
+
+        // Save relation entities
+        rateRepositoryJpa.save(rateJpa);
+        agreementRepositoryJpa.save(agreementJpa);
+
+        return AgreementEntityMapper.INSTANCE.toEntity(agreementJpa);
+    }
+
+    @Override
+    public Long save(Agreement agreement) {
+        return 99L;
+    }
+
+//    @Override
+//    @Transactional
+//    public Long save(AgreementInputDto agreementInputDto) {
+//        Agreement agreement = AgreementEntityMapper.INSTANCE.toEntity(agreementInputDto);
+//        // Languages
+//        for (Long idLanguage : agreementInputDto.getIdsLanguages()) {
+//            agreement.addLanguage(
+//                    languageUseCase.findById(idLanguage)
+//            );
+//        }
+//        AgreementJpa agreementJpa = AgreementEntityMapper.INSTANCE.toEntityJpa(agreement);
+//
+//        // Set the rate for each pack
+//        RateJpa rateJpa = agreementJpa.getRate();
+//        if (rateJpa != null) {
+//            for (PackJpa pack : rateJpa.getPacks()) {
+//                pack.setRate(rateJpa);
+//            }
+//            rateRepositoryJpa.save(rateJpa);
+//        }
+//
+//        // Save the agreement with the associated rate
+//        agreementRepositoryJpa.save(agreementJpa);
+//
+//        return agreementJpa.getIdAgreement();
+//    }
 
 //    @Override
 //    @Transactional
@@ -226,67 +254,4 @@ public class CreateAgreementUseCaseImpl implements CreateAgreementUseCase {
 //
 //        return AgreementEntityMapper.INSTANCE.toEntity(agreementJpa);
 //    }
-
-
-    @Override
-    @Transactional
-    public Agreement createNewAgreementWithRateAndPack(AgreementInputDto agreementInputDto) {
-
-        // Create and config new Pack(s)
-        List<PackJpa> packJpaList = agreementInputDto.getRate().getPacks().stream().map(packInputDto -> {
-            PackJpa packJpa = new PackJpa();
-            packJpa.setHours(packInputDto.getHours());
-            packJpa.setPrice(packInputDto.getPrice());
-            return packJpa;
-        }).collect(Collectors.toList());
-
-        // Create and config new Rate
-        RateInputDto rateInputDto = agreementInputDto.getRate();
-        RateJpa rateJpa = new RateJpa();
-        rateJpa.setPricePerHour(rateInputDto.getPricePerHour());
-        rateJpa.setPacks(packJpaList);
-
-        // Create and config new Agreement
-        AgreementJpa agreementJpa = new AgreementJpa();
-        agreementJpa.setTitle(agreementInputDto.getTitle());
-        agreementJpa.setDescription(agreementInputDto.getDescription());
-        agreementJpa.setAboutMe(agreementInputDto.getAboutMe());
-        agreementJpa.setPlaces(agreementInputDto.getPlaces());
-
-        // GET and SET Subjects
-//        List<SubjectJpa> subjectsJpaList = agreementInputDto.getIdsSubjects().stream()
-//                .map(retrieveSubjectUseCase::findByIdSubject)
-//                .map(SubjectEntityMapper.INSTANCE::toEntityJpa)
-//                .collect(Collectors.toList());
-//        agreementJpa.setSubjects(subjectsJpaList);
-        List<Long> idsSubjectsList = agreementInputDto.getIdsSubjects();
-        for (Long idSubject : idsSubjectsList) {
-            SubjectJpa subjectJpa = subjectRepositoryJpa.findById(idSubject).orElseThrow(
-                    () -> new NotFoundException(SubjectJpa.class, idSubject)
-            );
-            agreementJpa.addSubject(subjectJpa);
-        }
-
-
-
-        // GET and SET Languages
-        List<LanguageJpa> languages = agreementInputDto.getIdsLanguages().stream()
-                .map(languageUseCase::findById)
-                .map(LanguageMapper.INSTANCE::toEntityJpa)
-                .collect(Collectors.toList());
-        agreementJpa.setLanguages(languages);
-
-        // Save Agreement to take ID
-        agreementRepositoryJpa.save(agreementJpa);
-
-        // Config relations
-        packJpaList.forEach(packJpa -> packJpa.setRate(rateJpa));
-        agreementJpa.setRate(rateJpa);
-
-        // Save relation entities
-        rateRepositoryJpa.save(rateJpa);
-        agreementRepositoryJpa.save(agreementJpa);
-
-        return AgreementEntityMapper.INSTANCE.toEntity(agreementJpa);
-    }
 }

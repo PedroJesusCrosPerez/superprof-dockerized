@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+    <div>
+        <ul th:if="${teachers != null}" th:name="teachers_list">
+            <li th:each="teacher : ${teachers}" th:text="${teacher.name}"></li>
+        </ul>
+        <p th:if="${teachers == null}">No teachers available</p>
+    </div>
+
+</body>
+</html>

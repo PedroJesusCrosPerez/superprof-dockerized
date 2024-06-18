@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Página principal</title>
+
+    <!--CSS-->
+    <link rel="stylesheet" href="@{/css/mycss.css}">
+</head>
+
+<body>
+
+    <header>
+<!--        <th:block th:include="~{structure/header}"></th:block>-->
+        <div th:include="~{structure/header}"></div>
+    </header>
+
+    <main>
+<!--        <div th:replace="~{fragments/details}"></div>-->
+<!--        <th:block></th:block>-->
+<!--        <div th:replace="~{::content}"></div>-->
+<!--        <div th:replace="content :: content"></div>-->
+
+    </main>
+
+    <footer>
+        <footer></footer>
+    </footer>
+
+</body>
+</html>

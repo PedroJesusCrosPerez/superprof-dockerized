@@ -1,0 +1,47 @@
+
+/*
+#formCreateAgreement {
+
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 1.2em;
+    row-gap: 1.2em;
+}
+*/
+
+.disabled {
+    display: none !important;
+}
+
+#addPackBtn:hover, .remove-pack:hover {
+    cursor: pointer;
+    background-color: lightgrey;
+}
+
+#packs {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-rows: auto;
+
+    column-gap: .8em;
+    row-gap: .8em;
+
+    div.pack {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        grid-template-rows: 2em;
+
+        border: 1px solid;
+        border-radius: 12px;
+        padding: .6em;
+
+        input[type="number"] {
+            width: 3.3em;
+            padding: 0.3em;
+        }
+
+        div.remove-pack {
+            grid-column: 1 / 3;
+        }
+    }
+}

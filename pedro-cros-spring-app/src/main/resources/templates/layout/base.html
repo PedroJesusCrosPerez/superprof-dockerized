@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<head th:fragment="layout(titulo, css, js, contenido)">
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title th:text="${titulo}">Título por defecto</title>
+
+<!--    <script src="https://code.jquery.com/jquery-3.7.1.js" integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4=" crossorigin="anonymous"></script>-->
+    <script src="js/dependences/jquery-3.7.1.min.js" ></script>
+
+    <!-- BASE RESOURCES -->
+    <link rel="stylesheet" th:href="@{/css/base.css}">
+    <script th:src="@{/js/base.js}"></script>
+
+    <!-- FRAGMENTS RESOURCES -->
+        <!-- CSS -->
+        <th:block th:insert="${css}"></th:block>
+        <!-- JS -->
+        <th:block th:insert="${js}"></th:block>
+</head>
+<body>
+
+<!--
+<header>
+    <div sec:authorize="isAuthenticated()">
+        <p>Hola, <span sec:authentication="name">usuario</span>!</p>
+    </div>
+    <div sec:authorize="!isAuthenticated()">
+        <p>usuario NO logeado!</p>
+    </div>
+
+    <div sec:authorize="hasAuthority('ADMIN')">
+        This content is only shown to administrators.
+    </div>
+    <div sec:authorize="hasAuthority('USER')">
+        This content is only shown to users.
+    </div>
+
+    <nav class="navbar navbar-inverse navbar-fixed-top">
+        <a href="#" th:href="@{/home}">Home</a>
+        <a href="#" th:href="@{/index}">Inicio</a>
+        <a href="#" th:href="@{/details}">Details</a>
+    </nav>
+</header>
+-->
+
+<header sec:authorize="hasRole('ADMIN')" th:insert="layout/header"></header>
+
+<header sec:authorize="hasRole('TEACHER')" th:insert="layout/header_teacher"></header>
+
+<header sec:authorize="!isAuthenticated()" th:insert="layout/header_notAuthenticated"></header>
+
+<main>
+    <div th:insert="${contenido}"></div>
+</main>
+
+</body>
+</html>

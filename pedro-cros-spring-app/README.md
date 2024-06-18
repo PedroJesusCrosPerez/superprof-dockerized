@@ -1,52 +1,81 @@
-# Spring Boot JPA MySQL - Building Rest CRUD API example
+# Superprof - 
+## Desarrollo de Aplicaciones Web
+## Proyecto Integrado
+# Pedro Jesús Cros Pérez
+## Used technology
+### Backend
+- . Ecosistema Spring
+- Spring Boot
+- Spring Boot DevTools
+- Spring Data JPA
+- Thymeleaf
+- Spring Security
+- Lombok
+- Maven
+####
+- Testing
+  - JUnit and Mockito
+  - SonarQube
 
-For more detail, please visit:
-> [Spring Boot JPA + MySQL - Building Rest CRUD API example](https://www.bezkoder.com/spring-boot-jpa-crud-rest-api/)
+### Frontend
+- JavaScript + HTML + CSS(Bootstrap)
+- JQuery
+- SweetAlert2
 
-> [Spring Boot JPA + PostgreSQL - Building Rest CRUD API example](https://www.bezkoder.com/spring-boot-postgresql-example/)
+### DevOps
+- Docker
+- Docker Compose
 
-More Practice:
-> [Spring Boot File upload example with Multipart File](https://www.bezkoder.com/spring-boot-file-upload/)
+### Data base
+- MySQL
+- PostgreSQL
 
-> [Spring Boot Pagination & Filter example | Spring JPA, Pageable](https://www.bezkoder.com/spring-boot-pagination-filter-jpa-pageable/)
 
-> [Spring Data JPA Sort/Order by multiple Columns | Spring Boot](https://www.bezkoder.com/spring-data-sort-multiple-columns/)
 
-> [Spring Boot Repository Unit Test with @DataJpaTest](https://www.bezkoder.com/spring-boot-unit-test-jpa-repo-datajpatest/)
+# How to run
+## Docker Compose Spring Boot and MySQL example
 
-> [Deploy Spring Boot App on AWS – Elastic Beanstalk](https://www.bezkoder.com/deploy-spring-boot-aws-eb/)
+## Prerequisites
+#### Insert into ``superprof_db.roles``
+```
+INSERT INTO roles(name) VALUES('ROLE_ADMIN');
+INSERT INTO roles(name) VALUES('ROLE_TEACHER');
+INSERT INTO roles(name) VALUES('ROLE_STUDENT');
+INSERT INTO roles(name) VALUES('ROLE_USER');
+INSERT INTO roles(name) VALUES('ROLE_UNASSIGNED');
+```
 
-Security:
-> [Spring Boot + Spring Security JWT Authentication & Authorization](https://www.bezkoder.com/spring-boot-jwt-authentication/)
+## Run the System
+We can easily run the whole with only a single command:
+```bash
+docker compose up
+```
 
-Fullstack:
-> [Vue.js + Spring Boot + MySQL example](https://bezkoder.com/spring-boot-vue-js-mysql/)
+Docker will pull the MySQL and Spring Boot images (if our machine does not have it before).
 
-> [Angular 10 + Spring Boot + MySQL example](https://www.bezkoder.com/angular-10-spring-boot-crud/)
+The services can be run on the background with command:
+```bash
+docker compose up -d
+```
 
-> [Angular 11 + Spring Boot + MySQL example](https://www.bezkoder.com/angular-11-spring-boot-crud/)
+## Stop the System
+Stopping all the running containers is also simple with a single command:
+```bash
+docker compose down
+```
 
-> [Angular 12 + Spring Boot + MySQL example](https://bezkoder.com/angular-12-spring-boot-mysql/)
+If you need to stop and remove all containers, networks, and all images used by any service in <em>docker-compose.yml</em> file, use the command:
+```bash
+docker compose down --rmi all
+```
 
-> [Angular 13 + Spring Boot + MySQL example](https://www.bezkoder.com/spring-boot-angular-13-mysql/)
-
-> [Angular 14 + Spring Boot + MySQL example](https://www.bezkoder.com/spring-boot-angular-14-mysql/)
-
-> [Angular 15 + Spring Boot + MySQL example](https://www.bezkoder.com/spring-boot-angular-15-mysql/)
-
-> [Angular 16 + Spring Boot + MySQL example](https://www.bezkoder.com/spring-boot-angular-16-mysql/)
-
-> [React + Spring Boot + MySQL example](https://www.bezkoder.com/react-spring-boot-crud/)
-
-Run both Back-end & Front-end in one place:
-> [Integrate Angular with Spring Boot Rest API](https://www.bezkoder.com/integrate-angular-spring-boot/)
-
-> [Integrate React.js with Spring Boot Rest API](https://www.bezkoder.com/integrate-reactjs-spring-boot/)
-
-> [Integrate Vue.js with Spring Boot Rest API](https://www.bezkoder.com/integrate-vue-spring-boot/)
+## Run SonarQube with Docker
+```
+mvn spring-boot:run -Dspring-boot.run.profiles=dev -Dspring-boot.run.jvmArguments="-Dspring.profiles.active=dev"
+```
 
 ## Run Spring Boot application
-```
+```bash
 mvn spring-boot:run
 ```
 

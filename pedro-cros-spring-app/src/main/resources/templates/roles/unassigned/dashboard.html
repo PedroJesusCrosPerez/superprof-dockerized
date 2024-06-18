@@ -1,0 +1,27 @@
+<!DOCTYPE html ><!--"http://www.thymeleaf.org/dtd/xhtml1-strict-thymeleaf-spring4-4.dtd">-->
+<html lang="es" xmlns:th="http://www.thymeleaf.org"> <!-- xmlns:sec="http://www.w3.org/1999/xhtml">-->
+<head th:replace="layout/base::layout(~{::title}, ~{::fragment_css}, ~{::fragment_js}, ~{::main})">
+    <title>Panel de control - SIN_ASIGNAR</title>
+
+    <th:block th:fragment="fragment_css">
+<!--        <link rel="stylesheet" th:href="@{/css/home.css}">-->
+    </th:block>
+
+    <th:block th:fragment="fragment_js">
+<!--        <script th:src="@{/js/home.js}"></script>-->
+    </th:block>
+</head>
+<body>
+
+<header th:replace="layout/base :: header"></header>
+
+<main th:fragment="main">
+    <div class="container">
+        <div class="row">
+            <p>DASHBOARD UNASSIGNED</p>
+        </div>
+    </div>
+</main>
+
+</body>
+</html>

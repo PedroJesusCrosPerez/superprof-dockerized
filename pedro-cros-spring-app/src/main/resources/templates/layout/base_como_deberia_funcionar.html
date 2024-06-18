@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security"
+      th:fragment="layout(titulo, contenido)">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title th:text="${titulo}">Título por defecto</title>
+
+</head>
+<body>
+
+<header>
+  <nav class="navbar navbar-inverse navbar-fixed-top">
+      <a href="index.html" th:href="@{/index}">Inicio</a>
+      <a href="details.html" th:href="@{/details}">Details</a>
+  </nav>
+</header>
+
+<main th:replace="${contenido}">
+  <!-- El contenido de la página correspondiente -->
+<!--  <div th:replace="${contenido}"></div>-->
+</main>
+
+</body>
+</html>
