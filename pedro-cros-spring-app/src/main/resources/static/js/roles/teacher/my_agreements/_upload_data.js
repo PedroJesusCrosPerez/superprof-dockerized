@@ -57,9 +57,79 @@ function uploadAgreements() {
                                 <p data-v-5ab58b40="" data-label="ad_u_list_ad_page_ads_online">${status}</p>
                             </div>
                         </div>
+                        <button id="btnDeleteAgreement">Eliminar</button>
                     </div>
                 </div>
             `)
         });
+
+        // Add click event to each agreement
+        $('.agreement').on('click', function () {
+            const agreement = $(this);
+            const idAgreement = agreement.data('idagreement');
+            const title = agreement.data('title');
+            const description = agreement.data('description');
+            const aboutMe = agreement.data('about_me');
+            const isActive = agreement.data('isactive');
+            const subjectsIds = agreement.data('subjects_ids');
+            const subjectsName = agreement.data('subjects_name');
+            const places = agreement.data('places');
+            const languagesIds = agreement.data('languages_ids');
+            const languagesName = agreement.data('languages_name');
+            const ratePricePerHour = agreement.data('rate_priceperhour');
+            const ratePacks = agreement.data('rate_packs');
+
+            console.log()
+            console.log()
+            console.log()
+
+            console.log(idAgreement)
+            console.log(title)
+            console.log(description)
+            console.log(aboutMe)
+            console.log(isActive)
+            console.log(subjectsIds)
+            console.log(subjectsName)
+            console.log(places)
+            console.log(languagesIds)
+            console.log(languagesName)
+            console.log(ratePricePerHour)
+            console.log(ratePacks)
+
+            console.log()
+            console.log()
+            console.log()
+
+            // Fill the form with the agreement data
+            $('#idAgreement').val(idAgreement);
+            $('#title').val(title);
+            $('#description').val(description);
+            $('#aboutMe').val(aboutMe);
+            $('#isActive').val(isActive);
+            $('#subjectsIds').val(subjectsIds);
+            $('#subjectsName').val(subjectsName);
+            $('#places').val(places);
+            $('#languagesIds').val(languagesIds);
+            $('#languagesName').val(languagesName);
+            $('#ratePricePerHour').val(ratePricePerHour);
+            $('#ratePacks').val(ratePacks);
+
+            // Show the form
+            $('#agreementForm').show();
+        });
+
+        $('#btnDeleteAgreement').on('click', function () {
+            const agreement = $(this).closest('.agreement');
+            const idAgreement = agreement.data('idagreement');
+            console.log(idAgreement);
+            launchConfirmModal(function () {
+                ajaxRequest(`/agreements/${idAgreement}`, 'DELETE', null, function (response) {
+                    console.log(response);
+                    uploadAgreements();
+                    launchSuccessModal("¡¡Borrado correctamente!!", "El acuerdo se ha eliminado con éxito");
+                });
+            })
+        });
+
     })
 }

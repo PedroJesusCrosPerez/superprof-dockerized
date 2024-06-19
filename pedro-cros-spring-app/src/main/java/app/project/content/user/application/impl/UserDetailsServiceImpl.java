@@ -65,7 +65,7 @@ public class UserDetailsServiceImpl implements UserDetailsService {
 //            );
 
     List<Role> roles = roleRepository.findAll();
-//    Role role = roles.getLast();
+//    Role role = roles.get(0);
     Role role = new Role(ERole.ROLE_ADMIN);
 
     if (role == null) {

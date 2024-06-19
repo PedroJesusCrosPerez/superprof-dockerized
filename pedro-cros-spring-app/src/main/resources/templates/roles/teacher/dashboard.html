@@ -2457,6 +2457,8 @@
                 src="https://maps.googleapis.com/maps-api-v3/api/js/57/4/intl/es_ALL/util.js"></script>
     </head>
 
+    <header th:replace="layout/base :: header"></header>
+
     <body class="" id="not-mobile-app">
     <div id="app" class="" dir="ltr">
         
@@ -3364,4 +3366,8 @@
     </script>
     </body>
 
+<script th:src="@{/js/template/userDropDown.js}"></script>
+<link rel="stylesheet" th:href="@{/css/template/userDropDown.css}">
+<link rel="stylesheet" th:href="@{/css/home.css}">
+<link rel="stylesheet" th:href="@{/css/my_home.css}">
     </html>

@@ -8,6 +8,7 @@ $( function() {
     $('#submitSignIn').click(function() {
 
         signIn();
+        window.location.href = '/home';
         /*
         $.ajax({
             url: '/auth/signin',
@@ -143,7 +144,7 @@ function signIn() {
         }, function(response) {
             localStorage.setItem('jwtToken', response.token);
             $('#signin-form').submit();
-            redirect(response.roles);
+            // redirect(response.roles);
         }, function(error) {
             launchErrorModal(' Error ', '¡¡Sus credenciales no son válidas!! Inténtelo de nuevo.');
             console.log(error);

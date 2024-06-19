@@ -52,6 +52,11 @@ public class AgreementController {
                 ,agreementOutputDtoFullOneSubjectPage
         );
 
+        model.addAttribute(
+                "countAgreements"
+                ,agreementOutputDtoFullOneSubjectPage.getTotalElements()
+        );
+
         return "roles/unassigned/findBySubjectName";
     }
 }

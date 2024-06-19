@@ -8,20 +8,23 @@ function selectAgreement(agreementDivSelected) {
     const pPlaces = $('p[name="places"]')
     const pDescription = $('p[name="description"]')
     const pAboutMe = $('p[name="aboutMe"]')
-    const spanPricePerHour = $('p[name="price_per_hour"]')
     // Rate
     const spanRatePricePerHour = $('span[name="pricePerHour"]')
     const divListPacks = $('#listPacks')
 
-
     let agreement = agreementDivSelected.data()
+
+    // Subjects name
+    let str = agreement.subjects_name;
+    let formattedSubjectName =  str.charAt(0).toUpperCase() + str.slice(1).toLowerCase();
+
     console.log(agreement) // TODO DEBUG
-    pSubjectsNames.text(agreement.subjectsNames)
+    pSubjectsNames.text(formattedSubjectName)
     h3Title.text(agreement.title)
     pPlaces.text(agreement.places)
     pDescription.text(agreement.description)
     pAboutMe.text(agreement.about_me)
-    spanPricePerHour.text(agreement.rate_priceperhour)
+    spanRatePricePerHour.text(agreement.rate_priceperhour)
 
     // Places
     const placesList = $('#placesList');

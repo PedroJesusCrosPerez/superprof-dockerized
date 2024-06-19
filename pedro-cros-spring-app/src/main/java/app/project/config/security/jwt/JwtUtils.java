@@ -6,7 +6,6 @@ import io.jsonwebtoken.io.Decoders;
 import io.jsonwebtoken.security.Keys;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.beans.factory.annotation.Value;
 import org.springframework.security.core.Authentication;
 import org.springframework.stereotype.Component;
 
@@ -17,19 +16,12 @@ import java.util.Date;
 public class JwtUtils {
   private static final Logger logger = LoggerFactory.getLogger(JwtUtils.class);
 
-//  @Value("${pedro.vars.jwtSecret}")
-//  private String jwtSecret;
-//
-//  @Value("${pedro.vars.jwtExpirationMs}")
-//  private int jwtExpirationMs;
-
-
-    public String generateJwtToken(Authentication authentication) {
+  public String generateJwtToken(Authentication authentication) {
 
     UserDetailsImpl userPrincipal = (UserDetailsImpl) authentication.getPrincipal();
 
-        int jwtExpirationMs = 86400000;
-        return Jwts.builder()
+    int jwtExpirationMs = 86400000;
+    return Jwts.builder()
         .setSubject((userPrincipal.getUsername()))
         .setIssuedAt(new Date())
         .setExpiration(new Date((new Date()).getTime() + jwtExpirationMs))
@@ -38,8 +30,9 @@ public class JwtUtils {
   }
   
   private Key key() {
-      String jwtSecret = "pedro.vars.jwtSecret";
-      return Keys.hmacShaKeyFor(Decoders.BASE64.decode(jwtSecret));
+
+    String jwtSecret = "pedro.vars.jwtSecret";
+    return Keys.hmacShaKeyFor(Decoders.BASE64.decode(jwtSecret));
   }
 
   public String getUserNameFromJwtToken(String token) {

@@ -18,6 +18,32 @@ function ajaxRequest(url, method, data, successCallback, errorCallback) {
     });
 }
 
+function pureAjaxRequest(url, method, data, successCallback, errorCallback) {
+    // var url = '/agreements/1';
+    // var data = { title: "Mi nuevo título" };
+
+    var xhr = new XMLHttpRequest();
+    xhr.open('PATCH', url, true);
+    xhr.setRequestHeader('Content-Type', 'application/json');
+
+    xhr.onload = function () {
+        if (xhr.status >= 200 && xhr.status < 300) {
+            console.log('Éxito:', xhr.responseText);
+            successCallback();
+        } else {
+            console.log('Error:', xhr.statusText);
+            errorCallback();
+        }
+    };
+
+    xhr.onerror = function () {
+        console.log('Error de red o CORS');
+    };
+
+    xhr.send(JSON.stringify(data));
+
+}
+
 /*
 // Definir la URL del endpoint
 var url = "http://localhost:8080/auth/signup";

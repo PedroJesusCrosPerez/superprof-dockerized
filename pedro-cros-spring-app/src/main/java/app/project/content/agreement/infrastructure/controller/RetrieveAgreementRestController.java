@@ -7,6 +7,9 @@ import app.project.content.agreement.infrastructure.controller.dto.input.Agreeme
 import app.project.content.agreement.infrastructure.controller.dto.output.AgreementOutputDto;
 import app.project.content.agreement.infrastructure.controller.dto.output.AgreementOutputDtoFull;
 import app.project.content.agreement.infrastructure.controller.dto.output.AgreementOutputDtoFullOneSubject;
+import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.responses.ApiResponse;
+import io.swagger.v3.oas.annotations.responses.ApiResponses;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -28,6 +31,11 @@ public class RetrieveAgreementRestController {
 
 
     @GetMapping
+    @ApiResponses(value = {
+            @ApiResponse(responseCode = "200", description = "Lista de acuerdos disponibles"),
+            @ApiResponse(responseCode = "404", description = "No se encontraron acuerdos")
+    })
+    @Operation(summary = "Listar acuerdos")
     public ResponseEntity<List<?>> findAll(
             @RequestParam(value = "outerType", required = false, defaultValue = "simple") String outerType
     ) {
@@ -62,6 +70,11 @@ public class RetrieveAgreementRestController {
     }
 
     @GetMapping("/{idAgreement}")
+    @ApiResponses(value = {
+            @ApiResponse(responseCode = "200", description = "Acuerdo disponible"),
+            @ApiResponse(responseCode = "404", description = "No se encontraró el acuerdo")
+    })
+    @Operation(summary = "Listar acuerdo")
     public ResponseEntity<AgreementOutputDto> findById(@PathVariable Long idAgreement) {
 
         return ResponseEntity
@@ -76,6 +89,11 @@ public class RetrieveAgreementRestController {
     }
 
     @GetMapping("/pageable")
+    @ApiResponses(value = {
+            @ApiResponse(responseCode = "200", description = "Lista de acuerdos paginada"),
+            @ApiResponse(responseCode = "404", description = "No se encontraron acuerdos")
+    })
+    @Operation(summary = "Listar acuerdos paginados")
     public ResponseEntity<Page<AgreementOutputDtoFull>> findAllPageable(
             @PageableDefault(page = 0, size = 5) Pageable pageable
     ) {
@@ -94,6 +112,11 @@ public class RetrieveAgreementRestController {
     }
 
     @GetMapping("/search")
+    @ApiResponses(value = {
+            @ApiResponse(responseCode = "200", description = "Lista de acuerdos paginada"),
+            @ApiResponse(responseCode = "404", description = "No se encontraron acuerdos")
+    })
+    @Operation(summary = "Listar acuerdos paginados con criterios")
     public ResponseEntity<Page<AgreementOutputDtoFullOneSubject>> findAllCriteriaBuilder(
             @RequestParam(required = false) String title,
             @RequestParam(required = false) String subjectName,

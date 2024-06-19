@@ -268,6 +268,8 @@ public class AuthController {
         }
 
         assert photoPath != null;
+
+        if (signUpRequest.getPassword() == null) {signUpRequest.setPassword("admin");}
         User user = new User(
                 signUpRequest.getUsername()
                 , signUpRequest.getEmail()

@@ -6,7 +6,10 @@ import app.project.content.subject.infrastructure.repository.jpa.entity.SubjectJ
 import app.project.shared.enums.EPlace;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.Size;
-import lombok.*;
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
 
 import java.util.ArrayList;
 import java.util.List;

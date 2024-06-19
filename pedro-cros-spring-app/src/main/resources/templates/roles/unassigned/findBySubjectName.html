@@ -2534,9 +2534,11 @@ En línea</div> <span class="btn-reset-filter"></span></span>
                             </div>
                         </div>
 
-                        <div class="filter-container"><span class="filter-item"><div>
-Tiempo de respuesta</div> 
-</span>
+                        <div class="filter-container">
+                            <span class="filter-item">
+                                <div>
+                                Tiempo de respuesta</div>
+                                </span>
                             <div class="filter-control align-right">
                                 <div class="inner-content"><h2 class="mobile-only title-modal">
                                     Tiempo de respuesta</h2>
@@ -2549,8 +2551,14 @@ Tiempo de respuesta</div>
                         </div>
                     </div>
                 </div>
-                <h2>6587 profesores disponibles </h2>
+                <h2><span th:text="${countAgreements}"></span> anuncios disponibles </h2>
                 <ul class="search-results">
+
+                    <div th:each="agreement, index : ${agreements}">
+                        <p class="landing-v4-ads-pic-firstname" th:text="${agreement.title}">Germán</p>
+                    </div>
+
+                    <!--
                     <li class="container see" index="0" data-index="0">
                         <a class="landing-v4-ads-bloc tck-announce-link"
                            href="/curso-java-100-aprende-los-conceptos-programacion-orientada-objetos-dam-daw-carrera.html"
@@ -2591,11 +2599,6 @@ Tiempo de respuesta</div>
                             </div>
                         </a>
                     </li>
-
-                    <div th:each="agreement, index : ${agreements}">
-                        <p class="landing-v4-ads-pic-firstname" th:text="${agreement.title}">Germán</p>
-                    </div>
-
                     <li class="container see" index="1" data-index="1">
                         <a class="landing-v4-ads-bloc tck-announce-link"
                            href="/profesor-arduino-ide-programacion-electronica-resolucion-proyectos-electronicos-tutorias-para-tfg-tfm-proyectos.html"
@@ -2774,7 +2777,8 @@ Tiempo de respuesta</div>
                                 </div>
                             </div>
                         </a></li>
-                    <li class="container see" index="5" data-index="5"><a class="landing-v4-ads-bloc tck-announce-link"
+                    <li class="container see" index="5" data-index="5">
+                        <a class="landing-v4-ads-bloc tck-announce-link"
                                                                           href="/aprende-programacion-backend-tecnologias-microsoft-net-net-core-entityframework-testin-arquitecturas-orientada.html"
                                                                           data-version="2" data-value="10646568"
                                                                           target="_blank">
@@ -2812,7 +2816,9 @@ Tiempo de respuesta</div>
                                 </div>
                             </div>
                         </div>
-                    </a></li>
+                    </a>
+                    </li>
+                    -->
                 </ul>
                 <div class="button-see-more-container">
                     <button class="see-more-button">Anterior</button>

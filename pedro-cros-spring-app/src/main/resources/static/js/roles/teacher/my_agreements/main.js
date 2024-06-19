@@ -12,4 +12,6 @@ $(function () {
         selectAgreement($(this))
     })
 
+    enableUpdate();
+
 })
