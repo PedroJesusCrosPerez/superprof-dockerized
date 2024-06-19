@@ -5,6 +5,7 @@
     <option name="originalFiles">
       <list>
         <option value="$PROJECT_DIR$/bezkoder-app/pom.xml" />
+        <option value="$PROJECT_DIR$/pedro-cros-spring-app/pom.xml" />
       </list>
     </option>
   </component>
